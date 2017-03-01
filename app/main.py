@@ -158,7 +158,7 @@ def move():
                 grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]] = SAFTEY
             if enemy['coords'][0][0] > 0:
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
-        
+        grid[enemy['coords'][0][0]-enemy['coords'][1][0]][enemy['coords'][0][1] - enemy['coords'][1][1]]=HEADFIRST
         heads.Add(grid[enemy['coords'][0][0]-enemy['coords'][1][0]][enemy['coords'][0][1] - enemy['coords'][1][1]]) 
         
         
@@ -169,7 +169,7 @@ def move():
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,middle))
     if data['mode'] == 'advanced':
-        foods = data['gold'] + foods+heads
+        foods = data['gold'] + foods + heads
     for food in foods:
         #print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
