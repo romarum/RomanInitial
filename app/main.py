@@ -140,6 +140,8 @@ def move():
     snek, grid = init(data)
     heads=[]
 
+
+    print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
