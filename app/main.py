@@ -140,15 +140,15 @@ def move():
     snek, grid = init(data)
     heads=[]
 
-
-
-    
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
             continue
+        
         print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
-        print enemy['coords'][0][0]*2 - enemy['coords'][1][0]," ",enemy['coords'][0][1]*2 - enemy['coords'][1][1]
+        grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = HEADFIRST
+        heads.append((enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]))
+        print heads       
         print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"      
         if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
             continue
@@ -163,8 +163,7 @@ def move():
                 grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]] = SAFTEY
             if enemy['coords'][0][0] > 0:
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
-        grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = HEADFIRST
-        heads.append((enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]))
+
 
 
         
