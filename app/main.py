@@ -11,7 +11,9 @@ SNAKE = 1
 WALL = 2
 FOOD = 3
 GOLD = 4
-SAFTEY = 5
+HEADFIRST = 10
+
+SAFTEY = 10
 def goals(data):
     result = data['food']
     if data['mode'] == 'advanced':
@@ -140,6 +142,7 @@ def move():
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
             continue
+
         if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
             continue
         if (len(enemy['coords']) > len(snek['coords'])-1):
@@ -153,9 +156,12 @@ def move():
                 grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]] = SAFTEY
             if enemy['coords'][0][0] > 0:
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
-
-
+        #else
+            grid[enemy['coords'][0][0]-enemy['coords'][1][0]][enemy['coords'][0][1] - enemy['coords'][1][1]] = HEADFIRST
+        
+            
     snek_head = snek['coords'][0]
+    snek_neck = snek['coords'][1]
     snek_coords = snek['coords']
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
