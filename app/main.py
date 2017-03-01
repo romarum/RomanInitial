@@ -147,7 +147,9 @@ def move():
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
             continue
-
+        print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
+        print enemy['coords'][0][0]*2 - enemy['coords'][1][0]," ",enemy['coords'][0][1]*2 - enemy['coords'][1][1]
+        print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"      
         if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
             continue
         if (len(enemy['coords']) > len(snek['coords'])-1):
@@ -164,9 +166,7 @@ def move():
         grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = HEADFIRST
         heads.append((enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]))
 
-        print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
-        print enemy['coords'][0][0]*2 - enemy['coords'][1][0]," ",enemy['coords'][0][1]*2 - enemy['coords'][1][1]
-        print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+
         
     snek_head = snek['coords'][0]
     snek_neck = snek['coords'][1]
