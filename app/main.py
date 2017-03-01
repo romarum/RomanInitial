@@ -138,6 +138,7 @@ def start():
 def move():
     data = bottle.request.json
     snek, grid = init(data)
+    heads=[]
 
     #foreach snake
     for enemy in data['snakes']:
@@ -157,10 +158,10 @@ def move():
                 grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]] = SAFTEY
             if enemy['coords'][0][0] > 0:
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
-        #else
-        grid[enemy['coords'][0][0]-enemy['coords'][1][0]][enemy['coords'][0][1] - enemy['coords'][1][1]] = HEADFIRST
         
-            
+        heads.Add(grid[enemy['coords'][0][0]-enemy['coords'][1][0]][enemy['coords'][0][1] - enemy['coords'][1][1]]) 
+        
+        
     snek_head = snek['coords'][0]
     snek_neck = snek['coords'][1]
     snek_coords = snek['coords']
@@ -168,7 +169,7 @@ def move():
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,middle))
     if data['mode'] == 'advanced':
-        foods = data['gold'] + foods
+        foods = data['gold'] + foods+heads
     for food in foods:
         #print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
