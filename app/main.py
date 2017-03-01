@@ -13,7 +13,8 @@ FOOD = 3
 GOLD = 4
 HEADFIRST = 10
 
-SAFTEY = 10
+SAFTEY = 5
+
 def goals(data):
     result = data['food']
     if data['mode'] == 'advanced':
@@ -157,7 +158,7 @@ def move():
             if enemy['coords'][0][0] > 0:
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
         #else
-            grid[enemy['coords'][0][0]-enemy['coords'][1][0]][enemy['coords'][0][1] - enemy['coords'][1][1]] = HEADFIRST
+        grid[enemy['coords'][0][0]-enemy['coords'][1][0]][enemy['coords'][0][1] - enemy['coords'][1][1]] = HEADFIRST
         
             
     snek_head = snek['coords'][0]
