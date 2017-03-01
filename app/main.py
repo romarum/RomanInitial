@@ -160,7 +160,7 @@ def move():
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
         grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = HEADFIRST
         heads.append((enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1])) 
-        
+        print heads
         
     snek_head = snek['coords'][0]
     snek_neck = snek['coords'][1]
