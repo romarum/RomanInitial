@@ -146,11 +146,13 @@ def move():
             continue
         
         print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
-        grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = HEADFIRST
+        grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = GOLD
         data['gold'].append([enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]])
-        print data['gold']
-        #print heads       
-        print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"      
+        print data['gold']     
+        print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"   
+
+
+   
         if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
             continue
         if (len(enemy['coords']) > len(snek['coords'])-1):
