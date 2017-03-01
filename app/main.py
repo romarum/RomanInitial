@@ -159,7 +159,7 @@ def move():
             if enemy['coords'][0][0] > 0:
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
         grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = HEADFIRST
-        heads.append(enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]) 
+        heads.append((enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1])) 
         
         
     snek_head = snek['coords'][0]
