@@ -220,7 +220,7 @@ def move():
             break
         #print "no path to tail from food"
 
-
+    print grid
 
     if not path:
         path = a_star(snek_head, snek['coords'][-1], grid, snek_coords)
@@ -250,7 +250,7 @@ def move():
         'move': direction(path[0], path[1]),
         'taunt': 'TRAITOR!'
     }
-    print grid
+    
 
 @bottle.post('/end')
 def end():
