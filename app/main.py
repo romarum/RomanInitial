@@ -221,14 +221,14 @@ def move():
         path_length = len(tentative_path)
         snek_length = len(snek_coords) + 1
 
-        dead = False
-        for enemy in data['snakes']:
-            if enemy['id'] == ID:
-                continue
-            if path_length > distance(enemy['coords'][0], food):
-                dead = True
-        if dead:
-            continue
+        #dead = False
+        #for enemy in data['snakes']:
+        #    if enemy['id'] == ID:
+        #        continue
+        #    if path_length > distance(enemy['coords'][0], food):
+        #        dead = True
+        #if dead:
+        #    continue
 
         # Update snek
         if path_length < snek_length:
@@ -287,7 +287,7 @@ def move():
 
     return {
         'move': direction(path[0], path[1]),
-        'taunt': 'TRAITOR!'
+        'taunt': 'Whatever'
     }
     
 
