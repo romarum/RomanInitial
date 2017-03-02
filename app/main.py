@@ -146,11 +146,8 @@ def move():
             continue
         
         print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
-        grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = GOLD
-        data['gold'].append([enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]])
-        print data['gold']     
-        print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"   
-
+        #grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = GOLD
+        #data['gold'].append([enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]])
 
    
         if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
@@ -179,7 +176,7 @@ def move():
     if data['mode'] == 'advanced':
         foods = data['gold'] + foods + heads
     for food in foods:
-        #print food
+        print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
         if not tentative_path:
             #print "no path to food"
