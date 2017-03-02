@@ -152,32 +152,57 @@ def move():
    
         if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
             continue
+
+        
         if (len(enemy['coords']) >= len(snek['coords'])-1):
             #dodge
-            try:
+            #try:
                 #if enemy['coords'][0][1] < data['height']-1:
-                grid[enemy['coords'][0][0]][enemy['coords'][0][1]+1] = SAFTEY             
+                #grid[enemy['coords'][0][0]][enemy['coords'][0][1]+1] = SAFTEY             
                 #if enemy['coords'][0][1] > 0:
-                grid[enemy['coords'][0][0]][enemy['coords'][0][1]-1] = SAFTEY
+                #grid[enemy['coords'][0][0]][enemy['coords'][0][1]-1] = SAFTEY
                 #if enemy['coords'][0][0] < data['width']-1:
-                grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]] = SAFTEY
+                #grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]] = SAFTEY
                 #if enemy['coords'][0][0] > 0:
-                grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
-
-                grid[enemy['coords'][0][0]][enemy['coords'][0][1]+1] = SAFTEY              
-                grid[enemy['coords'][0][0]][enemy['coords'][0][1]-1] = SAFTEY
-                grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]] = SAFTEY
-                grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
-
-                grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]+1] = SAFTEY              
-                grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]-1] = SAFTEY
-                grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]-1] = SAFTEY
-                grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]+1] = SAFTEY
+                #grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
                 
-   
+            try:
+                grid[enemy['coords'][0][0]][enemy['coords'][0][1]] = SAFTEY
             except:
                 pass
-
+            try:
+                grid[enemy['coords'][0][0]][enemy['coords'][0][1]+1] = SAFTEY
+            except:
+                pass
+            try:
+                grid[enemy['coords'][0][0]][enemy['coords'][0][1]-1] = SAFTEY
+            except:
+                pass
+            try:
+                grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]] = SAFTEY
+            except:
+                pass
+            try:
+                grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
+            except:
+                pass
+            try:
+                grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]+1] = SAFTEY
+            except:
+                pass
+            try:
+                grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]-1] = SAFTEY
+            except:
+                pass
+            try:
+                grid[enemy['coords'][0][0]+1][enemy['coords'][0][1]-1] = SAFTEY
+            except:
+                pass
+            try:
+                grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]+1] = SAFTEY
+            except:
+                pass
+            
     snek_head = snek['coords'][0]
     snek_neck = snek['coords'][1]
     snek_coords = snek['coords']
