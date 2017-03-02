@@ -63,7 +63,7 @@ def a_star(start, goal, grid, tail):
         open_set.remove(current)
         closed_set.append(current)
 
-        for neighbour in neighbours(current, grid, g_score[current[0]][current[1]], tail,[1,2,5]):
+        for neighbour in neighbours(current, grid, g_score[current[0]][current[1]], tail,[1,2,3]):
             if neighbour in closed_set:
                 continue
             tentative_g_score = g_score[current[0]][current[1]] + dist(current,neighbour)
