@@ -208,7 +208,7 @@ def move():
     snek_coords = snek['coords']
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
-    foods = sorted(data['food'], key = lambda p: distance(p,middle))
+    foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
     if data['mode'] == 'advanced':
         foods = data['gold'] + foods + heads
     for food in foods:
