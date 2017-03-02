@@ -9,11 +9,11 @@ SNEK_BUFFER = 3
 ID = 'new2'
 SNAKE = 1
 WALL = 2
-FOOD = 3
-GOLD = 4
+FOOD = 5
+GOLD = 6
 HEADFIRST = 10
 
-SAFTEY = 5
+SAFTEY = 3
 
 def goals(data):
     result = data['food']
@@ -231,7 +231,7 @@ def move():
     despair = not (path and len(path) > 1)
 
     if despair:
-        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2,5]):
+        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2,3]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
             #print 'i\'m scared'
             break
