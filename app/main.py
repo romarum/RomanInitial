@@ -215,11 +215,12 @@ def move():
         #foods = data['gold'] + foods #+ heads
 
         allgoals = sorted(data['gold']+data['food'], key = lambda p: distance(p,snek_head ))  
-        foods = sorted(allgoals, key= lambda p: max(p))
+        foods = sorted(allgoals, key= lambda p: min(p))
+        print foods
 
         
     for food in foods:
-        print food
+        #print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
         if not tentative_path:
             #print "no path to food"
