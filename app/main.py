@@ -208,7 +208,13 @@ def move():
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
-
+    bestScore=4
+    print grid
+    for col in xrange(data['height']):
+        for row in xrange(data['width']):
+            if grid[row[col]]> bestScore:
+                bestScore = grid[row[col]]
+    print "BS",bestScore
     
     #print foods
     if data['mode'] == 'advanced':
