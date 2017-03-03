@@ -207,16 +207,13 @@ def move():
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
+    golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
 
-    print grid
-    bestScore = sorted(grid)
-    print "BEST SCORE",bestScore
-    
     
     #print foods
     if data['mode'] == 'advanced':
-        foods = data['gold'] + foods #+ heads
-     
+        #foods = data['gold'] + foods #+ heads
+        foods = golds + foods #+ heads    
     for food in foods:
         print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
