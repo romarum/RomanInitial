@@ -209,20 +209,26 @@ def move():
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
     bestScore=4
+    bestGoals=[]
     print grid
     for col in xrange(data['height']):
         for row in xrange(data['width']):
             if grid[row][col]> bestScore:
                 bestScore = grid[row][col]
+                
+    for col in xrange(data['height']):
+        for row in xrange(data['width']):
+            if grid[row][col]== bestScore:
+                bestGoals.append([row,col])
+                
     print "BS",bestScore
+    print "BG",bestGoals   
     
     #print foods
     if data['mode'] == 'advanced':
         #foods = data['gold'] + foods #+ heads
-
-        allgoals = sorted(data['gold']+data['food'], key = lambda p: distance(p,snek_head ))  
-        foods = sorted(allgoals, key= lambda p: min(p))
-        print foods
+        
+        foods = sorted(bestGoals, key = lambda p: distance(p,snek_head ))
 
         
     for food in foods:
