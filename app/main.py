@@ -212,8 +212,8 @@ def move():
     print grid
     for col in xrange(data['height']):
         for row in xrange(data['width']):
-            if grid[row[col]]> bestScore:
-                bestScore = grid[row[col]]
+            if grid[row][col]> bestScore:
+                bestScore = grid[row][col]
     print "BS",bestScore
     
     #print foods
