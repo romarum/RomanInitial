@@ -209,7 +209,7 @@ def move():
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
 
     print grid
-    bestScore = sorted(grid)[0][0][0]
+    bestScore = sorted(grid)
     print "BEST SCORE",bestScore
     
     
