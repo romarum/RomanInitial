@@ -11,7 +11,6 @@ SNAKE = 1
 WALL = 2
 FOOD = 5
 GOLD = 6
-HEADFIRST = 10
 
 SAFTEY = 3
 
@@ -138,7 +137,6 @@ def start():
 def move():
     data = bottle.request.json
     snek, grid = init(data)
-    heads=[]
 
     #foreach snake
     for enemy in data['snakes']:
@@ -209,9 +207,14 @@ def move():
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
+    bestScore = sorted(grid)
+    print "BEST SCORE",bestScore
+    
+    
     print foods
     if data['mode'] == 'advanced':
         foods = data['gold'] + foods #+ heads
+     
     for food in foods:
         print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
