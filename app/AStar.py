@@ -42,10 +42,10 @@ def neighbours(node, grid, score, tail, ignore_list):
 
 def a_star(start, goal, grid, tail):
 
-    print "AStart start", start
-    print "AStart goal", goal	
-    print "AStart grid", grid
-    print "AStart tail", tail
+    #print "AStart start", start
+    #print "AStart goal", goal	
+    #print "AStart grid", grid
+    #print "AStart tail", tail
     start = tuple(start)
     goal = tuple(goal)
 
@@ -82,6 +82,3 @@ def a_star(start, goal, grid, tail):
             f_score[neighbour[0]][neighbour[1]] = tentative_g_score + dist(neighbour,goal)
 
     return None
-
-#print a_star((3,1),(0,1),[[0,2,0,0],[0,2,0,0],[1,2,0,0],[0,2,0,0]], [[3,1],[2,1],[1,1],[0,1]])
-#print a_star((0,4),(3,4),[[0,2,0,0,2,0],[0,2,0,1,2,2],[0,2,2,2,2,2],[0,0,1,0,0,0]],[[0,4],[1,4],[1,5],[2,5],[2,4],[2,3],[2,2],[2,1],[1,1],[1,0]])

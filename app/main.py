@@ -54,6 +54,7 @@ def closest(items, start):
 
 def init(data):
     data['mode'] = 'beginner'
+    print('data is ', data)
     ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']:
@@ -70,6 +71,9 @@ def init(data):
 
     for f in data['food']:
         grid[f[0]][f[1]] = FOOD
+
+    print('my snake is ', mysnake)
+    print('grid is ', grid)
 
     return mysnake, grid
 
@@ -108,15 +112,16 @@ def start():
 def move():
     data = bottle.request.json
     snek, grid = init(data)
-
+	
+	
     data['mode'] = 'beginner'
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
-            print('our snake is ', enemy)
+            #print('our snake is ', enemy)
             continue
         
-        print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
+        #print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
         #grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = GOLD
         #data['gold'].append([enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]])
 
@@ -183,7 +188,7 @@ def move():
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
     bestScore=4
     bestGoals=[]
-    print grid
+    #print grid
     for col in xrange(data['height']):
         for row in xrange(data['width']):
             if grid[row][col]> bestScore:
@@ -194,10 +199,10 @@ def move():
             if grid[row][col]== bestScore:
                 bestGoals.append([row,col])
                 
-    print "BS",bestScore
-    print "BG",bestGoals   
+    #print "BS",bestScore
+    #print "BG",bestGoals   
     
-    #print foods
+    ##print foods
     if data['mode'] == 'advanced':
         #foods = data['gold'] + foods #+ heads
         
@@ -205,10 +210,10 @@ def move():
 
         
     for food in foods:
-        #print food
+        ##print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
         if not tentative_path:
-            #print "no path to food"
+            ##print "no path to food"
             continue
 
         path_length = len(tentative_path)
@@ -242,46 +247,46 @@ def move():
         for coord in new_snek_coords:
             new_grid[coord[0]][coord[1]] = SNAKE
 
-        #printg(grid, 'orig')
-        #printg(new_grid, 'new')
+        ##printg(grid, 'orig')
+        ##printg(new_grid, 'new')
 
-        #print snek['coords'][-1]
+        ##print snek['coords'][-1]
         foodtotail = a_star(food,new_snek_coords[-1],new_grid, new_snek_coords)
         if foodtotail:
             path = tentative_path
             break
-        #print "no path to tail from food"
+        ##print "no path to tail from food"
 
-    #print grid
-    print('path before if ',path)
+    ##print grid
+    #print('path before if ',path)
     if not path:
         path = a_star(snek_head, snek['coords'][-1], grid, snek_coords)
-    print('path after if ',path)
+    #print('path after if ',path)
 
     despair = not (path and len(path) > 1)
-    print('despair first time', despair)
+    #print('despair first time', despair)
 
     if despair:
         for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2,3]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
-            #print 'i\'m scared'
+            ##print 'i\'m scared'
             break
 
     despair = not (path and len(path) > 1)
 
-    print('despair second time time', despair)
+    #print('despair second time time', despair)
     if despair:
         for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
-            #print 'lik so scared'
+            ##print 'lik so scared'
             break
 
-    print('path before asserts ', path)
+    #print('path before asserts ', path)
     if path:
         assert path[0] == tuple(snek_head)
         assert len(path) > 1
 
-    print('path after asserts ', path)
+    #print('path after asserts ', path)
 
     try:
         direction = direction(path[0], path[1])
