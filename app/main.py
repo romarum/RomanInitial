@@ -241,7 +241,7 @@ def move():
         path_length = len(tentative_path)
         snek_length = len(snek_coords) + 1
 		
-		dead = False
+        dead = False
         
         #logic where the snake drops the food because of enemy's distance
         for enemy in data['snakes']:
