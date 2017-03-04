@@ -16,7 +16,7 @@ SAFTEY = 3
 
 def getTaunt():
     try:
-        tauntArray = ["What the Fudge?", "I don\'t give a Donald Duck!", "Fudge nuggets","Son of a biscuit", "Son of a witch", "Tell your Mother to call me, she got the number", "Suck on my tail", "What kind of food is that? I am gonna puke", "Get out of my way", "You suck at this dude", "" ]
+        tauntArray = ["What the Fudge?", "I don\'t give a Donald Duck!", "Fudge nuggets","Son of a biscuit", "Son of a witch", "Tell your Mother to call me, she got the number", "Suck on my tail", "What kind of food is that? I am gonna puke", "Get out of my way", "You suck at this dude", "This is last Taunt" ]
         tauntNumber = randint(0, len(tauntArray))
         returnTaunt = tauntArray[tauntNumber]
 
@@ -340,6 +340,7 @@ def move():
         assert path[0] == tuple(snek_head)
         assert len(path) > 1
     taunt = getTaunt()
+    print(taunt)
     return {
         'move': direction(path[0], path[1]),
         'taunt': taunt
