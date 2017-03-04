@@ -252,11 +252,13 @@ def move():
         #print "no path to tail from food"
 
     #print grid
-
+    print('path before if ',path)
     if not path:
         path = a_star(snek_head, snek['coords'][-1], grid, snek_coords)
+    print('path before if ',path)
 
     despair = not (path and len(path) > 1)
+    print('despair first time', dispair)
 
     if despair:
         for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2,3]):
@@ -266,17 +268,20 @@ def move():
 
     despair = not (path and len(path) > 1)
 
-
+    print('despair second time time', dispair)
     if despair:
         for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
             #print 'lik so scared'
             break
 
+    print('path before asserts ', path)
     if path:
         assert path[0] == tuple(snek_head)
         assert len(path) > 1
 
+    print('path after asserts ', path)
+    
     return {
         'move': direction(path[0], path[1]),
         'taunt': 'Whatever'
