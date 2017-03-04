@@ -4,28 +4,15 @@ import copy
 import math
 import os
 import sys
-import random
 
 SNEK_BUFFER = 3
-ID = ''
+ID = 'new2'
 SNAKE = 1
 WALL = 2
 FOOD = 5
 GOLD = 6
-OLDMODE = False
+
 SAFTEY = 3
-
-def getTaunt():
-    try:
-        tauntArray = ["What the Fudge?", "I don\'t give a Donald Duck!", "Fudge nuggets","Son of a biscuit", "Son of a witch", "Tell your Mother to call me, she got the number", "Suck on my tail", "What kind of food is that? I am gonna puke", "Get out of my way", "You suck at this dude", "" ]
-        tauntNumber = randint(0, len(tauntArray))
-        returnTaunt = tauntArray[tauntNumber]
-    
-    except Exception:
-        returnTaunt = "You got a problem?"
-
-    return returnTaunt
-
 
 def goals(data):
     result = data['food']
@@ -37,27 +24,15 @@ def goals(data):
 def direction(from_cell, to_cell):
     dx = to_cell[0] - from_cell[0]
     dy = to_cell[1] - from_cell[1]
-	
-    if (OLDMODE):
-		
-    	if dx == 1:
-    		return 'east'
-    	elif dx == -1:
-    		return 'west'
-    	elif dy == -1:
-    		return 'north'
-    	elif dy == 1:
-    		return 'south'
-    else:
-    	if dx == 1:
-    		return 'right'
-    	elif dx == -1:
-    		return 'left'
-    	elif dy == -1:
-    		return 'up'
-    	elif dy == 1:
-    		return 'down'
-	
+
+    if dx == 1:
+        return 'east'
+    elif dx == -1:
+        return 'west'
+    elif dy == -1:
+        return 'north'
+    elif dy == 1:
+        return 'south'
 
 def distance(p, q):
     dx = abs(p[0] - q[0])
@@ -78,28 +53,12 @@ def closest(items, start):
     return closest_item
 
 def init(data):
-    data['mode'] = 'beginner'
-    ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']:
         if snek['id']== ID:
             mysnake = snek
         for coord in snek['coords']:
             grid[coord[0]][coord[1]] = SNAKE
-    print
-    ourHealth = 100
-    #ourHealth = mysnake["health_points"]
-    
-    if (ourHealth > 60):
-        FOOD = 3
-    elif (ourHealth >= 40):
-        FOOD = 5
-    elif (ourHealth < 40):
-        FOOD = 7
-    print("***************")
-    print(ourHealth)
-    print(FOOD)
-    print("***************")
 
     if data['mode'] == 'advanced':
         for wall in data['walls']:
@@ -132,13 +91,11 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
+
     # TODO: Do things with data
+
     return {
-        'name': '\Daredevils',
-        'taunt': 'Let\'s CRUSH those worms!',
-        'color': '#4286F4',
-        'head_type': 'fang',
-        'tail_type': 'regular'
+        'taunt': 'battlesnake-python!'
     }
 # DATA OBJECT
 # {
@@ -180,7 +137,7 @@ def start():
 def move():
     data = bottle.request.json
     snek, grid = init(data)
-    data['mode'] = 'beginner'
+
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
@@ -283,8 +240,7 @@ def move():
 
         path_length = len(tentative_path)
         snek_length = len(snek_coords) + 1
-		
-        
+
         #dead = False
         #for enemy in data['snakes']:
         #    if enemy['id'] == ID:
@@ -348,11 +304,10 @@ def move():
     if path:
         assert path[0] == tuple(snek_head)
         assert len(path) > 1
-    taunt = getTaunt()
-    print(taunt)
+
     return {
         'move': direction(path[0], path[1]),
-        'taunt': taunt
+        'taunt': 'Whatever'
     }
     
 
