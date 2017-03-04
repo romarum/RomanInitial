@@ -55,7 +55,7 @@ def closest(items, start):
 def init(data):
     data['mode'] = 'beginner'
     #print('data is ', data)
-    ID = data['you']
+    #ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']:
         if snek['id']== ID:
@@ -176,10 +176,10 @@ def move():
             except:
                 pass
 
-    print('grid is ',grid)
+    #print('grid is ',grid)
     snek_head = snek['coords'][0]
-    print('snekHead is ', snek['coords'][0])
-    print('snek head makred as ', grid[snek['coords'][0][0]][snek['coords'][0][1]])
+    #print('snekHead is ', snek['coords'][0])
+    #print('snek head makred as ', grid[snek['coords'][0][0]][snek['coords'][0][1]])
     snek_neck = snek['coords'][1]
     snek_coords = snek['coords']
     print('snake coords are ', snek_coords)
@@ -213,13 +213,17 @@ def move():
     for food in foods:
         ##print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
+        
         if not tentative_path:
-            ##print "no path to food"
+            print "no path to food"
             continue
 
+        print('for food ', food)
+        print('temporary path is ', tentative_path)
+        
         path_length = len(tentative_path)
         snek_length = len(snek_coords) + 1
-
+        print("this path has length is ", path_length)
         #dead = False
         #for enemy in data['snakes']:
         #    if enemy['id'] == ID:
