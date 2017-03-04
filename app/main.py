@@ -296,10 +296,7 @@ def move():
 
     print('path after asserts ', path)
 
-    try:
-        direction = direction(path[0], path[1])
-    except:
-        direction = "right"
+    direction = direction(path[0], path[1])
     return {
         'move': direction,
         'taunt': 'Whatever'
