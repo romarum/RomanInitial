@@ -92,7 +92,7 @@ def init(data):
     #ourHealth = mysnake["health_points"]
     
     if (ourHealth > 60):
-        FOOD = 3
+        FOOD = 4
     elif (ourHealth >= 40):
         FOOD = 5
     elif (ourHealth < 40):
@@ -143,7 +143,7 @@ def start():
     data = bottle.request.json
     # TODO: Do things with data
     return {
-        'name': '\daredevils',
+        'name': 'Daredevils',
         'taunt': 'Let\'s CRUSH those worms!',
         'color': '#4286F4',
         'head_type': 'fang',
@@ -259,6 +259,7 @@ def move():
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
+    print('foods is ', foods)
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
     bestScore=4
     bestGoals=[]
@@ -283,7 +284,7 @@ def move():
         
         foods = sorted(bestGoals, key = lambda p: distance(p,snek_head ))
 
-        
+    
     for food in foods:
         #print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
