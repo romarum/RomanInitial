@@ -28,8 +28,11 @@ def getTaunt():
 
 def goals(data):
     result = data['food']
-    if data['mode'] == 'advanced':
+    #if data['mode'] == 'advanced':
+    try:
         result.extend(data['gold'])
+    except:
+        print("no gold")
     return result
 
 
@@ -99,11 +102,19 @@ def init(data):
     print(FOOD)
     print("***************")
 
-    if data['mode'] == 'advanced':
-        for wall in data['walls']:
-            grid[wall[0]][wall[1]] = WALL
-        for g in data['gold']:
-            grid[g[0]][g[1]] = GOLD
+    #if data['mode'] == 'advanced':
+    if True:
+        try:
+            for wall in data['walls']:
+                grid[wall[0]][wall[1]] = WALL
+        except:
+            print("no walls found")
+        try:    
+            for g in data['gold']:
+                grid[g[0]][g[1]] = GOLD
+        except:
+            print("No gold")
+        
 
     for f in data['food']:
         grid[f[0]][f[1]] = FOOD
@@ -266,7 +277,8 @@ def move():
     print "BG",bestGoals   
     
     #print foods
-    if data['mode'] == 'advanced':
+    if True:
+        #data['mode'] == 'advanced':
         #foods = data['gold'] + foods #+ heads
         
         foods = sorted(bestGoals, key = lambda p: distance(p,snek_head ))
