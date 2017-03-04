@@ -45,7 +45,7 @@ def a_star(start, goal, grid, tail):
     print "AStart start", start
     print "AStart goal", goal	
     print "AStart grid", grid
-    print "AStart start", tail
+    print "AStart tail", tail
     start = tuple(start)
     goal = tuple(goal)
 
