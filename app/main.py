@@ -113,6 +113,7 @@ def move():
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
+            print(enemy)
             continue
         
         print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
