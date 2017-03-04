@@ -175,6 +175,27 @@ def move():
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]+1] = SAFTEY
             except:
                 pass
+            for cords in enemy['coords']:
+                x=cords[0]
+                y=cords[1]
+                try:
+                    grid[x-1][y] = SAFTEY
+                except:
+                    pass
+                try:
+                    grid[x+1][y] = SAFTEY
+                except:
+                    pass
+                try:
+                    grid[x][y-1] = SAFTEY
+                except:
+                    pass
+                try:
+                    grid[x][y+1] = SAFTEY
+                except:
+                    pass
+
+            
 
     #print('grid is ',grid)
     snek_head = snek['coords'][0]
