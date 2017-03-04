@@ -72,9 +72,6 @@ def init(data):
     for f in data['food']:
         grid[f[0]][f[1]] = FOOD
 
-    print('my snake is ', mysnake)
-    print('grid is ', grid)
-
     return mysnake, grid
 
 @bottle.route('/static/<path:path>')
