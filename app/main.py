@@ -296,9 +296,9 @@ def move():
 
     print('path after asserts ', path)
 
-    direction = direction(path[0], path[1])
+    moveTo = direction(path[0], path[1])
     return {
-        'move': direction,
+        'move': moveTo,
         'taunt': 'Whatever'
     }
     
