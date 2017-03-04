@@ -130,9 +130,9 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-    print('ID is ',ID)
     # TODO: Do things with data
     return {
+        'name': '\daredevils',
         'taunt': 'Let\'s CRUSH those worms!',
         'color': '#4286F4',
         'head_type': 'fang',
