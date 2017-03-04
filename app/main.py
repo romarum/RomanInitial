@@ -60,6 +60,11 @@ def init(data):
     for snek in data['snakes']:
         if snek['id']== ID:
             mysnake = snek
+            ourHealth = mysnake['health_points']
+            if(ourHealth > 75):
+                FOOD = 3
+            else:
+                FOOD = 5
         for coord in snek['coords']:
             grid[coord[0]][coord[1]] = SNAKE
 
@@ -71,7 +76,6 @@ def init(data):
 
     for f in data['food']:
         grid[f[0]][f[1]] = FOOD
-
     return mysnake, grid
 
 @bottle.route('/static/<path:path>')
@@ -175,25 +179,25 @@ def move():
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]+1] = SAFTEY
             except:
                 pass
-            for cords in enemy['coords']:
-                x=cords[0]
-                y=cords[1]
-                try:
-                    grid[x-1][y] = SAFTEY
-                except:
-                    pass
-                try:
-                    grid[x+1][y] = SAFTEY
-                except:
-                    pass
-                try:
-                    grid[x][y-1] = SAFTEY
-                except:
-                    pass
-                try:
-                    grid[x][y+1] = SAFTEY
-                except:
-                    pass
+            #for cords in enemy['coords']:
+             #   x=cords[0]
+              #  y=cords[1]
+               # try:
+               #     grid[x-1][y] = SAFTEY
+               # except:
+               #     pass
+               # try:
+               #     grid[x+1][y] = SAFTEY
+               # except:
+               #     pass
+               # try:
+               #     grid[x][y-1] = SAFTEY
+               # except:
+               #     pass
+               # try:
+               #     grid[x][y+1] = SAFTEY
+               # except:
+               #     pass
 
             
 
