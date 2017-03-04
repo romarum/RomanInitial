@@ -4,21 +4,20 @@ import copy
 import math
 import os
 import sys
-import random
 
 SNEK_BUFFER = 3
-ID = 'new2'
+ID = ''
 SNAKE = 1
 WALL = 2
 FOOD = 5
 GOLD = 6
-OLDMODE = True
+OLDMODE = False
 SAFTEY = 3
 
 def getTaunt():
     try:
-        tauntArray = ["What the Fudge?", "I don\'t give a Donald Duck!", "Fudge nuggets","Son of a biscuit", "Son of a witch", "Tell your Mother to call me, she got the number", "Suck on my tail", "What kind of food is that? I am gonna puke", "Get out of my way", "You suck at this dude", "This is last Taunt" ]
-        tauntNumber = random.randint(0, len(tauntArray))
+        tauntArray = ["What the Fudge?", "I don\'t give a Donald Duck!", "Fudge nuggets","Son of a biscuit", "Son of a witch", "Tell your Mother to call me, she got the number", "Suck on my tail", "What kind of food is that? I am gonna puke", "Get out of my way", "You suck at this dude", "" ]
+        tauntNumber = randint(0, len(tauntArray))
         returnTaunt = tauntArray[tauntNumber]
     
     except Exception:
@@ -129,10 +128,13 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-
+    ID = data['game_id']
     # TODO: Do things with data
     return {
-        'taunt': 'Let\'s CRUSH those worms!'
+        'taunt': 'Let\'s CRUSH those worms!',
+        'color': '#4286F4',
+        'head_type': 'fang',
+        'tail_type': 'regular'
     }
 # DATA OBJECT
 # {
