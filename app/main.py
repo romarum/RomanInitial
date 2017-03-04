@@ -263,7 +263,7 @@ def move():
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
     bestScore=4
     bestGoals=[]
-    print grid
+    #print grid
     for col in xrange(data['height']):
         for row in xrange(data['width']):
             if grid[row][col]> bestScore:
@@ -335,10 +335,13 @@ def move():
         #print "no path to tail from food"
 
     #print grid
-
+    print('path before if not path', path)
     if not path:
         path = a_star(snek_head, snek['coords'][-1], grid, snek_coords)
 
+    
+    print('path after if not path', path)
+    
     despair = not (path and len(path) > 1)
 
     if despair:
