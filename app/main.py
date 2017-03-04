@@ -129,6 +129,7 @@ def index():
 def start():
     data = bottle.request.json
     ID = data['game_id']
+    print('ID is ',ID)
     # TODO: Do things with data
     return {
         'taunt': 'Let\'s CRUSH those worms!',
