@@ -240,7 +240,26 @@ def move():
 
         path_length = len(tentative_path)
         snek_length = len(snek_coords) + 1
+		
+		dead = False
+        
+        #logic where the snake drops the food because of enemy's distance
+        for enemy in data['snakes']:
+            if enemy['id'] == ID:
+                continue
+            foodDistFromEnemy = distance(enemy['coords'][0], food)
+            if path_length > foodDistFromEnemy:
+                
+                #need to handle cases when both snakes are too close
+                if ((path_length - foodDistFromEnemy) < 5 or snek["health_points"] < 40):
+                    dead = False
+                else:
+                    #drop it
+                    dead = True
 
+        if dead:
+            continue
+		
         #dead = False
         #for enemy in data['snakes']:
         #    if enemy['id'] == ID:
