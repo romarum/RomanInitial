@@ -88,7 +88,7 @@ def init(data):
         if snek['id']== ID:
             mysnake = snek
         for coord in snek['coords']:
-            grid[height - 1-coord[0]][coord[1]] = SNAKE
+            grid[data['height'] - 1-coord[0]][coord[1]] = SNAKE
             print "head", coord[0]," ", coord[1]
 
     ourHealth = 100
