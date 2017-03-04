@@ -11,8 +11,18 @@ SNAKE = 1
 WALL = 2
 FOOD = 5
 GOLD = 6
-
+OLDMODE = True
 SAFTEY = 3
+
+def getTaunt():
+    try:
+        tauntArray = ["What the Fudge?", "I don\'t give a Donald Duck!", "Fudge nuggets","Son of a biscuit", "Son of a witch", "Tell your Mother to call me, she got the number", "Suck on my tail", "What kind of food is that? I am gonna puke", "Get out of my way", "You suck at this dude", "" ]
+        tauntNumber = randint(0, len(tauntArray))
+        returnTaunt = tauntArray[tauntNumber]
+
+    except Exception:
+        returnTaunt = "You got a problem?"
+
 
 def goals(data):
     result = data['food']
@@ -24,15 +34,27 @@ def goals(data):
 def direction(from_cell, to_cell):
     dx = to_cell[0] - from_cell[0]
     dy = to_cell[1] - from_cell[1]
-
-    if dx == 1:
-        return 'east'
-    elif dx == -1:
-        return 'west'
-    elif dy == -1:
-        return 'north'
-    elif dy == 1:
-        return 'south'
+	
+    if (OLDMODE):
+		
+    	if dx == 1:
+    		return 'east'
+    	elif dx == -1:
+    		return 'west'
+    	elif dy == -1:
+    		return 'north'
+    	elif dy == 1:
+    		return 'south'
+    else:
+    	if dx == 1:
+    		return 'right'
+    	elif dx == -1:
+    		return 'left'
+    	elif dy == -1:
+    		return 'up'
+    	elif dy == 1:
+    		return 'down'
+	
 
 def distance(p, q):
     dx = abs(p[0] - q[0])
@@ -106,9 +128,8 @@ def start():
     data = bottle.request.json
 
     # TODO: Do things with data
-
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': 'Let\'s CRUSH those worms!'
     }
 # DATA OBJECT
 # {
@@ -318,10 +339,10 @@ def move():
     if path:
         assert path[0] == tuple(snek_head)
         assert len(path) > 1
-
+    taunt = getTaunt()
     return {
         'move': direction(path[0], path[1]),
-        'taunt': 'Whatever'
+        'taunt': taunt
     }
     
 
