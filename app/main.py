@@ -60,6 +60,19 @@ def init(data):
         for coord in snek['coords']:
             grid[coord[0]][coord[1]] = SNAKE
 
+    ourHealth = mysnake["health_points"]
+    
+    if (ourHealth > 60):
+        FOOD = 3
+    elif (ourHealth >= 40):
+        FOOD = 5
+    elif (ourHealth < 40):
+        FOOD = 7
+    print("***************")
+    print(ourHealth)
+    print(FOOD)
+    print("***************")
+
     if data['mode'] == 'advanced':
         for wall in data['walls']:
             grid[wall[0]][wall[1]] = WALL
@@ -136,20 +149,6 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    	
-    ourHealth = snek["health_points"]
-    
-    if (ourHealth > 60):
-        FOOD = 3
-    elif (ourHealth >= 40):
-        FOOD = 5
-    elif (ourHealth < 40):
-        FOOD = 7
-    print("***************")
-    print(ourHealth)
-    print(FOOD)
-    print("***************")
-
     snek, grid = init(data)
 
     #foreach snake
