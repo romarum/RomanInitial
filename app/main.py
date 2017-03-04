@@ -132,6 +132,7 @@ def start():
     print('ID is ',ID)
     # TODO: Do things with data
     return {
+		'name': 'Daredevils',
         'taunt': 'Let\'s CRUSH those worms!',
         'color': '#4286F4',
         'head_type': 'fang',
