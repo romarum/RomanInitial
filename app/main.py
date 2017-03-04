@@ -19,9 +19,11 @@ def getTaunt():
         tauntArray = ["What the Fudge?", "I don\'t give a Donald Duck!", "Fudge nuggets","Son of a biscuit", "Son of a witch", "Tell your Mother to call me, she got the number", "Suck on my tail", "What kind of food is that? I am gonna puke", "Get out of my way", "You suck at this dude", "This is last Taunt" ]
         tauntNumber = randint(0, len(tauntArray))
         returnTaunt = tauntArray[tauntNumber]
-
+    
     except Exception:
         returnTaunt = "You got a problem?"
+
+    return returnTaunt
 
 
 def goals(data):
