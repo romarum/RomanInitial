@@ -54,8 +54,8 @@ def closest(items, start):
 
 def init(data):
     data['mode'] = 'beginner'
-    print('data is ', data)
-    ID = data['you']
+    #print('data is ', data)
+    #ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']:
         if snek['id']== ID:
@@ -178,10 +178,14 @@ def move():
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]+1] = SAFTEY
             except:
                 pass
-            
+
+    print('grid is ',grid)
     snek_head = snek['coords'][0]
+    print('snekHead is ', snek['coords'][0])
+    print('snek head makred as ', grid[snek['coords'][0][0]][snek['coords'][0][1]])
     snek_neck = snek['coords'][1]
     snek_coords = snek['coords']
+    print('snake coords are ', snek_coords)
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
