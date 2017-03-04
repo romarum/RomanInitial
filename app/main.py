@@ -26,13 +26,13 @@ def direction(from_cell, to_cell):
     dy = to_cell[1] - from_cell[1]
 
     if dx == 1:
-        return 'east'
+        return 'right'
     elif dx == -1:
-        return 'west'
+        return 'left'
     elif dy == -1:
-        return 'north'
+        return 'up'
     elif dy == 1:
-        return 'south'
+        return 'down'
 
 def distance(p, q):
     dx = abs(p[0] - q[0])
@@ -53,6 +53,8 @@ def closest(items, start):
     return closest_item
 
 def init(data):
+    data['mode'] == 'beginner'
+    ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']:
         if snek['id']== ID:
@@ -95,49 +97,19 @@ def start():
     # TODO: Do things with data
 
     return {
+        'name': 'Daredevils',
+        'color': '#4265F4',
+        'head_type': 'fang',
+        'tail_type': 'regular',
         'taunt': 'battlesnake-python!'
     }
-# DATA OBJECT
-# {
-#     "game": "hairy-cheese",
-#     "mode": "advanced",
-#     "turn": 4,
-#     "height": 20,
-#     "width": 30,
-#     "snakes": [
-#         <Snake Object>, <Snake Object>, ...
-#     ],
-#     "food": [
-#         [1, 2], [9, 3], ...
-#     ],
-#     "walls": [    // Advanced Only
-#         [2, 2]
-#     ],
-#     "gold": [     // Advanced Only
-#         [5, 5]
-#     ]
-# }
-
-#SNAKE
-# {
-#     "id": "1234-567890-123456-7890",
-#     "name": "Well Documented Snake",
-#     "status": "alive",
-#     "message": "Moved north",
-#     "taunt": "Let's rock!",
-#     "age": 56,
-#     "health": 83,
-#     "coords": [ [1, 1], [1, 2], [2, 2] ],
-#     "kills": 4,
-#     "food": 12,
-#     "gold": 2
-# }
 
 @bottle.post('/move')
 def move():
     data = bottle.request.json
     snek, grid = init(data)
 
+    data['mode'] == 'beginner'
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
