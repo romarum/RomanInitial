@@ -137,7 +137,16 @@ def start():
 def move():
     data = bottle.request.json
     snek, grid = init(data)
-
+	
+    ourHealth = snek["health_points"]
+            
+    if (ourHealth > 60):
+        FOOD = 3
+    elif (ourHealth >= 40):
+        FOOD = 5
+    elif (ourHealth < 40):
+        FOOD = 7
+	
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
@@ -241,6 +250,8 @@ def move():
         path_length = len(tentative_path)
         snek_length = len(snek_coords) + 1
 		
+        dead = False
+        
         #dead = False
         #for enemy in data['snakes']:
         #    if enemy['id'] == ID:
