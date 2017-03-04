@@ -89,7 +89,7 @@ def init(data):
             mysnake = snek
         for coord in snek['coords']:
             grid[coord[0]][coord[1]] = SNAKE
-            print "GRID WITH SNAKES",grid
+    print "GRID WITH SNAKES",grid
 
     ourHealth = 100
     #ourHealth = mysnake["health_points"]
