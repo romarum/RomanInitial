@@ -139,14 +139,17 @@ def move():
     snek, grid = init(data)
 	
     ourHealth = snek["health_points"]
-            
+    
     if (ourHealth > 60):
         FOOD = 3
     elif (ourHealth >= 40):
         FOOD = 5
     elif (ourHealth < 40):
         FOOD = 7
-	
+    print("***************")
+    print(ourHealth)
+    print(FOOD)
+    print("***************")
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
