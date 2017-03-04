@@ -257,7 +257,7 @@ def move():
                 pass
             
     snek_head = snek['coords'][0]
-    print "GRID ", grid[snek_head[0], snek_head[1]]
+   
     snek_neck = snek['coords'][1]
     snek_coords = snek['coords']
     path = None
