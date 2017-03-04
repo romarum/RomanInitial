@@ -60,11 +60,6 @@ def init(data):
     for snek in data['snakes']:
         if snek['id']== ID:
             mysnake = snek
-            ourHealth = mysnake['health_points']
-            if(ourHealth > 75):
-                FOOD = 3
-            else:
-                FOOD = 5
         for coord in snek['coords']:
             grid[coord[0]][coord[1]] = SNAKE
 
@@ -119,6 +114,7 @@ def move():
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
+            ourHealth = enemy['health_points']
             #print('our snake is ', enemy)
             continue
         
@@ -212,7 +208,10 @@ def move():
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
-    bestScore=4
+    if (ourHealth > 75):
+        bestScore=6
+    else:
+        bestScore=4
     bestGoals=[]
     #print grid
     for col in xrange(data['height']):
