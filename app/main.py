@@ -83,13 +83,13 @@ def init(data):
     ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
 	
-    print "GRID WO SNAKES", grid
+
     for snek in data['snakes']:
         if snek['id']== ID:
             mysnake = snek
         for coord in snek['coords']:
             grid[coord[0]][coord[1]] = SNAKE
-    print "GRID WITH SNAKES",grid
+            print "head", coord[0]," ", coord[1]
 
     ourHealth = 100
     #ourHealth = mysnake["health_points"]
@@ -257,6 +257,7 @@ def move():
                 pass
             
     snek_head = snek['coords'][0]
+    print "GRID ", grid[snake_head[0], snake_head[1]]
     snek_neck = snek['coords'][1]
     snek_coords = snek['coords']
     path = None
@@ -348,7 +349,7 @@ def move():
     despair = not (path and len(path) > 1)
 
     if despair:
-        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2,3]):
+        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,3]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
             #print 'i\'m scared'
             break
@@ -357,7 +358,7 @@ def move():
 
 
     if despair:
-        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2]):
+        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
             #print 'lik so scared'
             break
