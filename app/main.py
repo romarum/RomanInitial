@@ -115,6 +115,7 @@ def move():
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
             ourHealth = enemy['health_points']
+            print('ourHealth is ', ourHealth)
             #print('our snake is ', enemy)
             continue
         
@@ -213,6 +214,7 @@ def move():
     else:
         bestScore=4
     bestGoals=[]
+    print('best goals are',bestGoals)
     #print grid
     for col in xrange(data['height']):
         for row in xrange(data['width']):
