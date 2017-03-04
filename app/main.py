@@ -365,6 +365,7 @@ def move():
     taunt = getTaunt()
     print('path is ', path)
     print(taunt)
+	
     return {
         'move': direction(path[0], path[1]),
         'taunt': taunt
