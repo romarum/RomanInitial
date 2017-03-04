@@ -4,6 +4,7 @@ import copy
 import math
 import os
 import sys
+import random
 
 SNEK_BUFFER = 3
 ID = ''
@@ -28,11 +29,8 @@ def getTaunt():
 
 def goals(data):
     result = data['food']
-    #if data['mode'] == 'advanced':
-    try:
+    if data['mode'] == 'advanced':
         result.extend(data['gold'])
-    except:
-        print("no gold")
     return result
 
 
@@ -80,22 +78,20 @@ def closest(items, start):
     return closest_item
 
 def init(data):
+    data['mode'] = 'beginner'
     ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
-	
-
     for snek in data['snakes']:
         if snek['id']== ID:
             mysnake = snek
         for coord in snek['coords']:
-            grid[data['height'] - 1-coord[0]][coord[1]] = SNAKE
-            print "head", coord[0]," ", coord[1]
-
+            grid[coord[0]][coord[1]] = SNAKE
+    print
     ourHealth = 100
     #ourHealth = mysnake["health_points"]
     
     if (ourHealth > 60):
-        FOOD = 4
+        FOOD = 3
     elif (ourHealth >= 40):
         FOOD = 5
     elif (ourHealth < 40):
@@ -105,19 +101,11 @@ def init(data):
     print(FOOD)
     print("***************")
 
-    #if data['mode'] == 'advanced':
-    if True:
-        try:
-            for wall in data['walls']:
-                grid[wall[0]][wall[1]] = WALL
-        except:
-            print("no walls found")
-        try:    
-            for g in data['gold']:
-                grid[g[0]][g[1]] = GOLD
-        except:
-            print("No gold")
-        
+    if data['mode'] == 'advanced':
+        for wall in data['walls']:
+            grid[wall[0]][wall[1]] = WALL
+        for g in data['gold']:
+            grid[g[0]][g[1]] = GOLD
 
     for f in data['food']:
         grid[f[0]][f[1]] = FOOD
@@ -146,7 +134,7 @@ def start():
     data = bottle.request.json
     # TODO: Do things with data
     return {
-        'name': 'Daredevils',
+        'name': '\Daredevils',
         'taunt': 'Let\'s CRUSH those worms!',
         'color': '#4286F4',
         'head_type': 'fang',
@@ -192,7 +180,7 @@ def start():
 def move():
     data = bottle.request.json
     snek, grid = init(data)
-
+    data['mode'] = 'beginner'
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
@@ -257,17 +245,15 @@ def move():
                 pass
             
     snek_head = snek['coords'][0]
-   
     snek_neck = snek['coords'][1]
     snek_coords = snek['coords']
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
-    print('foods is ', foods)
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
     bestScore=4
     bestGoals=[]
-    #print grid
+    print grid
     for col in xrange(data['height']):
         for row in xrange(data['width']):
             if grid[row][col]> bestScore:
@@ -282,13 +268,12 @@ def move():
     print "BG",bestGoals   
     
     #print foods
-    if True:
-        #data['mode'] == 'advanced':
+    if data['mode'] == 'advanced':
         #foods = data['gold'] + foods #+ heads
         
         foods = sorted(bestGoals, key = lambda p: distance(p,snek_head ))
 
-    
+        
     for food in foods:
         #print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
@@ -339,17 +324,14 @@ def move():
         #print "no path to tail from food"
 
     #print grid
-    print('path before if not path', path)
+
     if not path:
         path = a_star(snek_head, snek['coords'][-1], grid, snek_coords)
 
-    
-    print('path after if not path', path)
-    
     despair = not (path and len(path) > 1)
 
     if despair:
-        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,3]):
+        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2,3]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
             #print 'i\'m scared'
             break
@@ -358,7 +340,7 @@ def move():
 
 
     if despair:
-        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1]):
+        for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
             #print 'lik so scared'
             break
@@ -367,9 +349,7 @@ def move():
         assert path[0] == tuple(snek_head)
         assert len(path) > 1
     taunt = getTaunt()
-    print('path is ', path)
     print(taunt)
-	
     return {
         'move': direction(path[0], path[1]),
         'taunt': taunt
