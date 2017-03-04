@@ -77,14 +77,16 @@ def closest(items, start):
     return closest_item
 
 def init(data):
+    ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']:
         if snek['id']== ID:
             mysnake = snek
         for coord in snek['coords']:
             grid[coord[0]][coord[1]] = SNAKE
-
-    ourHealth = mysnake["health_points"]
+    print
+    ourHealth = 100
+    #ourHealth = mysnake["health_points"]
     
     if (ourHealth > 60):
         FOOD = 3
@@ -128,11 +130,9 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-    ID = data['game_id']
     print('ID is ',ID)
     # TODO: Do things with data
     return {
-		'name': 'Daredevils',
         'taunt': 'Let\'s CRUSH those worms!',
         'color': '#4286F4',
         'head_type': 'fang',
