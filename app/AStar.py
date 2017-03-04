@@ -42,10 +42,10 @@ def neighbours(node, grid, score, tail, ignore_list):
 
 def a_star(start, goal, grid, tail):
 
-    print "AStart start", start
-    print "AStart goal", goal	
-    print "AStart grid", grid
-    print "AStart tail", tail
+    #print "AStart start", start
+    #print "AStart goal", goal	
+    #print "AStart grid", grid
+    #print "AStart tail", tail
 
     start = tuple(start)
     goal = tuple(goal)
@@ -64,8 +64,8 @@ def a_star(start, goal, grid, tail):
         current = min(open_set, key=lambda p: f_score[p[0]][p[1]])
 
         if (current == goal):
-            print('before resuntruct paths came from is ', came_from)
-            print('Goal is ', goal)
+            #print('before resuntruct paths came from is ', came_from)
+            #print('Goal is ', goal)
             return reconstruct_path(came_from, goal)
 
         open_set.remove(current)
