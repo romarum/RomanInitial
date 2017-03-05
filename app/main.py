@@ -338,14 +338,14 @@ def move():
         except:
             pass
         try:
-            if (grid[snek['coords'][0][0]][snek['coords'][0][1]]+1 != 1):
+            if (grid[snek['coords'][0][0]][snek['coords'][0][1]+1] != 1):
                 moveTo = "up"
                     
             
         except:
             pass
         try:
-            if (grid[snek['coords'][0][0]][snek['coords'][0][1]]-1 != 1):
+            if (grid[snek['coords'][0][0]][snek['coords'][0][1]-1] != 1):
                 moveTo = "down"
         except:
             pass
