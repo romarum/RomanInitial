@@ -10,7 +10,7 @@ ID = 'new2'
 SNAKE = 1
 WALL = 2
 FOOD = 5
-GOLD = 6
+GOLD = 7
 
 SAFTEY = 3
 
@@ -209,10 +209,11 @@ def move():
     middle = [data['width'] / 2, data['height'] / 2]
     foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
+
+    bestScore=4
     if (ourHealth > 75):
-        bestScore=6
-    else:
-        bestScore=4
+        bestScore=10
+        
     bestGoals=[]
     print('best goals are',bestGoals)
     #print grid
