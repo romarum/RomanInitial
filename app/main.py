@@ -140,10 +140,10 @@ def move():
                 #if enemy['coords'][0][0] > 0:
                 #grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]] = SAFTEY
                 
-            #try:
-                #grid[enemy['coords'][0][0]][enemy['coords'][0][1]] = SAFTEY
-            #except:
-            #    pass
+            try:
+                grid[enemy['coords'][0][0]][enemy['coords'][0][1]] = SAFTEY
+            except:
+                pass
             try:
                 grid[enemy['coords'][0][0]][enemy['coords'][0][1]+1] = SAFTEY
             except:
@@ -176,9 +176,6 @@ def move():
                 grid[enemy['coords'][0][0]-1][enemy['coords'][0][1]+1] = SAFTEY
             except:
                 pass
-            grid[enemy['coords'][1][0]][enemy['coords'][1][1]] = 1
-            grid[enemy['coords'][0][0]][enemy['coords'][0][1]] = 1
-            
             #for cords in enemy['coords']:
              #   x=cords[0]
               #  y=cords[1]
@@ -326,7 +323,6 @@ def move():
 
     print('path after asserts ', path)
     print(grid)
-    moveTo = ''
     try:
         moveTo = direction(path[0], path[1])
         print('move to from try ',moveTo)
@@ -340,7 +336,6 @@ def move():
         try:
             if (grid[snek['coords'][0][0] - 1][snek['coords'][0][1]] != 1):
                 moveTo = "left"
-        
         except:
             pass
         try:
