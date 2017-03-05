@@ -323,6 +323,7 @@ def move():
 
     print('path after asserts ', path)
     print(grid)
+    moveTo = ''
     try:
         moveTo = direction(path[0], path[1])
         print('move to from try ',moveTo)
