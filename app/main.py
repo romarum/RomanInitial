@@ -234,7 +234,7 @@ def move():
     if data['mode'] == 'advanced':
         #foods = data['gold'] + foods #+ heads
         
-        foods = sorted(bestGoals, key = lambda p: distance(p,snek_head ))
+    foods = sorted(bestGoals, key = lambda p: distance(p,snek_head ))
     print('best goals are ', foods)
         
     for food in foods:
