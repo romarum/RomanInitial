@@ -322,9 +322,11 @@ def move():
         assert len(path) > 1
 
     print('path after asserts ', path)
-
+    print(grid)
     try:
         moveTo = direction(path[0], path[1])
+        print('move to from try ',moveTo)
+    
     except:
         try:
             if (grid[snek['coords'][0][0] + 1][snek['coords'][0][1]] != 1):
@@ -340,8 +342,6 @@ def move():
         try:
             if (grid[snek['coords'][0][0]][snek['coords'][0][1]+1] != 1):
                 moveTo = "down"
-                    
-            
         except:
             pass
         try:
@@ -349,7 +349,7 @@ def move():
                 moveTo = "up"
         except:
             pass
-        
+        print('move to ',moveTo)
     return {
         'move': moveTo,
         'taunt': 'Whatever'
