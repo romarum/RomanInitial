@@ -207,7 +207,7 @@ def move():
     print('snake coords are ', snek_coords)
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
-    foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
+    #foods = sorted(data['food'], key = lambda p: distance(p,snek_head ))
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
 
     bestScore=4
