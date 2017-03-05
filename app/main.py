@@ -211,7 +211,7 @@ def move():
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
 
     bestScore=4
-    if (ourHealth > 75):
+    if (ourHealth > 85):
         bestScore=10
         
     bestGoals=[]
