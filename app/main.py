@@ -96,6 +96,7 @@ def start():
 
     # TODO: Do things with data
     print ('WORKING ON START REQUEST')
+
     return {
         'name': 'Daredevils',
         'color': '#4265F4',
@@ -107,6 +108,7 @@ def start():
 
 @bottle.post('/move')
 def move():
+    print ('WORKING ON MOVE REQUEST')
     data = bottle.request.json
     snek, grid = init(data)
     ID = data['you']
