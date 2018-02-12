@@ -92,7 +92,7 @@ def index():
     }
 
 
-@bottle.post('/start')
+@bottle.post('//start')
 def start():
     data = bottle.request.json
 
