@@ -95,13 +95,14 @@ def start():
     data = bottle.request.json
 
     # TODO: Do things with data
-
+    print ('WORKING ON START REQUEST')
     return {
         'name': 'Daredevils',
         'color': '#4265F4',
         'head_type': 'fang',
         'tail_type': 'regular',
-        'taunt': 'battlesnake-python!'
+        'taunt': 'battlesnake-python!',
+        'secondary_color': '#1465F7'
     }
 
 @bottle.post('/move')
