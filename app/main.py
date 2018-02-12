@@ -112,6 +112,9 @@ def move():
 
     data['mode'] = 'beginner'
     #foreach snake
+
+	#print "&&&&&&&&&&&&&&&&&&&&&&&&TEST&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"   
+
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
             ourHealth = enemy['health_points']
@@ -245,7 +248,7 @@ def move():
         tentative_path = a_star(snek_head, food, grid, snek_coords)
         
         if not tentative_path:
-            print "no path to food"
+            print ('no path to food')
             continue
 
         print('for food ', food)
@@ -307,7 +310,7 @@ def move():
     if despair:
         for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2,3]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
-            print 'i\'m scared'
+            print ('i\'m scared')
             break
 
     despair = not (path and len(path) > 1)
@@ -316,7 +319,7 @@ def move():
     if despair:
         for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
-            print 'lik so scared'
+            print ('lik so scared')
             break
 
     print('path before asserts ', path)
