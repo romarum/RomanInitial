@@ -113,8 +113,7 @@ def move():
     data['mode'] = 'beginner'
     #foreach snake
 
-	#print "&&&&&&&&&&&&&&&&&&&&&&&&TEST&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"   
-
+    print('&&&&&&&&&&&&&&&&&&&&&&&&TEST&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&') 
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
             ourHealth = enemy['health_points']
