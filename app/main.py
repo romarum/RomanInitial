@@ -81,7 +81,7 @@ def static(path):
 @bottle.get('/')
 
 def index():
-	print ('WORKING ON GET REQUEST')
+    print ('WORKING ON GET REQUEST')
     head_url = '%s://%s/static/Traitor.gif' % (
         bottle.request.urlparts.scheme,
         bottle.request.urlparts.netloc
