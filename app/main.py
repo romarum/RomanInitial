@@ -252,9 +252,9 @@ def move():
     #print "BG",bestGoals   
     
     ##print foods
-    if data['mode'] == 'advanced':
+    #if data['mode'] == 'advanced':
         #foods = data['gold'] + foods #+ heads
-        print("")
+        #print("")
     foods = sorted(bestGoals, key = lambda p: distance(p,snek_head ))
     print('best goals are ', foods)
         
