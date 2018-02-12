@@ -129,7 +129,7 @@ def move():
     #foreach snake
     for enemy in allsnakes:
         print('Snake ', enemy)
-        if (enemy['data']['id'] == ID):
+        if (enemy['id'] == ID):
             ourHealth = enemy['health_points']
             print('ourHealth is ', ourHealth)
             #print('our snake is ', enemy)
