@@ -130,7 +130,7 @@ def move():
     for enemy in allsnakes:
         print('Snake ', enemy)
         if (enemy['id'] == ID):
-            ourHealth = enemy['health_points']
+            ourHealth = enemy['health']
             print('ourHealth is ', ourHealth)
             #print('our snake is ', enemy)
             continue
