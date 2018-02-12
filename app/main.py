@@ -55,10 +55,10 @@ def closest(items, start):
 def init(data):
     data['mode'] = 'beginner'
     #print('data is ', data)
-    ID = data['name']
+    ID = data['you']
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']:
-        if snek['id']== ID:
+        if snek['id']== ID['id']:
             mysnake = snek
         for coord in snek['coords']:
             grid[coord[0]][coord[1]] = SNAKE
