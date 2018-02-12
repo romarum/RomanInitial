@@ -64,13 +64,14 @@ def init(data):
     print('height ', height)
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']['data']:
+        snek['coords'] = []
         if snek['id']==mysnakeID:
             mysnake = snek
             allsnakes.append(snek)
             print('My snake is ', mysnake)
         for coord in snek['body']['data']:
             grid[coord['x']][coord['y']] = SNAKE
-
+            snek['coords'].append[{coord['x'],coord['y']}]
 #    if data['mode'] == 'advanced':
 #        for wall in data['walls']:
 #            grid[wall[0]][wall[1]] = WALL
