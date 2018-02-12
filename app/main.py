@@ -92,7 +92,7 @@ def index():
     }
 
 
-@bottle.post('//start')
+@bottle.post('/start')
 def start():
     data = bottle.request.json
 
@@ -105,7 +105,7 @@ def start():
         'head_type': 'fang',
         'tail_type': 'regular',
         'taunt': 'battlesnake-python!',
-        'secondary_color': '#1465F7'
+        'secondary_color': '#FF00FF'
     }
 
 @bottle.post('/move')
