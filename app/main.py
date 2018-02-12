@@ -55,7 +55,7 @@ def closest(items, start):
 def init(data):
     print('data is ', data)
     ID = data['you']
-    snakes  = data['sankes']
+    snakes  = data['snakes']
     print('snakes are ', snakes)
     width  = data ['width']
     height = data ['height']
