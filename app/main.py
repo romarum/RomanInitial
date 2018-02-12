@@ -68,7 +68,7 @@ def init(data):
             print('My snake is ', mysnake)
         for coord in snek['body']['data']:
             print(coord)
-            #grid[coord['x']][coord['y']] = SNAKE
+            grid[coord['x']][coord['y']] = SNAKE
 
 #    if data['mode'] == 'advanced':
 #        for wall in data['walls']:
@@ -76,8 +76,8 @@ def init(data):
 #        for g in data['gold']:
 #            grid[g[0]][g[1]] = GOLD
 
-    for f in data['food']:
-        grid[f[0]][f[1]] = FOOD
+    for food in data['food']['data']:
+        grid[food['x']][food['y']] = FOOD
     return mysnake, grid
 
 @bottle.route('/static/<path:path>')
