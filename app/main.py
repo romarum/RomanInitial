@@ -53,9 +53,14 @@ def closest(items, start):
     return closest_item
 
 def init(data):
-    data['mode'] = 'beginner'
-    #print('data is ', data)
+    print('data is ', data)
     ID = data['you']
+    snakes  = data['sankes']
+    print('snakes are ', snakes)
+    width  = data ['width']
+    height = data ['height']
+    print('width ', width)
+    print('height ', height)
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
     for snek in data['snakes']:
         if snek['id']== ID['id']:
