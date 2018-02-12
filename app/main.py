@@ -108,7 +108,7 @@ def start():
         'secondary_color': '#FF00FF'
     }
 
-@bottle.post('/move')
+@bottle.post('//move')
 def move():
     print ('WORKING ON MOVE REQUEST')
     data = bottle.request.json
@@ -117,8 +117,6 @@ def move():
 
     data['mode'] = 'beginner'
     #foreach snake
-
-    print('&&&&&&&&&&&&&&&&&&&&&&&&TEST&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&') 
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
             ourHealth = enemy['health_points']
