@@ -54,6 +54,7 @@ def closest(items, start):
 
 def init(data):
     print('data is ', data)
+    allsnakes=[];
     mysnakeID = data['you']['id']
     snakes  = data['snakes']
     print('snakes are ', snakes)
@@ -65,7 +66,7 @@ def init(data):
     for snek in data['snakes']['data']:
         if snek['id']==mysnakeID:
             mysnake = snek
-
+            allsnakes.append(snek)
             print('My snake is ', mysnake)
         for coord in snek['body']['data']:
             grid[coord['x']][coord['y']] = SNAKE
@@ -78,7 +79,7 @@ def init(data):
 
     for food in data['food']['data']:
         grid[food['x']][food['y']] = FOOD
-    return mysnake, grid
+    return mysnake, allsnakes, grid
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -121,13 +122,13 @@ def move():
     data = bottle.request.json
     print (data)
 
-    snek, grid = init(data)
+    snek, allsnakes, grid = init(data)
     ID = snek['id']
 
     #data['mode'] = 'beginner'
     #foreach snake
-    for enemy in data['snakes']:
-        if (enemy['id'] == ID):
+    for enemy in allsnakes:
+        if (enemy['data']['id'] == ID):
             ourHealth = enemy['health_points']
             print('ourHealth is ', ourHealth)
             #print('our snake is ', enemy)
