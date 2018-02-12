@@ -110,8 +110,10 @@ def start():
 
 @bottle.post('//move')
 def move():
-    print ('WORKING ON MOVE REQUEST')
+    print ('PRINTING DATA')
     data = bottle.request.json
+    print (data)
+
     snek, grid = init(data)
     ID = data['you']
 
