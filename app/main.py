@@ -71,7 +71,8 @@ def init(data):
             print('My snake is ', mysnake)
         for coord in snek['body']['data']:
             grid[coord['x']][coord['y']] = SNAKE
-            snekCoords.append[{coord['x'],coord['y']}]
+            snekCoords.append({coord['x'],coord['y']})
+        snek['coords'] = snekCoords
 #    if data['mode'] == 'advanced':
 #        for wall in data['walls']:
 #            grid[wall[0]][wall[1]] = WALL
