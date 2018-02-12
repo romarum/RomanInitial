@@ -65,9 +65,9 @@ def init(data):
     for snek in data['snakes']['data']:
         if snek['id']==mysnakeID:
             mysnake = snek
+
             print('My snake is ', mysnake)
         for coord in snek['body']['data']:
-            print(coord)
             grid[coord['x']][coord['y']] = SNAKE
 
 #    if data['mode'] == 'advanced':
@@ -122,9 +122,9 @@ def move():
     print (data)
 
     snek, grid = init(data)
-    ID = data['name']
+    ID = snek['id']
 
-    data['mode'] = 'beginner'
+    #data['mode'] = 'beginner'
     #foreach snake
     for enemy in data['snakes']:
         if (enemy['id'] == ID):
