@@ -6,7 +6,6 @@ import os
 import sys
 
 SNEK_BUFFER = 3
-ID = 'new2'
 SNAKE = 1
 WALL = 2
 FOOD = 5
@@ -73,6 +72,7 @@ def init(data):
             grid[coord['x']][coord['y']] = SNAKE
             snekCoords.append([coord['x'],coord['y']])
         snek['coords'] = snekCoords
+        print('Length is ', snek['data']['length'])
 #    if data['mode'] == 'advanced':
 #        for wall in data['walls']:
 #            grid[wall[0]][wall[1]] = WALL
@@ -88,7 +88,7 @@ def static(path):
     return bottle.static_file(path, root='static/')
 
 
-@bottle.get('/')
+@bottle.get('//')
 
 def index():
     print ('WORKING ON GET REQUEST')
@@ -97,7 +97,7 @@ def index():
         bottle.request.urlparts.netloc
     )
     return {
-        'color': '#00ff00',
+        'color': '#ff0000',
         'head': head_url
     }
 
