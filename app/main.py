@@ -13,7 +13,7 @@ FOOD = 5
 GOLD = 7
 
 SAFTEY = 3
-#test RomanInitial repo
+#test RomanInitial repository
 def goals(data):
     result = data['food']
     if data['mode'] == 'advanced':
