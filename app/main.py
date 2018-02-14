@@ -54,6 +54,7 @@ def closest(items, start):
 def init(data):
     print('data is ', data)
     allsnakes=[];
+    enemysnakes=[];
     mysnakeID = data['you']['id']
     snakes  = data['snakes']
     print('snakes are ', snakes)
@@ -66,8 +67,8 @@ def init(data):
         snekCoords = []
         if snek['id']==mysnakeID:
             mysnake = snek
-            allsnakes.append(snek)
             print('My snake is ', mysnake)
+        allsnakes.append(snek)
         for coord in snek['body']['data']:
             grid[coord['x']][coord['y']] = SNAKE
             snekCoords.append([coord['x'],coord['y']])
