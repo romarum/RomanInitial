@@ -123,7 +123,7 @@ def start():
 def move():
     print ('PRINTING DATA')
     data = bottle.request.json
-    print (data)
+    #print (data)
 
     snek, allsnakes, grid = init(data)
     ID = snek['id']
@@ -131,10 +131,10 @@ def move():
     #data['mode'] = 'beginner'
     #foreach snake
     for enemy in allsnakes:
-        print('Snake ', enemy)
+        #print('Snake ', enemy)
         if (enemy['id'] == ID):
             ourHealth = enemy['health']
-            print('ourHealth is ', ourHealth)
+            #print('ourHealth is ', ourHealth)
             #print('our snake is ', enemy)
             continue
         
@@ -143,10 +143,10 @@ def move():
         #data['gold'].append([enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]])
 
    
-        if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
-            continue
+        #if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
+        #    continue
 
-        
+        print('Enemy length ',enemy['length'], 'our length', snek['length'])
         if (len(enemy['coords']) >= len(snek['coords'])-1):
             #dodge
             try:
