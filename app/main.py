@@ -68,7 +68,9 @@ def init(data):
         if snek['id']==mysnakeID:
             mysnake = snek
             print('My snake is ', mysnake)
-        enemysnakes.append(snek)
+        else:
+            enemysnakes.append(snek)
+
         for coord in snek['body']['data']:
             grid[coord['x']][coord['y']] = SNAKE
             snekCoords.append([coord['x'],coord['y']])
@@ -129,9 +131,9 @@ def move():
     ID = snek['id']
     ourHealth = snek['health']
     for enemy in enemysnakes:
-        if (enemy['id'] == ID):
-            ourHealth = enemy['health']
-            continue
+        #if (enemy['id'] == ID):
+        #    ourHealth = enemy['health']
+        #    continue
               
         #print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
         #grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = GOLD
