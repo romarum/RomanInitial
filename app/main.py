@@ -121,7 +121,6 @@ def start():
 
 @bottle.post('//move')
 def move():
-    print ('PRINTING DATA')
     data = bottle.request.json
     #print (data)
 
