@@ -144,7 +144,7 @@ def move():
         #    continue
 
        
-        if (len(enemy['coords']) >= len(snek['coords'])-1):
+        if (enemy['length'] >= snek['length']-1):
             #dodge
             try:
                 if enemy['coords'][0][1] < data['height']-1:
