@@ -129,9 +129,9 @@ def move():
     ID = snek['id']
     ourHealth = snek['health']
     for enemy in enemysnakes:
-        #if (enemy['id'] == ID):
-        #    ourHealth = enemy['health']
-        #    continue
+        if (enemy['id'] == ID):
+            ourHealth = enemy['health']
+            continue
               
         #print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
         #grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = GOLD
