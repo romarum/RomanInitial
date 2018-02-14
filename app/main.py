@@ -127,17 +127,10 @@ def move():
     print ('WORKING ON MOVE REQUEST')
     snek, enemysnakes, grid = init(data)
     ID = snek['id']
-
-    #data['mode'] = 'beginner'
-    #foreach snake
     for enemy in enemysnakes:
-        print('Enemy ', enemy['id'], ' length ',enemy['length'], ';  our ', snek['id'],' length', snek['length'])  
-        #print('Snake ', enemy)
-        if (enemy['id'] == ID):
-            ourHealth = enemy['health']
-            #print('ourHealth is ', ourHealth)
-            #print('our snake is ', enemy)
-            continue
+        #if (enemy['id'] == ID):
+        #    ourHealth = enemy['health']
+        #    continue
               
         #print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
         #grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = GOLD
