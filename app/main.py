@@ -117,7 +117,7 @@ def start():
         'name': 'RomanInitial',
         'color': '#FF0000',
         'head_type': 'fang',
-        'tail_type': 'regular',
+        'tail_type': 'round-bum',
         'taunt': 'battlesnake-python!',
         'secondary_color': '#FF00FF'
     }
