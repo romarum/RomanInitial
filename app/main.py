@@ -127,6 +127,7 @@ def move():
     print ('WORKING ON MOVE REQUEST')
     snek, enemysnakes, grid = init(data)
     ID = snek['id']
+    ourHealth = snek['health']
     for enemy in enemysnakes:
         #if (enemy['id'] == ID):
         #    ourHealth = enemy['health']
