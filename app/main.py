@@ -111,8 +111,8 @@ def start():
     print ('WORKING ON START REQUEST')
 
     return {
-        'name': 'Daredevils',
-        'color': '#4265F4',
+        'name': 'RomanInitial',
+        'color': '#FF0000',
         'head_type': 'fang',
         'tail_type': 'regular',
         'taunt': 'battlesnake-python!',
