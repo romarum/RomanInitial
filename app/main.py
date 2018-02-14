@@ -130,6 +130,7 @@ def move():
     #data['mode'] = 'beginner'
     #foreach snake
     for enemy in allsnakes:
+        print('Enemy length ',enemy['length'], 'our length', snek['length'])
         #print('Snake ', enemy)
         if (enemy['id'] == ID):
             ourHealth = enemy['health']
@@ -145,7 +146,7 @@ def move():
         #if distance(snek['coords'][0], enemy['coords'][0]) > SNEK_BUFFER:
         #    continue
 
-        print('Enemy length ',enemy['length'], 'our length', snek['length'])
+       
         if (len(enemy['coords']) >= len(snek['coords'])-1):
             #dodge
             try:
