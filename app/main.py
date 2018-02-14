@@ -130,14 +130,14 @@ def move():
     #data['mode'] = 'beginner'
     #foreach snake
     for enemy in allsnakes:
-
+        print('Enemy ', enemy['id'], ' length ',enemy['length'], ';  our ', snek['id'],' length', snek['length'])  
         #print('Snake ', enemy)
         if (enemy['id'] == ID):
             ourHealth = enemy['health']
             #print('ourHealth is ', ourHealth)
             #print('our snake is ', enemy)
             continue
-        print('Enemy length ',enemy['length'], 'our length', snek['length'])        
+              
         #print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"        
         #grid[enemy['coords'][0][0]*2-enemy['coords'][1][0]][enemy['coords'][0][1]*2 - enemy['coords'][1][1]] = GOLD
         #data['gold'].append([enemy['coords'][0][0]*2 - enemy['coords'][1][0],enemy['coords'][0][1]*2 - enemy['coords'][1][1]])
@@ -349,7 +349,6 @@ def move():
     moveTo = ''
     try:
         moveTo = direction(path[0], path[1])
-        print('move to from try ',moveTo)
     
     except:
         try:
