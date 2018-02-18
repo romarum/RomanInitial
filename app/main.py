@@ -12,7 +12,6 @@ FOOD = 5
 GOLD = 7
 SAFTEY = 3
 
-grid=[]
 
 def direction(from_cell, to_cell):
     dx = to_cell[0] - from_cell[0]
