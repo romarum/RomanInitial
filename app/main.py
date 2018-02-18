@@ -55,7 +55,7 @@ def init(postData):
         for coord in snake['body']['data']:
             grid[coord['x']][coord['y']] = SNAKE
             snakeCoords.append([coord['x'],coord['y']])
-        snek['coords'] = snakeCoords
+        snake['coords'] = snakeCoords
 
     for food in foods:
         #if(snek['health'] < 40):
