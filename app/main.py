@@ -105,8 +105,7 @@ def move():
     print('WORKING ON MOVE REQUEST')
     postData = bottle.request.json
     init(postData)
-    ID = snek['id']
-    ourHealth = snek['health']
+
     for enemy in otherSnakes:
         #if (enemy['id'] == ID):
         #    ourHealth = enemy['health']
@@ -212,7 +211,7 @@ def move():
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
 
     bestScore = 4
-    if (ourHealth > 100):
+    if (myHealth > 100):
         bestScore = 10
         
     bestGoals = []
