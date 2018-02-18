@@ -39,7 +39,7 @@ def init(postData):
     mySnakeId = data['you']['id']
 
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
-    allSnakes = data['snakes']
+    allSnakes = data['snakes']['data']
     print (data['snakes'])
     foods= data['food']['data']
     for snake in allSnakes:
