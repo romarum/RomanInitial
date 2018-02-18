@@ -257,7 +257,8 @@ def move():
     for food in foods:
         ##print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
-        
+        print('SNEK HEAD ',snek_head)
+        print('SNEK COORDS',snek_coords)
         if not tentative_path:
             print ('no path to food')
             continue
@@ -306,6 +307,7 @@ def move():
         foodtotail = a_star(food,new_snek_coords[-1],new_grid, new_snek_coords)
         if foodtotail:
             path = tentative_path
+            print('Before break')
             break
         ##print "no path to tail from food"
 
