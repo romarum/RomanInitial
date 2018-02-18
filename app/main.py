@@ -202,8 +202,8 @@ def move():
     #print('snekHead is ', snek['coords'][0])
     #print('snek head makred as ',
     #grid[snek['coords'][0][0]][snek['coords'][0][1]])
-    snek_neck = snek['coords'][1]
-    snek_coords = snek['coords']
+    snek_neck = mySnake['coords'][1]
+    snek_coords = mySnake['coords']
     print('snake coords are ', snek_coords)
     path = None
     middle = [data['width'] / 2, data['height'] / 2]
