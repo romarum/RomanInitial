@@ -255,6 +255,8 @@ def move():
     print('best goals are ', foods)
         
     for food in foods:
+        if food in snek_coords:
+            print('DANGER_DANGER')
         ##print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
         print('SNEK HEAD ',snek_head)
