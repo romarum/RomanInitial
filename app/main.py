@@ -36,7 +36,7 @@ def init(postData):
 
     width = data['width']
     height = data['height']
-    mySnakeID = data['you']['id']
+    mySnakeId = data['you']['id']
 
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
     allSnakes = data['snakes']
