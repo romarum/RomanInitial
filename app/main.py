@@ -198,7 +198,7 @@ def move():
             
 
     #print('grid is ',grid)
-    snek_head = snake['coords'][0]
+    snek_head = mySnake['coords'][0]
     #print('snekHead is ', snek['coords'][0])
     #print('snek head makred as ',
     #grid[snek['coords'][0][0]][snek['coords'][0][1]])
