@@ -87,7 +87,7 @@ def static(path):
     return bottle.static_file(path, root='static/')
 
 
-@bottle.get('//')
+@bottle.get('/')
 def index():
     print ('WORKING ON GET REQUEST')
     head_url = '%s://%s/static/Traitor.gif' % (
@@ -98,8 +98,7 @@ def index():
         'color': '#ff0000',
         'head': head_url
     }
-
-@bottle.post('//start')
+@bottle.post('/start')
 def start():
     data = bottle.request.json
 
@@ -115,7 +114,7 @@ def start():
         'secondary_color': '#FF00FF'
     }
 
-@bottle.post('//move')
+@bottle.post('/move')
 def move():
     data = bottle.request.json
     #print (data)
