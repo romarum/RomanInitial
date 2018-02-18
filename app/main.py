@@ -123,7 +123,7 @@ def move():
         #    continue
 
        
-        if (enemy['length'] >= snake['length'] - 1):
+        if (enemy['length'] >= mySnake['length'] - 1):
             #dodge
             try:
                 if enemy['coords'][0][1] < data['height'] - 1:
