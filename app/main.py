@@ -17,12 +17,11 @@ GOLD = 7
 grid = []
 otherSnakes = []
 allSnakes = []
-mySnake = None
+mySnake = ''
 width = 0
 height = 0
 myHealth = 100
 mySnakeId = ''
-
 
 def init(postData):
     global width
