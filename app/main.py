@@ -60,12 +60,23 @@ def init(postData):
     for food in foods:
         if(myHealth < 40):
             grid[food['x']][food['y']] = FOOD
-
         else:
-            grid[food['x'] - 1][food['y'] - 1] = FOOD + 1
-            grid[food['x'] - 1][food['y'] + 1] = FOOD + 1
-            grid[food['x'] + 1][food['y'] - 1] = FOOD + 1
-            grid[food['x'] + 1][food['y'] + 1] = FOOD + 1
+            try:
+                grid[food['x'] - 1][food['y'] - 1] = FOOD + 1
+            except:
+                pass
+            try:
+                grid[food['x'] - 1][food['y'] + 1] = FOOD + 1
+            except:
+                pass
+            try:
+                grid[food['x'] + 1][food['y'] - 1] = FOOD + 1
+            except:
+                pass
+            try:
+                grid[food['x'] + 1][food['y'] + 1] = FOOD + 1
+            except:
+                pass
 
 @bottle.route('/static/<path:path>')
 def static(path):
