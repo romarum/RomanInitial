@@ -38,12 +38,11 @@ def init(postData):
     height = data['height']
     mySnakeID = data['you']['id']
 
-
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
     allSnakes = data['snakes']
     foods= data['food']['data']
     for snake in allSnakes:
-        if snake['id'] == mySnakeID:
+        if snake['data']['id'] == mySnakeID:
             mySnake = snake
             myHe
             print('My snake is ', mySnake)
@@ -103,7 +102,7 @@ def move():
 
     print('WORKING ON MOVE REQUEST')
     postData = bottle.request.json
-    snek, otherSnakes, grid = init(postData)
+    init(postData)
     ID = snek['id']
     ourHealth = snek['health']
     for enemy in otherSnakes:
