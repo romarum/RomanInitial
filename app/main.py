@@ -217,13 +217,13 @@ def move():
     bestGoals = []
     print('best goals are',bestGoals)
     #print grid
-    for col in xrange(data['height']):
-        for row in xrange(data['width']):
+    for col in xrange(height):
+        for row in xrange(width):
             if grid[row][col] > bestScore:
                 bestScore = grid[row][col]
                 
-    for col in xrange(data['height']):
-        for row in xrange(data['width']):
+    for col in xrange(height):
+        for row in xrange(width):
             if grid[row][col] == bestScore:
                 bestGoals.append([row,col])
                 
