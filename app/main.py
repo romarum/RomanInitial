@@ -71,14 +71,10 @@ def init(data):
             snekCoords.append([coord['x'],coord['y']])
         snek['coords'] = snekCoords
     for food in data['food']['data']:
-        if(snek['health']<80):
-
-
-
+        if(snek['health']<40):
             grid[food['x']][food['y']] = FOOD
 
         else:
-            grid[food['x']][food['y']] = FOOD
             grid[food['x']-1][food['y']-1] = FOOD +1
             grid[food['x']-1][food['y']+1] = FOOD+1
             grid[food['x']+1][food['y']-1] = FOOD+1
