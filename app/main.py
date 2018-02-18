@@ -42,9 +42,10 @@ def init(postData):
     allSnakes = data['snakes']
     foods= data['food']['data']
     for snake in allSnakes:
+        print('ID=', mySnakeId)
+        print('SNAKE=', snake)
         if snake['id'] == mySnakeId:
             mySnake = snake
-            myHe
             print('My snake is ', mySnake)
         else:
             otherSnakes.append(snake)
