@@ -16,7 +16,8 @@ SAFTEY = 3
 def direction(from_cell, to_cell):
     dx = to_cell[0] - from_cell[0]
     dy = to_cell[1] - from_cell[1]
-
+    print ('FROM CELL ',from_cell)
+    print ('TO CELL ',from_cell)
     if dx == 1:
         return 'right'
     elif dx == -1:
