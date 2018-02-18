@@ -40,6 +40,7 @@ def init(postData):
 
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
     allSnakes = data['snakes']
+    print (data['snakes'])
     foods= data['food']['data']
     for snake in allSnakes:
         print('ID=', mySnakeId)
