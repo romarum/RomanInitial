@@ -257,7 +257,8 @@ def move():
     for food in foods:
         if food in snek_coords:
             print('DANGER_DANGER')
-            grid[food[0]],[food[1]]=SNAKE
+            print('DANGER FOOD ', food)
+            #grid[food[0]],[food[1]]=SNAKE
             continue
         ##print food
         tentative_path = a_star(snek_head, food, grid, snek_coords)
