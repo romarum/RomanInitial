@@ -72,9 +72,13 @@ def init(data):
         snek['coords'] = snekCoords
     for food in data['food']['data']:
         if(snek['health']<80):
+
+
+
             grid[food['x']][food['y']] = FOOD
 
         else:
+            grid[food['x']][food['y']] = FOOD
             grid[food['x']-1][food['y']-1] = FOOD +1
             grid[food['x']-1][food['y']+1] = FOOD+1
             grid[food['x']+1][food['y']-1] = FOOD+1
@@ -224,7 +228,7 @@ def move():
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
 
     bestScore=4
-    if (ourHealth > 80):
+    if (ourHealth > 100):
         bestScore=10
         
     bestGoals=[]
