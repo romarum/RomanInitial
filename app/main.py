@@ -10,15 +10,9 @@ SNAKE = 1
 WALL = 2
 FOOD = 5
 GOLD = 7
-
 SAFTEY = 3
-#test RomanInitial repository
-def goals(data):
-    result = data['food']
-    if data['mode'] == 'advanced':
-        result.extend(data['gold'])
-    return result
 
+grid=[]
 
 def direction(from_cell, to_cell):
     dx = to_cell[0] - from_cell[0]
@@ -51,6 +45,7 @@ def closest(items, start):
 
     return closest_item
 
+
 def init(data):
     print('data is ', data)
     enemysnakes=[];
@@ -62,7 +57,7 @@ def init(data):
     height = data ['height']
     print('width ', width)
     print('height ', height)
-    grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
+    grid = [[0 for col in xrange(height)] for row in xrange(width)]
     for snek in data['snakes']['data']:
         snekCoords = []
         if snek['id']==mysnakeID:
@@ -75,16 +70,15 @@ def init(data):
             grid[coord['x']][coord['y']] = SNAKE
             snekCoords.append([coord['x'],coord['y']])
         snek['coords'] = snekCoords
-        #print('Length is ', snek['length'])
-        #print('health is ', snek['health'])
-#    if data['mode'] == 'advanced':
-#        for wall in data['walls']:
-#            grid[wall[0]][wall[1]] = WALL
-#        for g in data['gold']:
-#            grid[g[0]][g[1]] = GOLD
-
     for food in data['food']['data']:
-        grid[food['x']][food['y']] = FOOD
+        if(snek['health']<80):
+            grid[food['x']][food['y']] = FOOD
+        else:
+            grid[food['x']-1][food['y']-1] = FOOD 
+            grid[food['x']-1][food['y']+1] = FOOD
+            grid[food['x']+1][food['y']-1] = FOOD
+            grid[food['x']+1][food['y']+1] = FOOD
+
     return mysnake, enemysnakes, grid
 
 @bottle.route('/static/<path:path>')
@@ -93,7 +87,6 @@ def static(path):
 
 
 @bottle.get('//')
-
 def index():
     print ('WORKING ON GET REQUEST')
     head_url = '%s://%s/static/Traitor.gif' % (
@@ -104,7 +97,6 @@ def index():
         'color': '#ff0000',
         'head': head_url
     }
-
 
 @bottle.post('//start')
 def start():
@@ -231,7 +223,7 @@ def move():
     #golds = sorted(data['gold'], key = lambda p: distance(p,snek_head ))
 
     bestScore=4
-    if (ourHealth > 100):
+    if (ourHealth > 80):
         bestScore=10
         
     bestGoals=[]
@@ -333,7 +325,7 @@ def move():
     if despair:
         for neighbour in neighbours(snek_head,grid,0,snek_coords, [1,2]):
             path = a_star(snek_head, neighbour, grid, snek_coords)
-            print ('lik so scared')
+            print ('like so scared')
             break
 
     print('path before asserts ', path)
@@ -383,7 +375,7 @@ def end():
     # TODO: Do things with data
 
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': 'amen!'
     }
 
 
