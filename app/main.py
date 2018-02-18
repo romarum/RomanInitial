@@ -336,8 +336,9 @@ def move():
     print(grid)
     moveTo = ''
     try:
+        print('try move to')
         moveTo = direction(path[0], path[1])
-    
+        
     except:
         try:
             if (grid[snek['coords'][0][0] + 1][snek['coords'][0][1]] != 1):
