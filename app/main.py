@@ -75,11 +75,10 @@ def init(data):
             grid[food['x']][food['y']] = FOOD
 
         else:
-            grid[food['x']-1][food['y']-1] = FOOD 
-            print ('FOOD MINUS X=', food['x']-1, ' Y=',food['y']-1)
-            grid[food['x']-1][food['y']+1] = FOOD
-            grid[food['x']+1][food['y']-1] = FOOD
-            grid[food['x']+1][food['y']+1] = FOOD
+            grid[food['x']-1][food['y']-1] = FOOD +1
+            grid[food['x']-1][food['y']+1] = FOOD+1
+            grid[food['x']+1][food['y']-1] = FOOD+1
+            grid[food['x']+1][food['y']+1] = FOOD+1
 
     return mysnake, enemysnakes, grid
 
