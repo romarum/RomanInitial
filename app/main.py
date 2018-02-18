@@ -40,8 +40,8 @@ def init(postData):
 
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
     allSnakes = data['snakes']['data']
-    print (data['snakes'])
-    foods= data['food']['data']
+    print(data['snakes'])
+    foods = data['food']['data']
     for snake in allSnakes:
         print('ID=', mySnakeId)
         print('SNAKE=', snake)
@@ -58,7 +58,7 @@ def init(postData):
         snake['coords'] = snakeCoords
 
     for food in foods:
-        if(snek['health'] < 40):
+        if(myHealth < 40):
             grid[food['x']][food['y']] = FOOD
 
         else:
