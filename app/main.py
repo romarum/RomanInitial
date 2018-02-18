@@ -21,7 +21,9 @@ mySnake = ''
 width = 0
 height = 0
 myHealth = 100
+myLength =1
 mySnakeId = ''
+
 
 def init(postData):
     global width
@@ -47,6 +49,7 @@ def init(postData):
         print('SNAKE=', snake)
         if snake['id'] == mySnakeId:
             mySnake = snake
+            myLength =snake['length']
             print('My snake is ', mySnake)
         else:
             otherSnakes.append(snake)
@@ -120,7 +123,7 @@ def move():
     init(postData)
 
     for enemy in otherSnakes:
-        if (enemy['length'] >= mySnake['length'] - 1):
+        if (enemy['length'] >= myLength - 1):
             #dodge
             try:
                 if enemy['coords'][0][1] < data['height'] - 1:
@@ -174,8 +177,8 @@ def move():
             
     mySnake_head = mySnake['coords'][0]
     snek_neck = mySnake['coords'][1]
-    snek_coords = mySnake['coords']
-    print('snake coords are ', snek_coords)
+    mySnake_coords = mySnake['coords']
+    print('snake coords are ', mySnake_coords)
     path = None
 
     bestScore = 4
@@ -198,15 +201,15 @@ def move():
     print('best goals are ', foods)
         
     for food in foods:
-        if food in snek_coords:
+        if food in mySnake_coords:
             print('DANGER_DANGER')
             print('DANGER FOOD ', food)
             #grid[food[0]],[food[1]]=SNAKE
             continue
         ##print food
-        tentative_path = a_star(mySnake_head, food, grid, snek_coords)
+        tentative_path = a_star(mySnake_head, food, grid, mySnake_coords)
         print('SNEK HEAD ',mySnake_head)
-        print('SNEK COORDS',snek_coords)
+        print('SNEK COORDS',mySnake_coords)
         if not tentative_path:
             print('no path to food')
             continue
@@ -215,32 +218,32 @@ def move():
         print('temporary path is ', tentative_path)
         
         path_length = len(tentative_path)
-        snek_length = len(snek_coords) + 1
+        snek_length = len(mySnake_coords) + 1
         print('this path has length is ', path_length)
 
         # Update snake
         print('after path length 0')
         print('path length is ', path_length)
-        print('snek length is ', snek_length)
-        if path_length < snek_length:
-            remainder = snek_length - path_length
-            new_snek_coords = list(reversed(tentative_path)) + snek_coords[:remainder]
+        print('snek length is ', myLength)
+        if path_length < myLength:
+            remainder = myLength - path_length
+            new_mySnake_coords = list(reversed(tentative_path)) + mySnake_coords[:remainder]
         else:
-            new_snek_coords = list(reversed(tentative_path))[:snek_length]
+            new_mySnake_coords = list(reversed(tentative_path))[:myLength]
 
-        if grid[new_snek_coords[0][0]][new_snek_coords[0][1]] == FOOD:
+        if grid[new_mySnake_coords[0][0]][new_mySnake_coords[0][1]] == FOOD:
             # we ate food so we grow
-            new_snek_coords.append(new_snek_coords[-1])
+            new_mySnake_coords.append(new_mySnake_coords[-1])
 
         # Create a new grid with the updates snek positions
         new_grid = copy.deepcopy(grid)
 
-        for coord in snek_coords:
+        for coord in mySnake_coords:
             new_grid[coord[0]][coord[1]] = 0
-        for coord in new_snek_coords:
+        for coord in new_mySnake_coords:
             new_grid[coord[0]][coord[1]] = SNAKE
 
-        foodtotail = a_star(food,new_snek_coords[-1],new_grid, new_snek_coords)
+        foodtotail = a_star(food,new_mySnake_coords[-1],new_grid, new_mySnake_coords)
         if foodtotail:
             path = tentative_path
             print('Before break')
@@ -249,15 +252,15 @@ def move():
     print('path before if ',path)
     if not path:
 
-        path = a_star(mySnake_head, snek['coords'][-1], grid, snek_coords)
+        path = a_star(mySnake_head, mySnake['coords'][-1], grid, mySnake_coords)
     print('path after if ',path)
 
     despair = not (path and len(path) > 1)
     print('despair first time', despair)
 
     if despair:
-        for neighbour in neighbours(mySnake_head,grid,0,snek_coords, [1,2,3]):
-            path = a_star(mySnake_head, neighbour, grid, snek_coords)
+        for neighbour in neighbours(mySnake_head,grid,0,mySnake_coords, [1,2,3]):
+            path = a_star(mySnake_head, neighbour, grid, mySnake_coords)
             print('i\'m scared')
             break
 
@@ -265,8 +268,8 @@ def move():
 
     print('despair second time time', despair)
     if despair:
-        for neighbour in neighbours(mySnake_head,grid,0,snek_coords, [1,2]):
-            path = a_star(mySnake_head, neighbour, grid, snek_coords)
+        for neighbour in neighbours(mySnake_head,grid,0,mySnake_coords, [1,2]):
+            path = a_star(mySnake_head, neighbour, grid, mySnake_coords)
             print('like so scared')
             break
 
