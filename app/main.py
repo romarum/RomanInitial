@@ -17,7 +17,7 @@ GOLD = 7
 grid = []
 otherSnakes = []
 allSnakes = []
-mySnake
+mySnake = None
 width = 0
 height = 0
 myHealth = 100
