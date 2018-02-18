@@ -81,7 +81,7 @@ def index():
         'head': head_url
     }
 
-@bottle.post('/start')
+@bottle.post('//start')
 def start():
     print('WORKING ON START REQUEST')
     return {
@@ -93,7 +93,7 @@ def start():
         'secondary_color': '#FF00FF'
     }
 
-@bottle.post('/move')
+@bottle.post('//move')
 def move():
     global width
     global height
