@@ -19,7 +19,7 @@ def direction(from_cell, to_cell):
     print ('FROM CELL ',from_cell)
     print ('TO CELL ',to_cell)
     print ('DX=',dx, ' DY= ',dy)
-    if dx == -1:
+    if dx == 1:
         print('RIGHT')
         return 'right'
     elif dx == -1:
@@ -339,11 +339,11 @@ def move():
         assert len(path) > 1
 
     print('path after asserts ', path)
-    print(grid)
+    #print(grid)
     moveTo = ''
     try:
         print('try move to')
-        moveTo = direction(path[1], path[0])
+        moveTo = direction(path[0], path[1])
         
     except:
         try:
