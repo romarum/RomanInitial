@@ -20,12 +20,16 @@ def direction(from_cell, to_cell):
     print ('TO CELL ',to_cell)
     print ('DX=',dx, ' DY= ',dy)
     if dx == 1:
+        print('RIGHT')
         return 'right'
     elif dx == -1:
+        print('LEFT')
         return 'left'
     elif dy == -1:
+        print('UP')
         return 'up'
     elif dy == 1:
+        print('DOWN')
         return 'down'
 
 def distance(p, q):
