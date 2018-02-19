@@ -83,19 +83,19 @@ def reassesGrid():
         grid[food['x']][food['y']] = EMPTY
 
         try:
-            grid[food['x'] - 1][food['y'] - 1] = FOOD + 1
+            grid[food['x'] - 1][food['y'] - 1] = FOOD 
         except:
             pass
         try:
-            grid[food['x'] - 1][food['y'] + 1] = FOOD + 1
+            grid[food['x'] - 1][food['y'] + 1] = FOOD 
         except:
             pass
         try:
-            grid[food['x'] + 1][food['y'] - 1] = FOOD + 1
+            grid[food['x'] + 1][food['y'] - 1] = FOOD 
         except:
             pass
         try:
-            grid[food['x'] + 1][food['y'] + 1] = FOOD + 1
+            grid[food['x'] + 1][food['y'] + 1] = FOOD 
         except:
             pass
 
