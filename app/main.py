@@ -176,7 +176,6 @@ def move():
             grid[enemy['coords'][0][0]][enemy['coords'][0][1]] = 1
             
     mySnake_head = mySnake['coords'][0]
-    snek_neck = mySnake['coords'][1]
     mySnake_coords = mySnake['coords']
     print('snake coords are ', mySnake_coords)
     path = None
@@ -208,8 +207,6 @@ def move():
             continue
         ##print food
         tentative_path = a_star(mySnake_head, food, grid, mySnake_coords)
-        print('SNEK HEAD ',mySnake_head)
-        print('SNEK COORDS',mySnake_coords)
         if not tentative_path:
             print('no path to food')
             continue
@@ -235,7 +232,7 @@ def move():
             # we ate food so we grow
             new_mySnake_coords.append(new_mySnake_coords[-1])
 
-        # Create a new grid with the updates snek positions
+        # Create a new grid with the updates mySnake positions
         new_grid = copy.deepcopy(grid)
 
         for coord in mySnake_coords:
@@ -287,23 +284,23 @@ def move():
         
     except:
         try:
-            if (grid[snek['coords'][0][0] + 1][snek['coords'][0][1]] != 1):
+            if (grid[mySnake['coords'][0][0] + 1][mySnake['coords'][0][1]] != 1):
                 moveTo = "right"
         except:
             pass
         try:
-            if (grid[snek['coords'][0][0] - 1][snek['coords'][0][1]] != 1):
+            if (grid[mySnake['coords'][0][0] - 1][mySnake['coords'][0][1]] != 1):
                 moveTo = "left"
         
         except:
             pass
         try:
-            if (grid[snek['coords'][0][0]][snek['coords'][0][1] + 1] != 1):
+            if (grid[mySnake['coords'][0][0]][mySnake['coords'][0][1] + 1] != 1):
                 moveTo = "down"
         except:
             pass
         try:
-            if (grid[snek['coords'][0][0]][snek['coords'][0][1] - 1] != 1):
+            if (grid[mySnake['coords'][0][0]][mySnake['coords'][0][1] - 1] != 1):
                 moveTo = "up"
         except:
             pass
