@@ -197,7 +197,7 @@ def move():
             if grid[row][col] == bestScore:
                 bestGoals.append([row,col])
 
-    foods = sorted(bestGoals, key = lambda p: distance(p,mySnake_head))
+    foods = sorted(foods, key = lambda p: distance(p,mySnake_head))
     print('best goals are ', foods)
         
     for food in foods:
