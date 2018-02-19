@@ -80,22 +80,12 @@ def static(path):
 
 def reassesGrid():
     for food in foods:
-        grid[food['x']][food['y']] = EMPTY
-
         try:
             grid[food['x'] - 1][food['y'] - 1] = FOOD 
-        except:
-            pass
-        try:
             grid[food['x'] - 1][food['y'] + 1] = FOOD 
-        except:
-            pass
-        try:
             grid[food['x'] + 1][food['y'] - 1] = FOOD 
-        except:
-            pass
-        try:
             grid[food['x'] + 1][food['y'] + 1] = FOOD 
+            grid[food['x']][food['y']] = EMPTY
         except:
             pass
 
