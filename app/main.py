@@ -92,8 +92,6 @@ def reassesGrid():
     print('REASSESSED FOODS = ', foods)
     
     
-
-
 @bottle.get('/')
 def index():
     print('WORKING ON GET REQUEST')
@@ -124,7 +122,7 @@ def move():
     global mySnake
     global mySnakeId
     global foods
-
+    global grid
 
     print('WORKING ON MOVE REQUEST')
     postData = bottle.request.json
@@ -193,7 +191,6 @@ def move():
         bestScore = 10
         
     bestGoals = []
-    print('best goals are',bestGoals)
     for col in xrange(height):
         for row in xrange(width):
             if grid[row][col] > bestScore:
