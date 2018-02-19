@@ -118,6 +118,7 @@ def move():
     global data
     global mySnake
     global mySnakeId
+    global foods
 
     print('WORKING ON MOVE REQUEST')
     postData = bottle.request.json
