@@ -120,6 +120,7 @@ def move():
     global mySnakeId
     global foods
 
+
     print('WORKING ON MOVE REQUEST')
     postData = bottle.request.json
     init(postData)
