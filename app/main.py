@@ -195,10 +195,13 @@ def move():
         for row in xrange(width):
             if grid[row][col] > bestScore:
                 bestScore = grid[row][col]
-                
+       
+    print ('BEST SCORE ', bestScore)
+
     for col in xrange(height):
         for row in xrange(width):
             if grid[row][col] == bestScore:
+                print ('APPENDED to ', row,' ' ,col)
                 bestGoals.append([row,col])
 
     foods = sorted(bestGoals, key = lambda p: distance(p,mySnake_head))
