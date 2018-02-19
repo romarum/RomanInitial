@@ -7,6 +7,10 @@ import sys
 
 SNEK_BUFFER = 3
 
+MODE ='foodguard'
+
+EMPTY =0
+
 SNAKE = 1
 WALL = 2
 SAFTEY = 3
@@ -17,6 +21,7 @@ GOLD = 7
 grid = []
 otherSnakes = []
 allSnakes = []
+foods=[]
 mySnake = ''
 width = 0
 height = 0
@@ -33,7 +38,8 @@ def init(postData):
     global mySnake
     global myHealth
     global mySnakeId
-    
+    global foods
+
     data = postData
 
     width = data['width']
@@ -61,32 +67,37 @@ def init(postData):
         snake['coords'] = snakeCoords
 
     for food in foods:
+        grid[food['x']][food['y']] = FOOD
         if(myHealth < 40):
-            grid[food['x']][food['y']] = FOOD
-        else:
-            try:
-                grid[food['x'] - 1][food['y'] - 1] = FOOD + 1
-            except:
-                pass
-            try:
-                grid[food['x'] - 1][food['y'] + 1] = FOOD + 1
-            except:
-                pass
-            try:
-                grid[food['x'] + 1][food['y'] - 1] = FOOD + 1
-            except:
-                pass
-            try:
-                grid[food['x'] + 1][food['y'] + 1] = FOOD + 1
-            except:
-                pass
+            reassesGrid()
+
+
 
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
 
 
+def reassesGrid():
+    for food in foods:
+        grid[food['x']][food['y']] = EMPTY
 
+        try:
+            grid[food['x'] - 1][food['y'] - 1] = FOOD + 1
+        except:
+            pass
+        try:
+            grid[food['x'] - 1][food['y'] + 1] = FOOD + 1
+        except:
+            pass
+        try:
+            grid[food['x'] + 1][food['y'] - 1] = FOOD + 1
+        except:
+            pass
+        try:
+            grid[food['x'] + 1][food['y'] + 1] = FOOD + 1
+        except:
+            pass
 
 @bottle.get('/')
 def index():
@@ -122,58 +133,58 @@ def move():
     postData = bottle.request.json
     init(postData)
 
-    for enemy in otherSnakes:
-        if (enemy['length'] >= myLength - 1):
+    for otherSnake in otherSnakes:
+        if (otherSnake['length'] >= myLength - 1):
             #dodge
             try:
-                if enemy['coords'][0][1] < data['height'] - 1:
-                    grid[enemy['coords'][0][0]][enemy['coords'][0][1] + 1] = SAFTEY             
-                if enemy['coords'][0][1] > 0:
-                    grid[enemy['coords'][0][0]][enemy['coords'][0][1] - 1] = SAFTEY
-                if enemy['coords'][0][0] < data['width'] - 1:
-                    grid[enemy['coords'][0][0] + 1][enemy['coords'][0][1]] = SAFTEY
-                if enemy['coords'][0][0] > 0:
-                    grid[enemy['coords'][0][0] - 1][enemy['coords'][0][1]] = SAFTEY
+                if otherSnake['coords'][0][1] < data['height'] - 1:
+                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY             
+                if otherSnake['coords'][0][1] > 0:
+                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] - 1] = SAFTEY
+                if otherSnake['coords'][0][0] < data['width'] - 1:
+                    grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1]] = SAFTEY
+                if otherSnake['coords'][0][0] > 0:
+                    grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1]] = SAFTEY
             except:
                 pass    
             try:
-                grid[enemy['coords'][0][0]][enemy['coords'][0][1]] = SAFTEY
+                grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]] = SAFTEY
             except:
                 pass
             try:
-                grid[enemy['coords'][0][0]][enemy['coords'][0][1] + 1] = SAFTEY
+                grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
                 pass
             try:
-                grid[enemy['coords'][0][0]][enemy['coords'][0][1] - 1] = SAFTEY
+                grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] - 1] = SAFTEY
             except:
                 pass
             try:
-                grid[enemy['coords'][0][0] + 1][enemy['coords'][0][1]] = SAFTEY
+                grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1]] = SAFTEY
             except:
                 pass
             try:
-                grid[enemy['coords'][0][0] - 1][enemy['coords'][0][1]] = SAFTEY
+                grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1]] = SAFTEY
             except:
                 pass
             try:
-                grid[enemy['coords'][0][0] + 1][enemy['coords'][0][1] + 1] = SAFTEY
+                grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
                 pass
             try:
-                grid[enemy['coords'][0][0] - 1][enemy['coords'][0][1] - 1] = SAFTEY
+                grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] - 1] = SAFTEY
             except:
                 pass
             try:
-                grid[enemy['coords'][0][0] + 1][enemy['coords'][0][1] - 1] = SAFTEY
+                grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] - 1] = SAFTEY
             except:
                 pass
             try:
-                grid[enemy['coords'][0][0] - 1][enemy['coords'][0][1] + 1] = SAFTEY
+                grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
                 pass
-            grid[enemy['coords'][1][0]][enemy['coords'][1][1]] = 1
-            grid[enemy['coords'][0][0]][enemy['coords'][0][1]] = 1
+            grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]] = 1
+            grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]] = 1
             
     mySnake_head = mySnake['coords'][0]
     mySnake_coords = mySnake['coords']
@@ -221,7 +232,7 @@ def move():
         # Update snake
         print('after path length 0')
         print('path length is ', path_length)
-        print('snek length is ', myLength)
+        print('mySnake length is ', myLength)
         if path_length < myLength:
             remainder = myLength - path_length
             new_mySnake_coords = list(reversed(tentative_path)) + mySnake_coords[:remainder]
