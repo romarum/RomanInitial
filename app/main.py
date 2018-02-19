@@ -68,9 +68,10 @@ def init(postData):
 
     for food in foods:
         grid[food['x']][food['y']] = FOOD
-        if(myHealth < 40):
-            reassesGrid()
+        #if(myHealth < 40):
+            #reassesGrid()
     print('FOODS = ', foods)
+    print ('GRID ', grid)
 
 
 @bottle.route('/static/<path:path>')
@@ -187,8 +188,6 @@ def move():
     path = None
 
     bestScore = 4
-    if (myHealth > 100):
-        bestScore = 10
         
     bestGoals = []
     for col in xrange(height):
