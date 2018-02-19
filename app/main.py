@@ -70,7 +70,7 @@ def init(postData):
         grid[food['x']][food['y']] = FOOD
         if(myHealth < 40):
             reassesGrid()
-
+    print('FOODS = ', foods)
 
 
 @bottle.route('/static/<path:path>')
@@ -79,6 +79,7 @@ def static(path):
 
 
 def reassesGrid():
+    global foods
     for food in foods:
         try:
             grid[food['x'] - 1][food['y'] - 1] = FOOD 
@@ -88,6 +89,10 @@ def reassesGrid():
             grid[food['x']][food['y']] = EMPTY
         except:
             pass
+    print('REASSESSED FOODS = ', foods)
+    
+    
+
 
 @bottle.get('/')
 def index():
@@ -199,8 +204,8 @@ def move():
             if grid[row][col] == bestScore:
                 bestGoals.append([row,col])
 
-    foods = sorted(foods, key = lambda p: distance(p,mySnake_head))
-    print('best goals are ', foods)
+    foods = sorted(bestGoals, key = lambda p: distance(p,mySnake_head))
+    print('best goals are ', bestGoals)
         
     for food in foods:
         if food in mySnake_coords:
