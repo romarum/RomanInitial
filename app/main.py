@@ -72,7 +72,7 @@ def init(postData):
         #grid[food['x']][food['y']] = FOOD
         #if(myHealth < 40):
             #reassesGrid()
-        foods.append(tuple(food['x'],food['y']))
+        foods.append(food)
 
     print('FOODS = ', foods)
     print ('GRID ', grid)
