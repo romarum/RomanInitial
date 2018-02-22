@@ -1,4 +1,6 @@
 from AStar import *
+from operator import itemgetter
+
 import bottle
 import copy
 import math
@@ -209,7 +211,7 @@ def move():
 
 
      
-    goals = sorted(goals, key=lambda k: k['score'])
+    goals = sorted(goals, key=itemgetter('name'))
 
 #    bestGoals = []
 #    for col in xrange(height):
