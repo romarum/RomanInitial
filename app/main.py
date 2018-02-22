@@ -77,6 +77,8 @@ def init(postData):
     print('FOODS = ', foods)
     print ('GRID ', grid)
 
+    createGoals()
+
 
 @bottle.route('/static/<path:path>')
 def static(path):
