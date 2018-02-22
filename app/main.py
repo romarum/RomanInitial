@@ -22,6 +22,7 @@ grid = []
 otherSnakes = []
 allSnakes = []
 foods=[]
+goals=[]
 mySnake = ''
 width = 0
 height = 0
@@ -39,6 +40,7 @@ def init(postData):
     global myHealth
     global mySnakeId
     global foods
+    global goals
 
     data = postData
 
@@ -66,10 +68,12 @@ def init(postData):
             snakeCoords.append([coord['x'],coord['y']])
         snake['coords'] = snakeCoords
 
-    for food in foods:
-        grid[food['x']][food['y']] = FOOD
+    for food in foodData:
+        #grid[food['x']][food['y']] = FOOD
         #if(myHealth < 40):
             #reassesGrid()
+        foods.append(tuple(food['x'],food['y']))
+
     print('FOODS = ', foods)
     print ('GRID ', grid)
 
@@ -77,6 +81,23 @@ def init(postData):
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
+
+def createGoals():
+    goal1['x']=2
+    goal1['y']=2
+    goal1['score'] =5
+
+    goal2['x']=width-2
+    goal2['y']=2
+    goal2['score'] =4
+
+    goal3['x']=width-2
+    goal3['y']=height-2
+    goal3['score'] =5
+
+    goal4['x']=2
+    goal4['y']=height-2
+    goal4['score'] =4
 
 
 def reassesGrid():
@@ -187,8 +208,10 @@ def move():
     print('snake coords are ', mySnake_coords)
     path = None
 
-    bestScore = 4
-        
+
+     
+    goals = sorted(goals, key = 'score')
+
     bestGoals = []
     for col in xrange(height):
         for row in xrange(width):
@@ -206,6 +229,8 @@ def move():
     foods = sorted(bestGoals, key = lambda p: distance(p,mySnake_head))
     print('best goals are ', bestGoals)
         
+    print('GOAL FOODS =',goals)
+    foods = goals
     for food in foods:
         if food in mySnake_coords:
             print('DANGER_DANGER')
