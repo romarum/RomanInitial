@@ -211,7 +211,7 @@ def move():
 
 
      
-    goals = sorted(goals, key=itemgetter('name'))
+    goals = sorted(goals, key=itemgetter('score'))
 
 #    bestGoals = []
 #    for col in xrange(height):
