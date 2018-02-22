@@ -87,6 +87,7 @@ def static(path):
 def createGoals():
     global width
     global height
+    global goals
     goal1= {'x':2,'y':2,'score': 5}
     goal2= {'x':width-2,'y':height-2,'score':5}
     goal3= {'x':width-2,'y':2,'score': 4}
@@ -142,6 +143,7 @@ def move():
     global mySnakeId
     global foods
     global grid
+    global goals
 
     print('WORKING ON MOVE REQUEST')
     postData = bottle.request.json
