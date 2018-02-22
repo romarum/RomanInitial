@@ -99,6 +99,8 @@ def createGoals():
     goals.append(goal3)
     goals.append(goal4)
 
+    print('GOALS CREATED', goals)
+
     
 
 def reassesGrid():
