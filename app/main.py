@@ -99,6 +99,10 @@ def createGoals():
     goal4['y']=height-2
     goal4['score'] =4
 
+    goals.append(goal1)
+    goals.append(goal2)
+    goals.append(goal3)
+    goals.append(goal4)
 
 def reassesGrid():
     global foods
