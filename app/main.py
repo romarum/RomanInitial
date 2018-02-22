@@ -242,7 +242,7 @@ def move():
             #grid[food[0]],[food[1]]=SNAKE
             continue
         ##print food
-        tentative_path = a_star(mySnake_head, food, grid, mySnake_coords)
+        tentative_path = a_star(mySnake_head, {food['x'],food['y']}, grid, mySnake_coords)
         if not tentative_path:
             print('no path to food')
             continue
