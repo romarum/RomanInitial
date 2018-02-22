@@ -211,22 +211,22 @@ def move():
      
     goals = sorted(goals, key=lambda k: k['score'])
 
-    bestGoals = []
-    for col in xrange(height):
-        for row in xrange(width):
-            if grid[row][col] > bestScore:
-                bestScore = grid[row][col]
+#    bestGoals = []
+#    for col in xrange(height):
+#        for row in xrange(width):
+#            if grid[row][col] > bestScore:
+#                bestScore = grid[row][col]
        
-    print ('BEST SCORE ', bestScore)
+#    print ('BEST SCORE ', bestScore)
 
-    for col in xrange(height):
-        for row in xrange(width):
-            if grid[row][col] == bestScore:
-                print ('APPENDED to ', row,' ' ,col)
-                bestGoals.append([row,col])
+#    for col in xrange(height):
+#        for row in xrange(width):
+#            if grid[row][col] == bestScore:
+#                print ('APPENDED to ', row,' ' ,col)
+#                bestGoals.append([row,col])
 
-    foods = sorted(bestGoals, key = lambda p: distance(p,mySnake_head))
-    print('best goals are ', bestGoals)
+#    foods = sorted(bestGoals, key = lambda p: distance(p,mySnake_head))
+#    print('best goals are ', bestGoals)
         
     print('GOAL FOODS =',goals)
     foods = goals
