@@ -76,7 +76,6 @@ def init(postData):
             #reassesGrid()
         foods.append(food)
 
-    print('FOODS = ', foods)
     print ('GRID ', grid)
 
     createGoals()
@@ -100,6 +99,8 @@ def createGoals():
     goals.append(goal3)
     goals.append(goal4)
 
+    
+
 def reassesGrid():
     global foods
     for food in foods:
@@ -111,8 +112,7 @@ def reassesGrid():
             grid[food['x']][food['y']] = EMPTY
         except:
             pass
-    print('REASSESSED FOODS = ', foods)
-    
+
     
 @bottle.get('/')
 def index():
@@ -209,8 +209,7 @@ def move():
     print('snake coords are ', mySnake_coords)
     path = None
 
-
-     
+    print('GOALS UNSORTED', goals)
     goals = sorted(goals, key=itemgetter('score'))
 
 #    bestGoals = []
@@ -230,7 +229,6 @@ def move():
 #    foods = sorted(bestGoals, key = lambda p: distance(p,mySnake_head))
 #    print('best goals are ', bestGoals)
         
-    print('GOAL FOODS =',goals)
     foods = goals
     for food in foods:
         if food in mySnake_coords:
