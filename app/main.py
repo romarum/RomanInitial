@@ -85,25 +85,12 @@ def static(path):
     return bottle.static_file(path, root='static/')
 
 def createGoals():
-    goal1=[]
-    goal1['x']=2
-    goal1['y']=2
-    goal1['score'] =5
-
-    goal2=[]
-    goal2['x']=width-2
-    goal2['y']=2
-    goal2['score'] =4
-
-    goal3=[]
-    goal3['x']=width-2
-    goal3['y']=height-2
-    goal3['score'] =5
-
-    goal4=[]
-    goal4['x']=2
-    goal4['y']=height-2
-    goal4['score'] =4
+    global width
+    global height
+    goal1= {'x':2,'y':2,'score': 5}
+    goal1= {'x':width-2,'y':height-2,'score':5}
+    goal1= {'x':width-2,'y':2,'score': 4}
+    goal1= {'x':2,'y':height-2,'score': 4}
 
     goals.append(goal1)
     goals.append(goal2)
