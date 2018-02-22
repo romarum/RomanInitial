@@ -51,7 +51,7 @@ def init(postData):
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
     allSnakes = data['snakes']['data']
     print(data['snakes'])
-    foods = data['food']['data']
+    foodData = data['food']['data']
     for snake in allSnakes:
         print('ID=', mySnakeId)
         print('SNAKE=', snake)
