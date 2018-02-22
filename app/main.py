@@ -276,7 +276,7 @@ def move():
         for coord in new_mySnake_coords:
             new_grid[coord[0]][coord[1]] = SNAKE
 
-        foodtotail = a_star(food,new_mySnake_coords[-1],new_grid, new_mySnake_coords)
+        foodtotail = a_star({food['x'],food['y']},new_mySnake_coords[-1],new_grid, new_mySnake_coords)
         if foodtotail:
             path = tentative_path
             print('Before break')
