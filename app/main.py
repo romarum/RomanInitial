@@ -88,9 +88,9 @@ def createGoals():
     global width
     global height
     goal1= {'x':2,'y':2,'score': 5}
-    goal1= {'x':width-2,'y':height-2,'score':5}
-    goal1= {'x':width-2,'y':2,'score': 4}
-    goal1= {'x':2,'y':height-2,'score': 4}
+    goal2= {'x':width-2,'y':height-2,'score':5}
+    goal3= {'x':width-2,'y':2,'score': 4}
+    goal4= {'x':2,'y':height-2,'score': 4}
 
     goals.append(goal1)
     goals.append(goal2)
