@@ -198,6 +198,7 @@ def move():
     global data
     global mySnake
     global mySnakeId
+    global myLength
     global foods
     global grid
     global goals
