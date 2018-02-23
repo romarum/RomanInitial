@@ -72,6 +72,7 @@ def init(postData):
             snakeCoords.append([coord['x'],coord['y']])
         snake['coords'] = snakeCoords
 
+    foods=[]
     for food in foodData:
         foods.append(food)
 
