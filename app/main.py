@@ -224,7 +224,7 @@ def move():
             #grid[goal[0]],[goal[1]]=SNAKE
             continue
 
-        tentative_path = a_star(mySnake_head, goal, grid, mySnake_coords)
+        tentative_path = a_star(mySnake_head, [goal['x'],goal['y']], grid, mySnake_coords)
         if not tentative_path:
             print('no path to goal')
             continue
@@ -257,7 +257,7 @@ def move():
         for coord in new_mySnake_coords:
             new_grid[coord[0]][coord[1]] = SNAKE
 
-        goaltotail = a_star(goal,new_mySnake_coords[-1],new_grid, new_mySnake_coords)
+        goaltotail = a_star([goal['x'],goal['y']],new_mySnake_coords[-1],new_grid, new_mySnake_coords)
         if goaltotail:
             path = tentative_path
             print('Before break')
