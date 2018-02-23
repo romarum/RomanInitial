@@ -100,7 +100,6 @@ def createGoals():
 
     print('GOALS CREATED', goals)
 
-
 def reassesGrid():
     global foods
     for food in foods:
