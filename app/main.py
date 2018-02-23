@@ -224,7 +224,8 @@ def move():
         print ('goal = ', goal)
 
         print (grid)
-        tentative_path = a_star(mySnake_head, tuple({goal['x'],goal['y']}), grid, mySnake_coords)
+        print ("G = ",{goal['x'],goal['y']})
+        tentative_path = a_star(mySnake_head, {goal['x'],goal['y']}, grid, mySnake_coords)
         if not tentative_path:
             print('no path to goal')
             continue
@@ -233,7 +234,7 @@ def move():
         print('temporary path is ', tentative_path)
         
         path_length = len(tentative_path)
-        snek_length = len(mySnake_coords) + 1
+        myLength = myLength + 1
         print('this path has length is ', path_length)
 
         # Update snake
