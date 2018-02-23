@@ -123,7 +123,6 @@ def index():
         'head': head_url
     }
 
-
 @bottle.post('//start')
 def start():
     print('WORKING ON START REQUEST')
