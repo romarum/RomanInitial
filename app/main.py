@@ -57,8 +57,8 @@ def init(postData):
     #print(data['snakes'])
     foodData = data['food']['data']
     for snake in allSnakes:
-        print('ID=', mySnakeId)
-        print('SNAKE=', snake)
+        #print('ID=', mySnakeId)
+        #print('SNAKE=', snake)
         if snake['id'] == mySnakeId:
             mySnake = snake
             myLength =snake['length']
@@ -215,7 +215,8 @@ def move():
             print('DANGER goal ', goal)
             #grid[goal[0]],[goal[1]]=SNAKE
             continue
-        ##print goal
+        print ('goal = ', goal)
+        print (grid)
         tentative_path = a_star(mySnake_head, {goal['x'],goal['y']}, grid, mySnake_coords)
         if not tentative_path:
             print('no path to goal')
