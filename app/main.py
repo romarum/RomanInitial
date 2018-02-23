@@ -99,56 +99,23 @@ def createGoals():
 
     print('GOALS CREATED', goals)
 
-def reassesGrid():
-    global foods
-    for food in foods:
-        try:
-            grid[food['x'] - 1][food['y'] - 1] = FOOD 
-            grid[food['x'] - 1][food['y'] + 1] = FOOD 
-            grid[food['x'] + 1][food['y'] - 1] = FOOD 
-            grid[food['x'] + 1][food['y'] + 1] = FOOD 
-            grid[food['x']][food['y']] = EMPTY
-        except:
-            pass
+#def reassesGrid():
+#    global foods
+#    for food in foods:
+#       try:
+#            grid[food['x'] - 1][food['y'] - 1] = FOOD 
+#            grid[food['x'] - 1][food['y'] + 1] = FOOD 
+#            grid[food['x'] + 1][food['y'] - 1] = FOOD 
+#            grid[food['x'] + 1][food['y'] + 1] = FOOD 
+#            grid[food['x']][food['y']] = EMPTY
+#        except:
+#            pass
     
-@bottle.get('/')
-def index():
-    print('WORKING ON GET REQUEST')
-    head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme,
-        bottle.request.urlparts.netloc)
-    return {
-        'color': '#ff0000',
-        'head': head_url
-    }
-
-@bottle.post('//start')
-def start():
-    print('WORKING ON START REQUEST')
-    return {
-        'name': 'RomanInitial',
-        'color': '#FF0000',
-        'head_type': 'fang',
-        'tail_type': 'round-bum',
-        'taunt': 'battlesnake-python!',
-        'secondary_color': '#FF00FF'
-    }
-
-@bottle.post('//move')
-def move():
-    global width
-    global height
-    global data
-    global mySnake
-    global mySnakeId
-    global foods
+def safetyAroundSnake():
+    global otherSnakes
     global grid
-    global goals
-
-    print('WORKING ON MOVE REQUEST')
-    postData = bottle.request.json
-    grid=[]
-    init(postData)
-
+    global myLength
+    
     for otherSnake in otherSnakes:
         if (otherSnake['length'] >= myLength - 1):
             #dodge
@@ -201,10 +168,49 @@ def move():
                 pass
             grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]] = 1
             grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]] = 1
+
+@bottle.get('/')
+def index():
+    print('WORKING ON GET REQUEST')
+    head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme,
+        bottle.request.urlparts.netloc)
+    return {
+        'color': '#ff0000',
+        'head': head_url
+    }
+
+@bottle.post('//start')
+def start():
+    print('WORKING ON START REQUEST')
+    return {
+        'name': 'RomanInitial',
+        'color': '#FF0000',
+        'head_type': 'fang',
+        'tail_type': 'round-bum',
+        'taunt': 'battlesnake-python!',
+        'secondary_color': '#FF00FF'
+    }
+
+@bottle.post('//move')
+def move():
+    global width
+    global height
+    global data
+    global mySnake
+    global mySnakeId
+    global foods
+    global grid
+    global goals
+
+    print('WORKING ON MOVE REQUEST')
+    postData = bottle.request.json
+    grid=[]
+    init(postData)
+
             
     mySnake_head = mySnake['coords'][0]
     mySnake_coords = mySnake['coords']
-    print('snake coords are ', mySnake_coords)
+    print('my snake coords are ', mySnake_coords)
     path = None
 
     goals = sorted(goals, key=itemgetter('score'))
@@ -259,7 +265,6 @@ def move():
 
     print('path before if ',path)
     if not path:
-
         path = a_star(mySnake_head, mySnake['coords'][-1], grid, mySnake_coords)
     print('path after if ',path)
 
@@ -321,6 +326,8 @@ def move():
         'taunt': 'Whatever'
     }
     
+
+
 
 @bottle.post('/end')
 def end():
