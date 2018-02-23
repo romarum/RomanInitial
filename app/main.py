@@ -31,6 +31,7 @@ height = 0
 myHealth = 100
 myLength =1
 mySnakeId = ''
+mode='foodeater'
 
 
 def init(postData):
@@ -43,6 +44,7 @@ def init(postData):
     global mySnakeId
     global foods
     global goals
+    global mode
 
     data = postData
 
@@ -52,7 +54,7 @@ def init(postData):
 
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
     allSnakes = data['snakes']['data']
-    print(data['snakes'])
+    #print(data['snakes'])
     foodData = data['food']['data']
     for snake in allSnakes:
         print('ID=', mySnakeId)
@@ -71,12 +73,9 @@ def init(postData):
         snake['coords'] = snakeCoords
 
     for food in foodData:
-        #grid[food['x']][food['y']] = FOOD
-        #if(myHealth < 40):
-            #reassesGrid()
         foods.append(food)
 
-    print ('GRID ', grid)
+    #print ('GRID ', grid)
 
     createGoals()
 
@@ -86,25 +85,21 @@ def static(path):
     return bottle.static_file(path, root='static/')
 
 def createGoals():
+
     global width
     global height
     global goals
+    global mode
+    global foods
 
     goals=[]
 
-    goal1= {'x':2,'y':2,'score': 5}
-    goal2= {'x':width-2,'y':height-2,'score':5}
-    goal3= {'x':width-2,'y':2,'score': 4}
-    goal4= {'x':2,'y':height-2,'score': 4}
-
-    goals.append(goal1)
-    goals.append(goal2)
-    goals.append(goal3)
-    goals.append(goal4)
+    if mode=='foodeater':
+        for food in foods:
+            goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     print('GOALS CREATED', goals)
 
-    
 
 def reassesGrid():
     global foods
@@ -214,40 +209,21 @@ def move():
     print('snake coords are ', mySnake_coords)
     path = None
 
-    print('GOALS UNSORTED', goals)
     goals = sorted(goals, key=itemgetter('score'))
 
-#    bestGoals = []
-#    for col in xrange(height):
-#        for row in xrange(width):
-#            if grid[row][col] > bestScore:
-#                bestScore = grid[row][col]
-       
-#    print ('BEST SCORE ', bestScore)
-
-#    for col in xrange(height):
-#        for row in xrange(width):
-#            if grid[row][col] == bestScore:
-#                print ('APPENDED to ', row,' ' ,col)
-#                bestGoals.append([row,col])
-
-#    foods = sorted(bestGoals, key = lambda p: distance(p,mySnake_head))
-#    print('best goals are ', bestGoals)
-        
-    foods = goals
-    for food in foods:
-        if food in mySnake_coords:
+    for goal in goals:
+        if goal in mySnake_coords:
             print('DANGER_DANGER')
-            print('DANGER FOOD ', food)
-            #grid[food[0]],[food[1]]=SNAKE
+            print('DANGER goal ', goal)
+            #grid[goal[0]],[goal[1]]=SNAKE
             continue
-        ##print food
-        tentative_path = a_star(mySnake_head, {food['x'],food['y']}, grid, mySnake_coords)
+        ##print goal
+        tentative_path = a_star(mySnake_head, {goal['x'],goal['y']}, grid, mySnake_coords)
         if not tentative_path:
-            print('no path to food')
+            print('no path to goal')
             continue
 
-        print('for food ', food)
+        print('for goal ', goal)
         print('temporary path is ', tentative_path)
         
         path_length = len(tentative_path)
@@ -264,8 +240,8 @@ def move():
         else:
             new_mySnake_coords = list(reversed(tentative_path))[:myLength]
 
-        if grid[new_mySnake_coords[0][0]][new_mySnake_coords[0][1]] == FOOD:
-            # we ate food so we grow
+        if grid[new_mySnake_coords[0][0]][new_mySnake_coords[0][1]] == goal:
+            # we ate goal so we grow
             new_mySnake_coords.append(new_mySnake_coords[-1])
 
         # Create a new grid with the updates mySnake positions
@@ -276,8 +252,8 @@ def move():
         for coord in new_mySnake_coords:
             new_grid[coord[0]][coord[1]] = SNAKE
 
-        foodtotail = a_star({food['x'],food['y']},new_mySnake_coords[-1],new_grid, new_mySnake_coords)
-        if foodtotail:
+        goaltotail = a_star({goal['x'],goal['y']},new_mySnake_coords[-1],new_grid, new_mySnake_coords)
+        if goaltotail:
             path = tentative_path
             print('Before break')
             break
