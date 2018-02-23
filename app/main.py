@@ -62,7 +62,7 @@ def init(postData):
         if snake['id'] == mySnakeId:
             mySnake = snake
             myLength =snake['length']
-            print('My snake is ', mySnake)
+            #print('My snake is ', mySnake)
         else:
             otherSnakes.append(snake)
 
@@ -223,7 +223,7 @@ def move():
             continue
         print ('goal = ', goal)
         print (grid)
-        tentative_path = a_star(mySnake_head, {goal['y'],goal['x']}, grid, mySnake_coords)
+        tentative_path = a_star(mySnake_head, {goal['x'],goal['y']}, grid, mySnake_coords)
         if not tentative_path:
             print('no path to goal')
             continue
@@ -236,7 +236,6 @@ def move():
         print('this path has length is ', path_length)
 
         # Update snake
-        print('after path length 0')
         print('path length is ', path_length)
         print('mySnake length is ', myLength)
         if path_length < myLength:
