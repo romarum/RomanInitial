@@ -80,7 +80,6 @@ def init(postData):
 
     createGoals()
 
-
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
