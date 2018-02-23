@@ -223,7 +223,7 @@ def move():
             continue
         print ('goal = ', goal)
         print (grid)
-        tentative_path = a_star(mySnake_head, {goal['x'],goal['y']}, grid, mySnake_coords)
+        tentative_path = a_star(mySnake_head, {goal['y'],goal['x']}, grid, mySnake_coords)
         if not tentative_path:
             print('no path to goal')
             continue
