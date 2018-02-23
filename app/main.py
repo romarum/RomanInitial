@@ -85,7 +85,6 @@ def static(path):
     return bottle.static_file(path, root='static/')
 
 def createGoals():
-
     global width
     global height
     global goals
@@ -147,6 +146,7 @@ def move():
 
     print('WORKING ON MOVE REQUEST')
     postData = bottle.request.json
+    grid=[]
     init(postData)
 
     for otherSnake in otherSnakes:
