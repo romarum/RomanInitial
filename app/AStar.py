@@ -42,11 +42,11 @@ def neighbours(node, grid, score, tail, ignore_list):
 
 def a_star(start, goal, grid, tail):
 
-    #print("######################################")
-    #print ("AStart start", start)
-    #print ("AStart goal", goal)
-    #print ("AStart grid", grid)
-    #print ("AStart tail", tail)
+    print("######################################")
+    print ("AStart start", start)
+    print ("AStart goal", goal)
+    print ("AStart grid", grid)
+    print ("AStart tail", tail)
 
     start = tuple(start)
     goal = tuple(goal)
