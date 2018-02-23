@@ -111,7 +111,6 @@ def reassesGrid():
             grid[food['x']][food['y']] = EMPTY
         except:
             pass
-
     
 @bottle.get('/')
 def index():
