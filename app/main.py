@@ -96,7 +96,7 @@ def createGoals():
 
     if mode=='foodeater':
         for food in foods:
-            goals.append({'x':food[0],'y':food[1],'score':4})
+            goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     print('GOALS CREATED', goals)
 
