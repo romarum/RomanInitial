@@ -147,7 +147,7 @@ def getGoalCoords():
     goalCoords=[]
     for goal in goals:
         print('GOAL COORDS ', goal, ' ',goal['x'])
-        goalCoords.append({[goal['x']][goal['y']]})
+        goalCoords.append([goal['x'],goal['y']])
     return goalCoords
 
 def safetyAroundSnakeHead():
