@@ -125,7 +125,9 @@ def createGoals():
                     goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     print('mySnake coords', mySnake['coords'])
-    goals = sorted(goals, key = lambda p: distance([[p['x']][p['y']]],mySnake['coords'][0]))
+
+
+    goals = sorted(getGoalCoords(), key = lambda p: distance([[p['x']][p['y']]],mySnake['coords'][0]))
     print('GOALS SORTED', goals)
 
 #def reassesGrid():
@@ -140,6 +142,12 @@ def createGoals():
 #        except:
 #            pass
     
+def getGoalCoords():
+    global goals
+    goalCoords=[]
+    for goal in goals:
+        goalCoords.append([[goal['x']][goal['y']]])
+    return goalCoords
 
 def safetyAroundSnakeHead():
     global otherSnakes
