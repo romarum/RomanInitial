@@ -62,7 +62,7 @@ def init(postData):
         #print('SNAKE=', snake)
         if snake['id'] == mySnakeId:
             mySnake = snake
-            myLength =snake['length']
+            myLength =int(snake['length'])
             #print('My snake is ', mySnake)
         else:
             otherSnakes.append(snake)
@@ -126,8 +126,8 @@ def safetyAroundSnakeHead():
 
     print('other snakes = ', otherSnakes)
     for otherSnake in otherSnakes:
-        
-        if (otherSnake['length'] >= myLength ):
+        print('other snake length = ', int(otherSnake['length']))
+        if (int(otherSnake['length']) >= myLength ):
             #dodge head  
             try:
                 grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
