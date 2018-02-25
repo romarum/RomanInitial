@@ -102,6 +102,8 @@ def createGoals():
                 goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     elif mode=='foodguard':
+        print('Foodguard mode')
+        print('len(otherSnakes)==1 and int((otherSnakes[0])[length]) < myLength ',len(otherSnakes), ' ',int((otherSnakes[0])[length]), ' ', myLength)
         if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength ):
             print("HERE WE GO")
             for food in foods:
