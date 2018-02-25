@@ -125,7 +125,7 @@ def createGoals():
         else:
             for food in foods:
                 print('Check food vs grid ', grid[food['x']][food['y']])
-                if(grid[food['x']][food['y']]!='0'):
+                if(int(grid[food['x']][food['y']])==0):
                     goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     print('mySnake coords', mySnake['coords'])
