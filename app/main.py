@@ -31,8 +31,8 @@ height = 0
 myHealth = 100
 myLength =1
 mySnakeId = ''
-#mode='foodeater'
-mode='foodguard'
+mode='foodeater'
+#mode='foodguard'
 
 def init(postData):
     global width
@@ -191,7 +191,6 @@ def safetyAroundSnakeHead():
             #dodge head  
             try:
                 grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
-                print('grid safety point ', [otherSnake['coords'][0][0]],' ', [otherSnake['coords'][0][1] + 1] , ' = ', grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1])
             except:
                 pass
             try:
@@ -207,10 +206,6 @@ def safetyAroundSnakeHead():
             except:
                 pass
             try:
-                grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] + 1] = SAFTEY
-            except:
-                pass
-            try:
                 grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] - 1] = SAFTEY
             except:
                 pass
@@ -220,6 +215,10 @@ def safetyAroundSnakeHead():
                 pass
             try:
                 grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] + 1] = SAFTEY
+            except:
+                pass
+            try:
+                grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
                 pass
             grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]]=SNAKE
