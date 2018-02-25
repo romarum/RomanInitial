@@ -8,11 +8,7 @@ import os
 import sys
 
 SNEK_BUFFER = 3
-
-MODE ='foodguard'
-
 EMPTY =0
-
 SNAKE = 1
 WALL = 2
 SAFTEY = 3
@@ -98,6 +94,7 @@ def createGoals():
 
     goals=[]
 
+    print ('mode=', mode)
 
     if mode=='foodeater':
         safetyAroundSnakeHead()
@@ -189,8 +186,11 @@ def safetyAroundSnakeHead():
         print('condition= ', int(otherSnake['length']) >= myLength )
         if (int(otherSnake['length']) >= myLength ):
             #dodge head  
+            
             try:
                 grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
+                print('cX =', [otherSnake['coords'][0][0]], ' cY =', [otherSnake['coords'][0][1] + 1] , ' ', grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1])
+
             except:
                 pass
             try:
