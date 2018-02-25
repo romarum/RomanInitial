@@ -124,6 +124,7 @@ def createGoals():
                 if(grid[food['x']][food['y']]!='0'):
                     goals.append({'x':food['x'],'y':food['y'],'score':4})
 
+    print('mySnake coords', mySnake['coords'])
     goals = sorted(goals, key = lambda p: distance(p,mySnake['coords'][0]))
     #print('GOALS CREATED', goals)
 
