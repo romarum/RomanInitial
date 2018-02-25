@@ -126,7 +126,8 @@ def safetyAroundSnakeHead():
 
     print('other snakes = ', otherSnakes)
     for otherSnake in otherSnakes:
-        print('other snake length = ', int(otherSnake['length']))
+        print('other snake length = ', int(otherSnake['length']), ' my length ', myLength)
+        print('condition= ', int(otherSnake['length']) >= myLength )
         if (int(otherSnake['length']) >= myLength ):
             #dodge head  
             print("HERE WE GO")
