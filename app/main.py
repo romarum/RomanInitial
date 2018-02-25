@@ -141,12 +141,6 @@ def printGrid():
     global height
     global grid
     print('####################### GRID ###############################')
-  
-    #for col in xrange(width):
-    #    sys.stdout.write(str('col))
-    #sys.stdout.write('\n')
-    #sys.stdout.write('_'*width)
-    #sys.stdout.flush()
     for row in xrange(height):
         #print(row,'|',)
         for col in xrange(width):
@@ -155,17 +149,7 @@ def printGrid():
         sys.stdout.flush()
 
     print('############################################################')
-#def reassesGrid():
-#    global foods
-#    for food in foods:
-#       try:
-#            grid[food['x'] - 1][food['y'] - 1] = FOOD 
-#            grid[food['x'] - 1][food['y'] + 1] = FOOD 
-#            grid[food['x'] + 1][food['y'] - 1] = FOOD 
-#            grid[food['x'] + 1][food['y'] + 1] = FOOD 
-#            grid[food['x']][food['y']] = EMPTY
-#        except:
-#            pass
+
     
 def getGoalCoords():
     global goals
@@ -269,7 +253,6 @@ def move():
 
     #goals = sorted(goals, key=itemgetter('score'))
     
-
     for goal in goals:
         tentative_path = a_star(mySnake_head, [goal['x'],goal['y']], grid, mySnake_coords)
         if not tentative_path:
