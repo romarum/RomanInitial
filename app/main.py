@@ -170,9 +170,9 @@ def printGrid():
 
     print('Goals to show', goals)
     print_grid = copy.deepcopy(grid)
-    print_grid[mySnake['coords'][0][0]][mySnake['coords'][0][0]]='H'
+    print_grid[mySnake['coords'][0][0]][mySnake['coords'][0][1]]='H'
     for snakes in otherSnakes:
-        print_grid[otherSnakes['coords'][0][0]][otherSnakes['coords'][0][0]]='h'
+        print_grid[otherSnakes['coords'][0][0]][otherSnakes['coords'][0][1]]='h'
     for goal in goals:
         print_grid[goal['x']][goal['y']]=goal['score']
     print('####################### GRID ###############################')
