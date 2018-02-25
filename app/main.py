@@ -29,6 +29,7 @@ myLength =1
 mySnakeId = ''
 #mode='foodeater'
 mode='foodguard'
+mode='killer'
 
 def init(postData):
     global width
@@ -106,11 +107,8 @@ def createGoals():
     elif mode=='foodguard':
         print('Foodguard mode initiated')
         print('GOALS ', goals)
-        #print('len(otherSnakes)==1 and int((otherSnakes[0])[length]) < myLength ',len(otherSnakes), ' ',int((otherSnakes[0])['length']), ' ', myLength)
         if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength and int((otherSnakes[0])['health']) < myHealth and myHealth>20):
-            print("HERE WE GO " , foods)
             for food in foods:
-                print('HERE FOOD', food , ' ' ,int(grid[food['x']+1][food['y']+1]))
                 try:
                     if(int(grid[food['x']+1][food['y']+1])==0):
                         goals.append({'x':food['x']+1,'y':food['y']+1,'score':4})
@@ -129,6 +127,21 @@ def createGoals():
                 print('Check food vs grid ', grid[food['x']][food['y']])
                 if(int(grid[food['x']][food['y']])==0):
                     goals.append({'x':food['x'],'y':food['y'],'score':4})
+
+
+    elif mode=='killer':
+        print('Killer mode initiated')
+        print('GOALS ', goals)
+        for otherSnake in otherSnakes:
+            if( int((otherSnake)['length']) < myLength and  myHealth>int((otherSnake)['health'])):
+                goals.append({'x':otherSnake['coords'][0][0],'y':otherSnake['coords'][0][1],'score':4})
+                print('GOALS KILLER', goals)
+            else:
+                safetyAroundSnakeHead()
+                for food in foods:               
+                    print('Check food vs grid ', grid[food['x']][food['y']])
+                    if(int(grid[food['x']][food['y']])==0):
+                        goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     print('mySnake coords', mySnake['coords'])
 
