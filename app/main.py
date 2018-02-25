@@ -45,6 +45,7 @@ def init(postData):
     global foods
     global goals
     global mode
+    global myLength
 
     data = postData
 
@@ -102,7 +103,7 @@ def createGoals():
 
     elif mode=='foodguard':
         print('Foodguard mode initiated')
-        print('len(otherSnakes)==1 and int((otherSnakes[0])[length]) < myLength ',len(otherSnakes), ' ',int((otherSnakes[0])['length']), ' ', myLength)
+        #print('len(otherSnakes)==1 and int((otherSnakes[0])[length]) < myLength ',len(otherSnakes), ' ',int((otherSnakes[0])['length']), ' ', myLength)
         if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength ):
             print("HERE WE GO")
             for food in foods:
