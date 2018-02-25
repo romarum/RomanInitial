@@ -61,8 +61,6 @@ def init(postData):
         if snake['id'] == mySnakeId:
             mySnake = snake
             myLength =int(mySnake['length'])
-            print("######################################")
-            print('My snake Length is ', myLength)
         else:
             otherSnakes.append(snake)
 
@@ -92,9 +90,9 @@ def createGoals():
     global goals
     global mode
     global foods
+    global myLength
 
     goals=[]
-
 
     if mode=='foodeater':
         for food in foods:
@@ -103,8 +101,7 @@ def createGoals():
                 goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     elif mode=='foodguard':
-        print('Foodguard mode')
-        print('len(otherSnakes)==1 and int((otherSnakes[0])[length]) < myLength ',len(otherSnakes), ' ',int((otherSnakes[0])['length']), ' ', myLength)
+        print('Foodguard mode initiated')
         if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength ):
             print("HERE WE GO")
             for food in foods:
