@@ -1,6 +1,5 @@
 from AStar import *
 from operator import itemgetter
-from _future_ import print_function
 
 import bottle
 import copy
