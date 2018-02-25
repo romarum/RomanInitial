@@ -28,7 +28,7 @@ myHealth = 100
 myLength =1
 mySnakeId = ''
 #mode='foodeater'
-mode='foodguard'
+#mode='foodguard'
 mode='killer'
 
 def init(postData):
