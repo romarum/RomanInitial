@@ -100,7 +100,7 @@ def createGoals():
         safetyAroundSnakeHead()
         for food in foods:
             print('Check food vs grid ', grid[food['x']][food['y']])
-            if(grid[food['x']][food['y']]!='0'):
+            if(int(grid[food['x']][food['y']])==0):
                 goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     elif mode=='foodguard':
@@ -111,10 +111,14 @@ def createGoals():
             print("HERE WE GO")
             for food in foods:
                 try:
-                    goals.append({'x':food['x']+1,'y':food['y']+1,'score':4})
-                    goals.append({'x':food['x']+1,'y':food['y']-1,'score':4})
-                    goals.append({'x':food['x']-1,'y':food['y']+1,'score':4})
-                    goals.append({'x':food['x']-1,'y':food['y']-1,'score':4})
+                    if(int(grid[food['x']+1][food['y']]+1)==0):
+                        goals.append({'x':food['x']+1,'y':food['y']+1,'score':4})
+                    if(int(grid[food['x']+1][food['y']]-1)==0):
+                        goals.append({'x':food['x']+1,'y':food['y']-1,'score':4})
+                    if(int(grid[food['x']-1][food['y']]+1)==0):
+                        goals.append({'x':food['x']-1,'y':food['y']+1,'score':4})
+                    if(int(grid[food['x']-1][food['y']]-1)==0):
+                        goals.append({'x':food['x']-1,'y':food['y']-1,'score':4})
                     print('GOALS ', goals)
                 except:
                     pass
