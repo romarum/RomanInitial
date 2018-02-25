@@ -164,10 +164,15 @@ def printGrid():
     global height
     global grid
     global goals
+    global mySnake
+    global otherSnakes
 
 
     print('Goals to show', goals)
     print_grid = copy.deepcopy(grid)
+    print_grid[mySnake['coords'][0][0]][mySnake['coords'][0][0]]='H'
+    for snakes in otherSnakes:
+        print_grid[otherSnakes['coords'][0][0]][otherSnakes['coords'][0][0]]='h'
     for goal in goals:
         print_grid[goal['x']][goal['y']]=goal['score']
     print('####################### GRID ###############################')
@@ -175,7 +180,7 @@ def printGrid():
     for row in xrange(height):
         #print(row,'|',)
         for col in xrange(width):
-            sys.stdout.write('%2d' % print_grid[col][row] )
+            sys.stdout.write('%2s' % str(print_grid[col][row]) )
         sys.stdout.write('\n')
         sys.stdout.flush()
 
@@ -204,8 +209,6 @@ def safetyAroundSnakeHead():
             
             try:
                 grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
-                print('cX =', [otherSnake['coords'][0][0]], ' cY =', [otherSnake['coords'][0][1] + 1] , ' ', grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1])
-
             except:
                 pass
             try:
