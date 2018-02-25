@@ -146,15 +146,15 @@ def printGrid():
     print('####################### GRID ###############################')
   
     for col in xrange(width):
-        sys.stdout.write(str(col))
+        sys.stdout.write(str(col + ' '))
     sys.stdout.write('_'*width)
-
+    sys.stdout.flush()
     for row in xrange(height):
         #print(row,'|',)
         for col in xrange(width):
             sys.stdout.write(str(grid[col][row]))
+        sys.stdout.flush()
 
-    sys.stdout.flush()
     print('############################################################')
 #def reassesGrid():
 #    global foods
