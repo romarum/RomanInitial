@@ -111,13 +111,13 @@ def createGoals():
             print("HERE WE GO")
             for food in foods:
                 try:
-                    if(int(grid[food['x']+1][food['y']]+1)==0):
+                    if(int(grid[food['x']+1][food['y']+1])==0):
                         goals.append({'x':food['x']+1,'y':food['y']+1,'score':4})
-                    if(int(grid[food['x']+1][food['y']]-1)==0):
+                    if(int(grid[food['x']+1][food['y']-1])==0):
                         goals.append({'x':food['x']+1,'y':food['y']-1,'score':4})
-                    if(int(grid[food['x']-1][food['y']]+1)==0):
+                    if(int(grid[food['x']-1][food['y']+1])==0):
                         goals.append({'x':food['x']-1,'y':food['y']+1,'score':4})
-                    if(int(grid[food['x']-1][food['y']]-1)==0):
+                    if(int(grid[food['x']-1][food['y']-1])==0):
                         goals.append({'x':food['x']-1,'y':food['y']-1,'score':4})
                     print('GOALS ', goals)
                 except:
