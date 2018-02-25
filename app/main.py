@@ -127,7 +127,7 @@ def createGoals():
     print('mySnake coords', mySnake['coords'])
 
 
-    goals = sorted(getGoalCoords(), key = lambda p: distance([[p['x']][p['y']]],mySnake['coords'][0]))
+    goals = sorted(getGoalCoords(), key = lambda p: distance(p,mySnake['coords'][0]))
     print('GOALS SORTED', goals)
 
 #def reassesGrid():
