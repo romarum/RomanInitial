@@ -76,6 +76,7 @@ def init(postData):
     for food in foodData:
         foods.append(food)
 
+
     createGoals()
     printGrid()
 
@@ -155,7 +156,11 @@ def printGrid():
     global width
     global height
     global grid
+    global goals
+    for goal in goals:
+        grid[goal['x']][goal['x']]=goal['score']
     print('####################### GRID ###############################')
+
     for row in xrange(height):
         #print(row,'|',)
         for col in xrange(width):
@@ -385,8 +390,8 @@ def distance(p, q):
         dy = abs(p['y'] - q[1])
         return dx + dy
     except:
-        dx = abs(p['x'] - q[0])
-        dy = abs(p['y'] - q[1])
+        dx = abs(p[0] - q[0])
+        dy = abs(p[0] - q[1])
         return dx + dy
 
 def closest(items, start):
