@@ -134,6 +134,7 @@ def createGoals():
         print('GOALS ', goals)
         for otherSnake in otherSnakes:
             if( int((otherSnake)['length']) < myLength and  myHealth>int((otherSnake)['health'])):
+                grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]=0
                 goals.append({'x':otherSnake['coords'][0][0],'y':otherSnake['coords'][0][1],'score':4})
                 print('GOALS KILLER', goals)
             else:
