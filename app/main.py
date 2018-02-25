@@ -380,9 +380,14 @@ def end():
     }
 
 def distance(p, q):
-    dx = abs(p['x'] - q[0])
-    dy = abs(p['y'] - q[1])
-    return dx + dy
+    try:
+        dx = abs(p['x'] - q[0])
+        dy = abs(p['y'] - q[1])
+        return dx + dy
+    except:
+        dx = abs(p['x'] - q[0])
+        dy = abs(p['y'] - q[1])
+        return dx + dy
 
 def closest(items, start):
     closest_item = None
