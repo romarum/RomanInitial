@@ -1,5 +1,6 @@
 from AStar import *
 from operator import itemgetter
+from _future_ import print_function
 
 import bottle
 import copy
@@ -146,13 +147,13 @@ def printGrid():
     print('####################### GRID ###############################')
   
     for col in xrange(width):
-        print('  ',col,)
+        print('  ',col, end= '')
     print('_'*width)
 
     for row in xrange(height):
         print(row,'|',)
         for col in xrange(width):
-            print(grid[col][row],)
+            print(grid[col][row], end ='')
 
     print('############################################################')
 #def reassesGrid():
