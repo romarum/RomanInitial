@@ -115,6 +115,7 @@ def createGoals():
                     goals.append({'x':food['x']+1,'y':food['y']-1,'score':4})
                     goals.append({'x':food['x']-1,'y':food['y']+1,'score':4})
                     goals.append({'x':food['x']-1,'y':food['y']-1,'score':4})
+                    print('GOALS ', goals)
                 except:
                     pass
         else:
