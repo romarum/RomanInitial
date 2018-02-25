@@ -107,7 +107,7 @@ def createGoals():
         print('Foodguard mode initiated')
         print('GOALS ', goals)
         #print('len(otherSnakes)==1 and int((otherSnakes[0])[length]) < myLength ',len(otherSnakes), ' ',int((otherSnakes[0])['length']), ' ', myLength)
-        if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength ):
+        if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength and int((otherSnakes[0])['health']) < myHealth and myHealth>20):
             print("HERE WE GO")
             for food in foods:
                 try:
