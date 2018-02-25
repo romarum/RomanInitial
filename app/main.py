@@ -124,10 +124,7 @@ def createGoals():
                     pass
         else:
             safetyAroundSnakeHead()
-            for food in foods:               
-                print('Check food vs grid ', grid[food['x']][food['y']])
-                if(int(grid[food['x']][food['y']])==0):
-                    goals.append({'x':food['x'],'y':food['y'],'score':4})
+            addFoodsToGoals()
 
 
     elif mode=='killer':
@@ -141,13 +138,12 @@ def createGoals():
                     grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]=0
                 except:
                     pass
+                addFoodsToGoals()
                 print('GOALS KILLER', goals)
+
             else:
                 safetyAroundSnakeHead()
-                for food in foods:               
-                    print('Check food vs grid ', grid[food['x']][food['y']])
-                    if(int(grid[food['x']][food['y']])==0):
-                        goals.append({'x':food['x'],'y':food['y'],'score':4})
+                addFoodsToGoals()
 
     print('mySnake coords', mySnake['coords'])
 
@@ -155,6 +151,12 @@ def createGoals():
     goals = sorted(goals, key = lambda p: distance(p,mySnake['coords'][0]))
     print('GOALS SORTED', goals)
 
+def addFoodsToGoals():
+    global goals
+    global foods
+    for food in foods:               
+        if(int(grid[food['x']][food['y']])==0):
+            goals.append({'x':food['x'],'y':food['y'],'score':4})
 
 def printGrid():
 
