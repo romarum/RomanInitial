@@ -64,6 +64,7 @@ def init(postData):
         if snake['id'] == mySnakeId:
             mySnake = snake
             myLength =int(mySnake['length'])
+            myHealth =int(mySnake['health'])
         else:
             otherSnakes.append(snake)
 
@@ -93,6 +94,7 @@ def createGoals():
     global mode
     global foods
     global myLength
+    global myHealth
 
     goals=[]
 
