@@ -79,7 +79,7 @@ def init(postData):
     for food in foodData:
         foods.append(food)
 
-    #print ('GRID ', grid)
+    printGrid()
 
     createGoals()
 
@@ -138,6 +138,23 @@ def createGoals():
     goals = sorted(goals, key = lambda p: distance(p,mySnake['coords'][0]))
     print('GOALS SORTED', goals)
 
+
+def printGrid():
+    global width
+    global height
+    global grid
+    print('####################### GRID ###############################')
+  
+    for col in xrange(width):
+        print('  ',col,)
+    print('_'*width)
+
+    for row in xrange(height):
+        print(row,'|',)
+        for col in xrange(width):
+            print(grid[col][row],)
+
+    print('############################################################')
 #def reassesGrid():
 #    global foods
 #    for food in foods:
