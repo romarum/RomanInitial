@@ -145,15 +145,15 @@ def printGrid():
     global grid
     print('####################### GRID ###############################')
   
-    for col in xrange(width):
-        sys.stdout.write(str(col))
-    sys.stdout.write('\n')
-    sys.stdout.write('_'*width)
-    sys.stdout.flush()
+    #for col in xrange(width):
+    #    sys.stdout.write(str('col))
+    #sys.stdout.write('\n')
+    #sys.stdout.write('_'*width)
+    #sys.stdout.flush()
     for row in xrange(height):
         #print(row,'|',)
         for col in xrange(width):
-            sys.stdout.write(str(grid[col][row]))
+            sys.stdout.write('%2d' % str( grid[col][row] ))
         sys.stdout.write('\n')
         sys.stdout.flush()
 
