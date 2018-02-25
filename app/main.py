@@ -54,6 +54,7 @@ def init(postData):
 
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
     allSnakes = data['snakes']['data']
+    otherSnakes =[]
     #print(data['snakes'])
     foodData = data['food']['data']
     for snake in allSnakes:
@@ -121,9 +122,11 @@ def safetyAroundSnakeHead():
     global otherSnakes
     global grid
     global myLength
-    
+
+    print('other snakes = ', otherSnakes)
     for otherSnake in otherSnakes:
-        if (otherSnake['length'] >= myLength - 1):
+        
+        if (otherSnake['length'] >= myLength ):
             #dodge head  
             try:
                 grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
@@ -162,8 +165,7 @@ def safetyAroundSnakeHead():
 @bottle.get('/')
 def index():
     print('WORKING ON GET REQUEST')
-    head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme,
-        bottle.request.urlparts.netloc)
+    head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
     return {
         'color': '#ff0000',
         'head': head_url
