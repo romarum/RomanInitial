@@ -291,6 +291,10 @@ def move():
         tentative_path = a_star(mySnake_head, [goal['x'],goal['y']], grid, mySnake_coords)
         if not tentative_path:
             print('no path to goal')
+            print('MY HEAD', mySnake_head)
+            print('GOAL', [goal['x'],goal['y']])
+            print('MY COORDS', mySnake_coords)
+            printGrid()
             continue
 
         print('for goal ', goal)
