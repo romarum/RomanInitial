@@ -97,12 +97,15 @@ def createGoals():
 
     if mode=='foodeater':
         for food in foods:
+            goals=[]
             print('Check food vs grid ', grid[food['x']][food['y']])
             if(grid[food['x']][food['y']]!='0'):
                 goals.append({'x':food['x'],'y':food['y'],'score':4})
 
     elif mode=='foodguard':
+        goals=[]
         print('Foodguard mode initiated')
+        print('GOALS ', goals)
         #print('len(otherSnakes)==1 and int((otherSnakes[0])[length]) < myLength ',len(otherSnakes), ' ',int((otherSnakes[0])['length']), ' ', myLength)
         if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength ):
             print("HERE WE GO")
