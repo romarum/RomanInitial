@@ -146,7 +146,7 @@ def printGrid():
     print('####################### GRID ###############################')
   
     for col in xrange(width):
-        sys.stdout.write(str(col + ' '))
+        sys.stdout.write(str(col))
     sys.stdout.write('_'*width)
     sys.stdout.flush()
     for row in xrange(height):
