@@ -127,7 +127,7 @@ def createGoals():
     print('mySnake coords', mySnake['coords'])
 
 
-    goals = sorted(getGoalCoords(), key = lambda p: distance(p,mySnake['coords'][0]))
+    goals = sorted(goals, key = lambda p: distance(p,mySnake['coords'][0]))
     print('GOALS SORTED', goals)
 
 #def reassesGrid():
@@ -244,7 +244,6 @@ def move():
     
 
     for goal in goals:
-
         tentative_path = a_star(mySnake_head, [goal['x'],goal['y']], grid, mySnake_coords)
         if not tentative_path:
             print('no path to goal')
@@ -356,8 +355,8 @@ def end():
     }
 
 def distance(p, q):
-    dx = abs(p[0] - q[0])
-    dy = abs(p[1] - q[1])
+    dx = abs(p['x'] - q[0])
+    dy = abs(p['y'] - q[1])
     return dx + dy
 
 def closest(items, start):
