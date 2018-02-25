@@ -146,6 +146,7 @@ def getGoalCoords():
     global goals
     goalCoords=[]
     for goal in goals:
+        print('GOAL COORDS ', goal)
         goalCoords.append([[goal['x']][goal['y']]])
     return goalCoords
 
