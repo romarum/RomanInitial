@@ -153,7 +153,7 @@ def printGrid():
     for row in xrange(height):
         #print(row,'|',)
         for col in xrange(width):
-            sys.stdout.write('%2d' % str( grid[col][row] ))
+            sys.stdout.write('%2d' % grid[col][row] )
         sys.stdout.write('\n')
         sys.stdout.flush()
 
