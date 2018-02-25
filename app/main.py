@@ -126,8 +126,8 @@ def createGoals():
                 except:
                     pass
         else:
-            for food in foods:
-                safetyAroundSnakeHead()
+            safetyAroundSnakeHead()
+            for food in foods:               
                 print('Check food vs grid ', grid[food['x']][food['y']])
                 if(int(grid[food['x']][food['y']])==0):
                     goals.append({'x':food['x'],'y':food['y'],'score':4})
