@@ -60,8 +60,9 @@ def init(postData):
         #print('SNAKE=', snake)
         if snake['id'] == mySnakeId:
             mySnake = snake
-            myLength =int(snake['length'])
-            #print('My snake is ', mySnake)
+            myLength =int(mySnake['length'])
+            print("######################################")
+            print('My snake Length is ', myLength)
         else:
             otherSnakes.append(snake)
 
