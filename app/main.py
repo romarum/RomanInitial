@@ -134,8 +134,9 @@ def createGoals():
         print('Killer mode initiated')
         print('GOALS ', goals)
         for otherSnake in otherSnakes:
-            if( int((otherSnake)['length']) < myLength and  myHealth>int((otherSnake)['health'])-10):
+            if( int((otherSnake)['length']) < myLength ):
                 try:
+                    print('OSC', otherSnake['coords'][0][0] + (otherSnake['coords'][0][0] -otherSnake['coords'][1][0]))
                     goals.append({'x':otherSnake['coords'][0][0] + (otherSnake['coords'][0][0] -otherSnake['coords'][1][0] ),'y':otherSnake['coords'][0][1] + (otherSnake['coords'][0][1] -otherSnake['coords'][1][1] ),'score':4})
                     grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]=0
                 except:
