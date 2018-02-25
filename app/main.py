@@ -72,6 +72,7 @@ def init(postData):
             snakeCoords.append([coord['x'],coord['y']])
         snake['coords'] = snakeCoords
 
+    safetyAroundSnakeHead()
     foods=[]
     print ('FOOD DATA ', foodData)
     for food in foodData:
@@ -96,9 +97,13 @@ def createGoals():
 
     if mode=='foodeater':
         for food in foods:
-            goals.append({'x':food['x'],'y':food['y'],'score':4})
+            if(grid[food['x']][food['y']]!=0):
+                goals.append({'x':food['x'],'y':food['y'],'score':4})
 
-    print('GOALS CREATED', goals)
+
+    #print('GOALS CREATED', goals)
+
+
 
 #def reassesGrid():
 #    global foods
@@ -112,29 +117,14 @@ def createGoals():
 #        except:
 #            pass
     
-def safetyAroundSnake():
+def safetyAroundSnakeHead():
     global otherSnakes
     global grid
     global myLength
     
     for otherSnake in otherSnakes:
         if (otherSnake['length'] >= myLength - 1):
-            #dodge
-            try:
-                if otherSnake['coords'][0][1] < data['height'] - 1:
-                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY             
-                if otherSnake['coords'][0][1] > 0:
-                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] - 1] = SAFTEY
-                if otherSnake['coords'][0][0] < data['width'] - 1:
-                    grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1]] = SAFTEY
-                if otherSnake['coords'][0][0] > 0:
-                    grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1]] = SAFTEY
-            except:
-                pass    
-            try:
-                grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]] = SAFTEY
-            except:
-                pass
+            #dodge head  
             try:
                 grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
@@ -167,8 +157,7 @@ def safetyAroundSnake():
                 grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
                 pass
-            grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]] = 1
-            grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]] = 1
+            grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]]=SNAKE
 
 @bottle.get('/')
 def index():
