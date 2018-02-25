@@ -108,8 +108,9 @@ def createGoals():
         print('GOALS ', goals)
         #print('len(otherSnakes)==1 and int((otherSnakes[0])[length]) < myLength ',len(otherSnakes), ' ',int((otherSnakes[0])['length']), ' ', myLength)
         if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength and int((otherSnakes[0])['health']) < myHealth and myHealth>20):
-            print("HERE WE GO")
+            print("HERE WE GO " , foods)
             for food in foods:
+                print('HERE FOOD', food , ' ' ,int(grid[food['x']+1][food['y']+1]))
                 try:
                     if(int(grid[food['x']+1][food['y']+1])==0):
                         goals.append({'x':food['x']+1,'y':food['y']+1,'score':4})
@@ -119,7 +120,7 @@ def createGoals():
                         goals.append({'x':food['x']-1,'y':food['y']+1,'score':4})
                     if(int(grid[food['x']-1][food['y']-1])==0):
                         goals.append({'x':food['x']-1,'y':food['y']-1,'score':4})
-                    print('GOALS ', goals)
+                    print('GOALS FOODGUARD', goals)
                 except:
                     pass
         else:
