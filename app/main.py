@@ -123,6 +123,8 @@ def createGoals():
                 print('Check food vs grid ', grid[food['x']][food['y']])
                 if(grid[food['x']][food['y']]!='0'):
                     goals.append({'x':food['x'],'y':food['y'],'score':4})
+
+    goals = sorted(goals, key = lambda p: distance(p,mySnake['coords'][0]))
     #print('GOALS CREATED', goals)
 
 
@@ -230,7 +232,8 @@ def move():
     print('my snake coords are ', mySnake_coords)
     path = None
 
-    goals = sorted(goals, key=itemgetter('score'))
+    #goals = sorted(goals, key=itemgetter('score'))
+    
 
     for goal in goals:
 
