@@ -153,18 +153,23 @@ def createGoals():
 
 
 def printGrid():
+
     global width
     global height
     global grid
     global goals
+
+
+    print('Goals to show', goals)
+    print_grid = copy.deepcopy(grid)
     for goal in goals:
-        grid[goal['x']][goal['x']]=goal['score']
+        print_grid[goal['x']][goal['y']]=goal['score']
     print('####################### GRID ###############################')
 
     for row in xrange(height):
         #print(row,'|',)
         for col in xrange(width):
-            sys.stdout.write('%2d' % grid[col][row] )
+            sys.stdout.write('%2d' % print_grid[col][row] )
         sys.stdout.write('\n')
         sys.stdout.flush()
 
