@@ -12,7 +12,6 @@ EMPTY =0
 SNAKE = 1
 WALL = 2
 SAFTEY = 3
-
 FOOD = 5
 GOLD = 7
 
@@ -62,6 +61,9 @@ def init(postData):
             mySnake = snake
             myLength =int(mySnake['length'])
             myHealth =int(mySnake['health'])
+            if(myHealth<90):
+                SAFTEY=0;
+
         else:
             otherSnakes.append(snake)
 
