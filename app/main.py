@@ -61,8 +61,6 @@ def init(postData):
             mySnake = snake
             myLength =int(mySnake['length'])
             myHealth =int(mySnake['health'])
-            if(myHealth<90):
-                SAFTEY=0;
 
         else:
             otherSnakes.append(snake)
@@ -204,6 +202,9 @@ def safetyAroundSnakeHead():
     global otherSnakes
     global grid
     global myLength
+
+    if(myHealth<20):
+        SAFTEY=0;
 
     print('other snakes = ', otherSnakes)
     for otherSnake in otherSnakes:
