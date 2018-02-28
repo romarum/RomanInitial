@@ -211,38 +211,46 @@ def safetyAroundSnakeHead():
             #dodge head  
             
             try:
-                grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
+                if(grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1])!=SNAKE:
+                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
                 pass
             try:
-                grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] - 1] = SAFTEY
+                if(grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] - 1])!= SNAKE:
+                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] - 1] = SAFTEY
             except:
                 pass
             try:
-                grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1]] = SAFTEY
+                if(grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1]])!=SNAKE:
+                    grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1]] = SAFTEY
             except:
                 pass
             try:
-                grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1]] = SAFTEY
+                if(grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1]]) !=SNAKE:
+                    grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1]] = SAFTEY
             except:
                 pass
             try:
-                grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] - 1] = SAFTEY
+               if(grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] - 1])!= SNAKE:
+                    grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] - 1] = SAFTEY
             except:
                 pass
             try:
-                grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] - 1] = SAFTEY
+                if(grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] - 1])!= SNAKE:
+                    grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] - 1] = SAFTEY
             except:
                 pass
             try:
-                grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] + 1] = SAFTEY
+                if(grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] + 1])!=SNAKE:
+                    grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
                 pass
             try:
-                grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] + 1] = SAFTEY
+                if(grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] + 1])!=SNAKE:
+                    grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] + 1] = SAFTEY
             except:
                 pass
-            grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]]=SNAKE
+            #grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]]=SNAKE
 
 @bottle.get('/')
 def index():
@@ -344,6 +352,7 @@ def move():
         for neighbour in neighbours(mySnake_head,grid,0,mySnake_coords, [1,2,3]):
             path = a_star(mySnake_head, neighbour, grid, mySnake_coords)
             print('i\'m scared')
+            #if (path):
             break
 
     despair = not (path and len(path) > 1)
