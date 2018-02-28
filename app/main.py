@@ -133,9 +133,11 @@ def createGoals():
         for otherSnake in otherSnakes:
             if( int((otherSnake)['length']) < myLength ):
                 try:
-                    print('OSC', otherSnake['coords'][0][0] + (otherSnake['coords'][0][0] -otherSnake['coords'][1][0]))
-                    goals.append({'x':otherSnake['coords'][0][0] + (otherSnake['coords'][0][0] -otherSnake['coords'][1][0] ),'y':otherSnake['coords'][0][1] + (otherSnake['coords'][0][1] -otherSnake['coords'][1][1] ),'score':4})
-                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]=0
+                    x=otherSnake['coords'][0][0] + (otherSnake['coords'][0][0] -otherSnake['coords'][1][0])
+                    y=otherSnake['coords'][0][1] + (otherSnake['coords'][0][1] -otherSnake['coords'][1][1])
+                    if(int(grid[x][y])==0):
+                        goals.append({'x':x,'y':y,'score':4})
+                        grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]=0
                 except:
                     pass
                 addFoodsToGoals()
@@ -157,6 +159,7 @@ def addFoodsToGoals():
     for food in foods:               
         if(int(grid[food['x']][food['y']])==0):
             goals.append({'x':food['x'],'y':food['y'],'score':4})
+
 
 def printGrid():
 
