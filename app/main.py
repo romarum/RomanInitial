@@ -225,8 +225,10 @@ def safetyAroundSnakeHead():
     global grid
     global myLength
     global SAFTEY
+    global height
+    global width
 
-    if(myHealth < 20):
+    if(myHealth < width+height):
         SAFTEY = 0
 
     print('other snakes = ', otherSnakes)
@@ -236,15 +238,9 @@ def safetyAroundSnakeHead():
         if (int(otherSnake['length']) >= myLength):
             #dodge head        
             try:
-                print("DODGE 1")
                 x = otherSnake['coords'][0][0] + 1
-                print("DODGE 2")
                 y = otherSnake['coords'][0][1] 
-                print("DODGE 3")
-                print('X=',x,' Y=',y)
-                print('GRID X Y =',grid[x][y] )
                 if(grid[x][y] != SNAKE):
-                    print('NEW GRID X Y =',grid[x][y] )
                     grid[x][y] = SAFTEY
             except:
                 print('FAILED')
@@ -253,7 +249,7 @@ def safetyAroundSnakeHead():
                 x = otherSnake['coords'][0][0] + 1
                 y = otherSnake['coords'][0][1] + 1
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = 3
+                    grid[x][y] = SAFTEY
             except:
                 pass
             try:
