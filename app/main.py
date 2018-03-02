@@ -241,12 +241,13 @@ def safetyAroundSnakeHead():
                 print("DODGE 2")
                 y = otherSnake['coords'][0][1] 
                 print("DODGE 3")
+                print('X=',x,' Y=',y)
                 print('GRID X Y =',grid[x][y] )
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
                     print('NEW GRID X Y =',grid[x][y] )
-
+                    grid[x][y] = SAFTEY
             except:
+                print('FAILED')
                 pass
             try:
                 x = otherSnake['coords'][0][0] + 1
