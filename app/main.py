@@ -244,7 +244,8 @@ def safetyAroundSnakeHead():
                 print('GRID X Y =',grid[x][y] )
                 if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
-                print('DODGING ',x,' ',y)
+                    print('NEW GRID X Y =',grid[x][y] )
+
             except:
                 pass
             try:
