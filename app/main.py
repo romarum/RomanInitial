@@ -221,10 +221,10 @@ def safetyAroundBorders():
         grid[width-1][y]=SAFTEY
 
 def safetyAroundSnakeHead():
-
     global otherSnakes
     global grid
     global myLength
+    global SAFTEY
 
     if(myHealth < 20):
         SAFTEY = 0
@@ -253,7 +253,7 @@ def safetyAroundSnakeHead():
                 x = otherSnake['coords'][0][0] + 1
                 y = otherSnake['coords'][0][1] + 1
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 pass
             try:
