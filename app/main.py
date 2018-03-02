@@ -137,7 +137,7 @@ def createGoals():
                     y=otherSnake['coords'][0][1] + (otherSnake['coords'][0][1] -otherSnake['coords'][1][1])
                     if(int(grid[x][y])==0):
                         goals.append({'x':x,'y':y,'score':4})
-                        grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]=0
+                        #grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]=0
                 except:
                     pass
                 addFoodsToGoals()
