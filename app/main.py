@@ -115,8 +115,7 @@ def createGoals():
         if(len(otherSnakes) == 1 and int((otherSnakes[0])['length']) < myLength and int((otherSnakes[0])['health']) < myHealth and myLength > 6 ):
             for food in foods:
                 if((food['x'])==0 or (food['x']==width-1) or (food['y'])==0 or (food['x']==height-1)):
-                    if(int(grid[food['x']][food['y']]) == 0):
-                        goals.append({'x':food['x'],'y':food['y'],'score':4})
+                    goals.append({'x':food['x'],'y':food['y'],'score':4})
                 else:
                     try:
                         if(int(grid[food['x'] + 1][food['y'] + 1]) == 0):
@@ -215,8 +214,8 @@ def safetyAroundBorders():
         grid[x][height-1]=SAFTEY
 
     for y in xrange(height):
-        grid[y][0]=SAFTEY
-        grid[y][height-1]=SAFTEY
+        grid[0][y]=SAFTEY
+        grid[0][height-1]=SAFTEY
 
 def safetyAroundSnakeHead():
     global otherSnakes
