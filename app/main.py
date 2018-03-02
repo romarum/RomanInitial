@@ -236,62 +236,56 @@ def safetyAroundSnakeHead():
                 y = otherSnake['coords'][0][1] 
                 if(grid[x][y]) != SNAKE:
                     grid[x][y] = SAFTEY
-                    print('DODGING ',x,' ',y)
+                print('DODGING ',x,' ',y)
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] + 1
                 y = otherSnake['coords'][0][1] + 1
-                if(grid[x][y]) != SNAKE:
+                if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
-                    print('DODGING ',x,' ',y)
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] + 1
                 y = otherSnake['coords'][0][1] - 1
-                if(grid[x][y]) != SNAKE:
+                if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
-                    print('DODGING ',x,' ',y)
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] 
                 y = otherSnake['coords'][0][1] + 1
-                if(grid[x][y]) != SNAKE:
+                if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
-                    print('DODGING ',x,' ',y)
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] 
                 y = otherSnake['coords'][0][1] - 1
-                if(grid[x][y]) != SNAKE:
+                if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
-                    print('DODGING ',x,' ',y)
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] - 1
                 y = otherSnake['coords'][0][1] + 1
-                if(grid[x][y]) != SNAKE:
+                if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] - 1
                 y = otherSnake['coords'][0][1] - 1
-                if(grid[x][y]) != SNAKE:
+                if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
-                    print('DODGING ',x,' ',y)
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] - 1
                 y = otherSnake['coords'][0][1] 
-                if(grid[x][y]) != SNAKE:
+                if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
-                    print('DODGING ',x,' ',y)
             except:
                 pass
             #grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]]=SNAKE
