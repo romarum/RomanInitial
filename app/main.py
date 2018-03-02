@@ -215,7 +215,7 @@ def safetyAroundBorders():
 
     for y in xrange(height):
         grid[0][y]=SAFTEY
-        grid[0][height-1]=SAFTEY
+        grid[width-1][y]=SAFTEY
 
 def safetyAroundSnakeHead():
     global otherSnakes
@@ -236,6 +236,7 @@ def safetyAroundSnakeHead():
                 y = otherSnake['coords'][0][1] 
                 if(grid[x][y]) != SNAKE:
                     grid[x][y] = SAFTEY
+                print('DODGING ',x,' ',y)
             except:
                 pass
             try:
