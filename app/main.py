@@ -218,6 +218,7 @@ def safetyAroundBorders():
         grid[width-1][y]=SAFTEY
 
 def safetyAroundSnakeHead():
+
     global otherSnakes
     global grid
     global myLength
@@ -232,9 +233,13 @@ def safetyAroundSnakeHead():
         if (int(otherSnake['length']) >= myLength):
             #dodge head        
             try:
+                print("DODGE 1")
                 x = otherSnake['coords'][0][0] + 1
+                print("DODGE 2")
                 y = otherSnake['coords'][0][1] 
-                if(grid[x][y]) != SNAKE:
+                print("DODGE 3")
+                print('GRID X Y =',grid[x][y] )
+                if(grid[x][y] != SNAKE):
                     grid[x][y] = SAFTEY
                 print('DODGING ',x,' ',y)
             except:
