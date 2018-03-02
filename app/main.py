@@ -8,7 +8,7 @@ import os
 import sys
 
 SNEK_BUFFER = 3
-EMPTY =0
+EMPTY = 0
 SNAKE = 1
 WALL = 2
 SAFTEY = 3
@@ -18,18 +18,17 @@ GOLD = 7
 grid = []
 otherSnakes = []
 allSnakes = []
-foods=[]
-goals=[]
+foods = []
+goals = []
 mySnake = ''
 width = 0
 height = 0
 myHealth = 100
-myLength =1
+myLength = 1
 mySnakeId = ''
 #mode='foodeater'
-mode='foodguard'
+mode = 'foodguard'
 #mode='killer'
-
 def init(postData):
     global width
     global height
@@ -50,8 +49,8 @@ def init(postData):
     mySnakeId = data['you']['id']
     grid = [[0 for col in xrange(height)] for row in xrange(width)]
     allSnakes = data['snakes']['data']
-    otherSnakes =[]
-    foods=[]
+    otherSnakes = []
+    foods = []
 
     foodData = data['food']['data']
     for snake in allSnakes:
@@ -59,8 +58,8 @@ def init(postData):
         #print('SNAKE=', snake)
         if snake['id'] == mySnakeId:
             mySnake = snake
-            myLength =int(mySnake['length'])
-            myHealth =int(mySnake['health'])
+            myLength = int(mySnake['length'])
+            myHealth = int(mySnake['health'])
 
         else:
             otherSnakes.append(snake)
@@ -72,7 +71,7 @@ def init(postData):
         snake['coords'] = snakeCoords
  
 
-    print ('FOOD DATA ', foodData)
+    print('FOOD DATA ', foodData)
     for food in foodData:
         foods.append(food)
 
@@ -85,6 +84,9 @@ def init(postData):
 def static(path):
     return bottle.static_file(path, root='static/')
 
+
+
+
 def createGoals():
     global width
     global height
@@ -94,48 +96,54 @@ def createGoals():
     global myLength
     global myHealth
 
-    goals=[]
+    goals = []
 
-    print ('mode=', mode)
+    print('mode=', mode)
+    safetyAroundBorders()
 
-    if mode=='foodeater':
+    if mode == 'foodeater':
         safetyAroundSnakeHead()
+        
         for food in foods:
             print('Check food vs grid ', grid[food['x']][food['y']])
-            if(int(grid[food['x']][food['y']])==0):
+            if(int(grid[food['x']][food['y']]) == 0):
                 goals.append({'x':food['x'],'y':food['y'],'score':4})
 
-    elif mode=='foodguard':
+    elif mode == 'foodguard':
         print('Foodguard mode initiated')
         print('GOALS ', goals)
-        if(len(otherSnakes)==1 and int((otherSnakes[0])['length']) < myLength and int((otherSnakes[0])['health']) < myHealth and myHealth>20):
+        if(len(otherSnakes) == 1 and int((otherSnakes[0])['length']) < myLength and int((otherSnakes[0])['health']) < myHealth and myLength > 6 ):
             for food in foods:
-                try:
-                    if(int(grid[food['x']+1][food['y']+1])==0):
-                        goals.append({'x':food['x']+1,'y':food['y']+1,'score':4})
-                    if(int(grid[food['x']+1][food['y']-1])==0):
-                        goals.append({'x':food['x']+1,'y':food['y']-1,'score':4})
-                    if(int(grid[food['x']-1][food['y']+1])==0):
-                        goals.append({'x':food['x']-1,'y':food['y']+1,'score':4})
-                    if(int(grid[food['x']-1][food['y']-1])==0):
-                        goals.append({'x':food['x']-1,'y':food['y']-1,'score':4})
-                    print('GOALS FOODGUARD', goals)
-                except:
-                    pass
+                if((food['x'])==0 or (food['x']==width-1) or (food['y'])==0 or (food['x']==height-1)):
+                    if(int(grid[food['x']][food['y']]) == 0):
+                        goals.append({'x':food['x'],'y':food['y'],'score':4})
+                else:
+                    try:
+                        if(int(grid[food['x'] + 1][food['y'] + 1]) == 0):
+                            goals.append({'x':food['x'] + 1,'y':food['y'] + 1,'score':4})
+                        if(int(grid[food['x'] + 1][food['y'] - 1]) == 0):
+                            goals.append({'x':food['x'] + 1,'y':food['y'] - 1,'score':4})
+                        if(int(grid[food['x'] - 1][food['y'] + 1]) == 0):
+                            goals.append({'x':food['x'] - 1,'y':food['y'] + 1,'score':4})
+                        if(int(grid[food['x'] - 1][food['y'] - 1]) == 0):
+                            goals.append({'x':food['x'] - 1,'y':food['y'] - 1,'score':4})
+                        print('GOALS FOODGUARD', goals)
+                    except:
+                        pass
         else:
             safetyAroundSnakeHead()
             addFoodsToGoals()
 
 
-    elif mode=='killer':
+    elif mode == 'killer':
         print('Killer mode initiated')
         print('GOALS ', goals)
         for otherSnake in otherSnakes:
-            if( int((otherSnake)['length']) < myLength ):
+            if(int((otherSnake)['length']) < myLength):
                 try:
-                    x=otherSnake['coords'][0][0] + (otherSnake['coords'][0][0] -otherSnake['coords'][1][0])
-                    y=otherSnake['coords'][0][1] + (otherSnake['coords'][0][1] -otherSnake['coords'][1][1])
-                    if(int(grid[x][y])==0):
+                    x = otherSnake['coords'][0][0] + (otherSnake['coords'][0][0] - otherSnake['coords'][1][0])
+                    y = otherSnake['coords'][0][1] + (otherSnake['coords'][0][1] - otherSnake['coords'][1][1])
+                    if(int(grid[x][y]) == 0):
                         goals.append({'x':x,'y':y,'score':4})
                         #grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]=0
                 except:
@@ -157,7 +165,7 @@ def addFoodsToGoals():
     global goals
     global foods
     for food in foods:               
-        if(int(grid[food['x']][food['y']])==0):
+        if(int(grid[food['x']][food['y']]) == 0):
             goals.append({'x':food['x'],'y':food['y'],'score':4})
 
 
@@ -170,20 +178,19 @@ def printGrid():
     global mySnake
     global otherSnakes
 
-
     print('Goals to show', goals)
     print_grid = copy.deepcopy(grid)
-    print_grid[mySnake['coords'][0][0]][mySnake['coords'][0][1]]='H'
+    print_grid[mySnake['coords'][0][0]][mySnake['coords'][0][1]] = 'H'
     for otherSnake in otherSnakes:
-        print_grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]]='h'
+        print_grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1]] = 'h'
     for goal in goals:
-        print_grid[goal['x']][goal['y']]=goal['score']
+        print_grid[goal['x']][goal['y']] = goal['score']
     print('####################### GRID ###############################')
 
     for row in xrange(height):
         #print(row,'|',)
         for col in xrange(width):
-            sys.stdout.write('%2s' % str(print_grid[col][row]) )
+            sys.stdout.write('%2s' % str(print_grid[col][row]))
         sys.stdout.write('\n')
         sys.stdout.flush()
 
@@ -192,68 +199,97 @@ def printGrid():
     
 def getGoalCoords():
     global goals
-    goalCoords=[]
+    goalCoords = []
     for goal in goals:
         print('GOAL COORDS ', goal, ' ',goal['x'])
         goalCoords.append([goal['x'],goal['y']])
     return goalCoords
+
+
+def safetyAroundBorders():
+    global grid
+    global height
+    global width
+    for x in xrange(width):
+        grid[x][0]=SAFTEY
+        grid[x][height-1]=SAFTEY
+
+    for y in xrange(height):
+        grid[y][0]=SAFTEY
+        grid[y][height-1]=SAFTEY
 
 def safetyAroundSnakeHead():
     global otherSnakes
     global grid
     global myLength
 
-    if(myHealth<20):
-        SAFTEY=0;
+    if(myHealth < 20):
+        SAFTEY = 0
 
     print('other snakes = ', otherSnakes)
     for otherSnake in otherSnakes:
         print('other snake length = ', int(otherSnake['length']), ' my length ', myLength)
-        print('condition= ', int(otherSnake['length']) >= myLength )
-        if (int(otherSnake['length']) >= myLength ):
-            #dodge head  
-            
+        print('condition= ', int(otherSnake['length']) >= myLength)
+        if (int(otherSnake['length']) >= myLength):
+            #dodge head        
             try:
-                if(grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1])!=SNAKE:
-                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] + 1] = SAFTEY
+                x = otherSnake['coords'][0][0] + 1
+                y = otherSnake['coords'][0][1] 
+                if(grid[x][y]) != SNAKE:
+                    grid[x][y] = SAFTEY
             except:
                 pass
             try:
-                if(grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] - 1])!= SNAKE:
-                    grid[otherSnake['coords'][0][0]][otherSnake['coords'][0][1] - 1] = SAFTEY
+                x = otherSnake['coords'][0][0] + 1
+                y = otherSnake['coords'][0][1] + 1
+                if(grid[x][y]) != SNAKE:
+                    grid[x][y] = SAFTEY
             except:
                 pass
             try:
-                if(grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1]])!=SNAKE:
-                    grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1]] = SAFTEY
+                x = otherSnake['coords'][0][0] + 1
+                y = otherSnake['coords'][0][1] - 1
+                if(grid[x][y]) != SNAKE:
+                    grid[x][y] = SAFTEY
             except:
                 pass
             try:
-                if(grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1]]) !=SNAKE:
-                    grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1]] = SAFTEY
+                x = otherSnake['coords'][0][0] 
+                y = otherSnake['coords'][0][1] + 1
+                if(grid[x][y]) != SNAKE:
+                    grid[x][y] = SAFTEY
             except:
                 pass
             try:
-               if(grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] - 1])!= SNAKE:
-                    grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] - 1] = SAFTEY
+                x = otherSnake['coords'][0][0] 
+                y = otherSnake['coords'][0][1] - 1
+                if(grid[x][y]) != SNAKE:
+                    grid[x][y] = SAFTEY
             except:
                 pass
             try:
-                if(grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] - 1])!= SNAKE:
-                    grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] - 1] = SAFTEY
+                x = otherSnake['coords'][0][0] - 1
+                y = otherSnake['coords'][0][1] + 1
+                if(grid[x][y]) != SNAKE:
+                    grid[x][y] = SAFTEY
             except:
                 pass
             try:
-                if(grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] + 1])!=SNAKE:
-                    grid[otherSnake['coords'][0][0] - 1][otherSnake['coords'][0][1] + 1] = SAFTEY
+                x = otherSnake['coords'][0][0] - 1
+                y = otherSnake['coords'][0][1] - 1
+                if(grid[x][y]) != SNAKE:
+                    grid[x][y] = SAFTEY
             except:
                 pass
             try:
-                if(grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] + 1])!=SNAKE:
-                    grid[otherSnake['coords'][0][0] + 1][otherSnake['coords'][0][1] + 1] = SAFTEY
+                x = otherSnake['coords'][0][0] - 1
+                y = otherSnake['coords'][0][1] 
+                if(grid[x][y]) != SNAKE:
+                    grid[x][y] = SAFTEY
             except:
                 pass
             #grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]]=SNAKE
+
 
 @bottle.get('/')
 def index():
@@ -290,7 +326,7 @@ def move():
 
     print('WORKING ON MOVE REQUEST')
     postData = bottle.request.json
-    grid=[]
+    grid = []
     init(postData)
 
             
