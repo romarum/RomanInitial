@@ -231,7 +231,7 @@ def safetyAroundSnakeHead():
     global SAFTEY
     global height
     global width
-
+    global SNAKE
 
     print('other snakes = ', otherSnakes)
     for otherSnake in otherSnakes:
@@ -245,7 +245,6 @@ def safetyAroundSnakeHead():
                 if(grid[x][y] != SNAKE):
                     grid[x][y] = 3
             except:
-                print('FAILED')
                 pass
             try:
                 x = otherSnake['coords'][0][0] + 1
@@ -367,11 +366,11 @@ def move():
         # Update snake
         print('path length is ', path_length)
         print('mySnake length is ', myLength)
-        if path_length < myLength:
-            remainder = myLength - path_length
+        if path_length < myLength+1:
+            remainder = myLength +1- path_length
             new_mySnake_coords = list(reversed(tentative_path)) + mySnake_coords[:remainder]
         else:
-            new_mySnake_coords = list(reversed(tentative_path))[:myLength]
+            new_mySnake_coords = list(reversed(tentative_path))[:myLength+1]
 
         if grid[new_mySnake_coords[0][0]][new_mySnake_coords[0][1]] == goal:
             # we ate goal so we grow
@@ -425,27 +424,26 @@ def move():
     moveTo = ''
     try:
         print('try move to')
-        moveTo = direction(path[0], path[1])
-        
+        moveTo = direction(path[0], path[1])    
     except:
         try:
-            if (grid[mySnake['coords'][0][0] + 1][mySnake['coords'][0][1]] != 1):
+            if (grid[mySnake['coords'][0][0] + 1][mySnake['coords'][0][1]] != 1 and mySnake['coords'][0][0]!=width-1):
                 moveTo = "right"
         except:
             pass
         try:
-            if (grid[mySnake['coords'][0][0] - 1][mySnake['coords'][0][1]] != 1):
+            if (grid[mySnake['coords'][0][0] - 1][mySnake['coords'][0][1]] != 1 and mySnake['coords'][0][0]!=0):
                 moveTo = "left"
         
         except:
             pass
         try:
-            if (grid[mySnake['coords'][0][0]][mySnake['coords'][0][1] + 1] != 1):
+            if (grid[mySnake['coords'][0][0]][mySnake['coords'][0][1] + 1] != 1  and mySnake['coords'][0][1]!=height-1):
                 moveTo = "down"
         except:
             pass
         try:
-            if (grid[mySnake['coords'][0][0]][mySnake['coords'][0][1] - 1] != 1):
+            if (grid[mySnake['coords'][0][0]][mySnake['coords'][0][1] - 1] != 1  and mySnake['coords'][0][1]!=0):
                 moveTo = "up"
         except:
             pass
