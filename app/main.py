@@ -320,6 +320,7 @@ def start():
         'taunt': 'battlesnake 2018',
         'secondary_color': '#FF00FF',
         'head_url': head_url
+
     }
 
 @bottle.post('//move')
