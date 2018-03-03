@@ -170,7 +170,7 @@ def createGoals():
 def addFoodsToGoals():
     global goals
     global foods
-    if(myHealth<75):
+    if(myHealth<80):
 
         for food in foods:               
             if(int(grid[food['x']][food['y']]) == 0):
@@ -190,19 +190,24 @@ def markUnsafe():
                 if(x!=0):
                     leftUnsafe=int(grid[x-1][y]==1)
                 else:
-                    leftUnsafe=1
+                    #if it's a wall and a food then unsafe = 0
+                    if(int(grid[x][y])!=3):
+                        leftUnsafe=1
                 if(x!=width-1):
                     rightUnsafe=int(grid[x+1][y]==1)
                 else:
-                    rightUnsafe=1
+                    if(int(grid[x][y])!=3):
+                        rightUnsafe=1
                 if(y!=0):
                     toptUnsafe=int(grid[x][y-1]==1)
                 else:
-                    toptUnsafe=1
+                    if(int(grid[x][y])!=3):
+                        toptUnsafe=1
                 if(y!=height-1):
                     bottomUnsafe=int(grid[x][y+1]==1)
                 else:
-                    bottomUnsafe=1
+                    if(int(grid[x][y])!=3):
+                        bottomUnsafe=1
 
                 if(leftUnsafe+rightUnsafe+toptUnsafe+bottomUnsafe>=2):
                     grid[x][y]=3
