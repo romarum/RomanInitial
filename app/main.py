@@ -304,19 +304,22 @@ def index():
     head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
     return {
         'color': '#00ffff',
-        'head': head_url
+        'head': head_url,
+        
     }
 
 @bottle.post('//start')
 def start():
     print('WORKING ON START REQUEST')
+    head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
     return {
         'name': 'RomanInitial',
         'color': '#0000FF',
         'head_type': 'fang',
-        'tail_type': 'round-bum',
-        'taunt': 'battlesnake-python!',
-        'secondary_color': '#FF00FF'
+        'tail_type': 'small-rattle',
+        'taunt': 'battlesnake 2018',
+        'secondary_color': '#FF00FF',
+        'head_url': head_url
     }
 
 @bottle.post('//move')
