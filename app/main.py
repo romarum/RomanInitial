@@ -81,6 +81,7 @@ def init(postData):
         SAFTEY = 0
 
     createGoals()
+    grid[mySnake['coords'][0][0]][mySnake['coords'][0][1]]=2
     markUnsafe()
     printGrid()
 
@@ -191,23 +192,23 @@ def markUnsafe():
                     leftUnsafe=int(grid[x-1][y]==1)
                 else:
                     #if it's a wall and a food then unsafe = 0
-                    if(int(grid[x][y])!=3):
-                        leftUnsafe=1
+                    #if(int(grid[x][y])!=4):
+                    leftUnsafe=1
                 if(x!=width-1):
                     rightUnsafe=int(grid[x+1][y]==1)
                 else:
-                    if(int(grid[x][y])!=3):
-                        rightUnsafe=1
+                    #if(int(grid[x][y])!=4):
+                    rightUnsafe=1
                 if(y!=0):
                     toptUnsafe=int(grid[x][y-1]==1)
                 else:
-                    if(int(grid[x][y])!=3):
-                        toptUnsafe=1
+                    #if(int(grid[x][y])!=4):
+                    toptUnsafe=1
                 if(y!=height-1):
                     bottomUnsafe=int(grid[x][y+1]==1)
                 else:
-                    if(int(grid[x][y])!=3):
-                        bottomUnsafe=1
+                    #if(int(grid[x][y])!=4):
+                    bottomUnsafe=1
 
                 if(leftUnsafe+rightUnsafe+toptUnsafe+bottomUnsafe>=2):
                     grid[x][y]=3
