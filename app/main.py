@@ -81,13 +81,13 @@ def init(postData):
         SAFTEY = 0
 
     createGoals()
+    markUnsafe()
     printGrid()
 
 
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
-
 
 
 
@@ -175,6 +175,38 @@ def addFoodsToGoals():
         for food in foods:               
             if(int(grid[food['x']][food['y']]) == 0):
                 goals.append({'x':food['x'],'y':food['y'],'score':4})
+
+
+def markUnsafe():
+    global width
+    global height
+    global grid
+    global goals
+    global mySnake
+    global otherSnakes
+    for x in xrange(width):
+        for y in xrange(height):
+            if (grid[x][y]==0):
+                if(x!=0):
+                    leftUnsafe=int(grid[x-1][y]==1)
+                else:
+                    leftUnsafe=1
+                if(x!=width-1):
+                    rightUnsafe=int(grid[x+1][y]==1)
+                else:
+                    rightUnsafe=1
+                if(y!=0):
+                    toptUnsafe=int(grid[x][y-1]==1)
+                else:
+                    toptUnsafe=1
+                if(y!=height-1):
+                    bottomUnsafe=int(grid[x][y+1]==1)
+                else:
+                    bottomUnsafe=1
+
+                if(leftUnsafe+rightUnsafe+toptUnsafe+bottomUnsafe>=2):
+                    grid[x][y]=3
+                
 
 
 def printGrid():
