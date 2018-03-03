@@ -27,9 +27,9 @@ height = 0
 myHealth = 100
 myLength = 1
 mySnakeId = ''
-mode='foodeater'
+#mode='foodeater'
 #mode = 'foodguard'
-#mode='killer'
+mode='killer'
 def init(postData):
     global width
     global height
