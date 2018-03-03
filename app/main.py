@@ -308,7 +308,7 @@ def index():
         
     }
 
-@bottle.post('//start')
+@bottle.post('/start')
 def start():
     print('WORKING ON START REQUEST')
     head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
@@ -323,7 +323,7 @@ def start():
 
     }
 
-@bottle.post('//move')
+@bottle.post('/move')
 def move():
     global width
     global height
