@@ -311,8 +311,8 @@ def index():
 def start():
     print('WORKING ON START REQUEST')
     return {
-        'name': 'Punisher',
-        'color': '#00FFFF',
+        'name': 'RomanInitial',
+        'color': '#0000FF',
         'head_type': 'fang',
         'tail_type': 'round-bum',
         'taunt': 'battlesnake-python!',
