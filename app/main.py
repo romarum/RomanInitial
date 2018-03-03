@@ -170,9 +170,11 @@ def createGoals():
 def addFoodsToGoals():
     global goals
     global foods
-    for food in foods:               
-        if(int(grid[food['x']][food['y']]) == 0):
-            goals.append({'x':food['x'],'y':food['y'],'score':4})
+    if(myHealth<75):
+
+        for food in foods:               
+            if(int(grid[food['x']][food['y']]) == 0):
+                goals.append({'x':food['x'],'y':food['y'],'score':4})
 
 
 def printGrid():
