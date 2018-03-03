@@ -76,6 +76,9 @@ def init(postData):
     for food in foodData:
         foods.append(food)
 
+        
+    if(myHealth < width+height):
+        SAFTEY = 0
 
     createGoals()
     printGrid()
@@ -229,8 +232,6 @@ def safetyAroundSnakeHead():
     global height
     global width
 
-    if(myHealth < width+height):
-        SAFTEY = 0
 
     print('other snakes = ', otherSnakes)
     for otherSnake in otherSnakes:
@@ -242,7 +243,7 @@ def safetyAroundSnakeHead():
                 x = otherSnake['coords'][0][0] + 1
                 y = otherSnake['coords'][0][1] 
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 print('FAILED')
                 pass
@@ -250,49 +251,49 @@ def safetyAroundSnakeHead():
                 x = otherSnake['coords'][0][0] + 1
                 y = otherSnake['coords'][0][1] + 1
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] + 1
                 y = otherSnake['coords'][0][1] - 1
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] 
                 y = otherSnake['coords'][0][1] + 1
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] 
                 y = otherSnake['coords'][0][1] - 1
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] - 1
                 y = otherSnake['coords'][0][1] + 1
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] - 1
                 y = otherSnake['coords'][0][1] - 1
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 pass
             try:
                 x = otherSnake['coords'][0][0] - 1
                 y = otherSnake['coords'][0][1] 
                 if(grid[x][y] != SNAKE):
-                    grid[x][y] = SAFTEY
+                    grid[x][y] = 3
             except:
                 pass
             #grid[otherSnake['coords'][1][0]][otherSnake['coords'][1][1]]=SNAKE
@@ -456,10 +457,8 @@ def move():
     
 
 
-
 @bottle.post('/end')
 def end():
-    data = bottle.request.json
     return {
         'taunt': 'amen!'
     }
