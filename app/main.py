@@ -15,6 +15,7 @@ SAFTEY = 3
 FOOD = 5
 GOLD = 7
 
+
 grid = []
 otherSnakes = []
 allSnakes = []
@@ -26,8 +27,8 @@ height = 0
 myHealth = 100
 myLength = 1
 mySnakeId = ''
-#mode='foodeater'
-mode = 'foodguard'
+mode='foodeater'
+#mode = 'foodguard'
 #mode='killer'
 def init(postData):
     global width
@@ -302,7 +303,7 @@ def index():
     print('WORKING ON GET REQUEST')
     head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
     return {
-        'color': '#ff0000',
+        'color': '#00ffff',
         'head': head_url
     }
 
@@ -311,7 +312,7 @@ def start():
     print('WORKING ON START REQUEST')
     return {
         'name': 'RomanInitial',
-        'color': '#FF0000',
+        'color': '#0000FF',
         'head_type': 'fang',
         'tail_type': 'round-bum',
         'taunt': 'battlesnake-python!',
