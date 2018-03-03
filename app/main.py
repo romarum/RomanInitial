@@ -171,7 +171,7 @@ def createGoals():
 def addFoodsToGoals():
     global goals
     global foods
-    if(myHealth<65):
+    if(myHealth<80):
 
         for food in foods:               
             if(int(grid[food['x']][food['y']]) == 0):
