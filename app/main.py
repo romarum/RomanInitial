@@ -211,7 +211,8 @@ def markUnsafe():
                     bottomUnsafe=1
 
                 if(leftUnsafe+rightUnsafe+toptUnsafe+bottomUnsafe>=2):
-                    grid[x][y]=3
+                    if(grid[x][y]==0):
+                        grid[x][y]=3
                 
 
 
