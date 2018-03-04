@@ -352,10 +352,10 @@ def index():
 @bottle.post('/start')
 def start():
     print('WORKING ON START REQUEST')
-    head_url = '%s://%s/static/preet.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
+    head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
     return {
         'name': 'RomanInitial',
-        'color': '##8342f4',
+        'color': '#8342F4',
         'head_type': 'fang',
         'tail_type': 'freckled',
         'taunt': 'battlesnake 2018',
