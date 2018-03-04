@@ -82,7 +82,7 @@ def init(postData):
 
     createGoals()
     grid[mySnake['coords'][0][0]][mySnake['coords'][0][1]]=2
-    markUnsafe()
+    #markUnsafe()
     printGrid()
 
 
