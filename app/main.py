@@ -352,12 +352,12 @@ def index():
 @bottle.post('/start')
 def start():
     print('WORKING ON START REQUEST')
-    head_url = '%s://%s/static/Traitor.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
+    head_url = '%s://%s/static/preet.gif' % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
     return {
         'name': 'RomanInitial',
-        'color': '#0000FF',
+        'color': '##8342f4',
         'head_type': 'fang',
-        'tail_type': 'small-rattle',
+        'tail_type': 'freckled',
         'taunt': 'battlesnake 2018',
         'secondary_color': '#FF00FF',
         'head_url': head_url
@@ -423,7 +423,7 @@ def move():
         for coord in mySnake_coords:
             new_grid[coord[0]][coord[1]] = 0
         for coord in new_mySnake_coords:
-            new_grid[coord[0]][coord[1]] = SNAKE
+            new_grid[coord[0]][coord[1]] = 1
 
         goaltotail = a_star([goal['x'],goal['y']],new_mySnake_coords[-1],new_grid, new_mySnake_coords)
         if goaltotail:
